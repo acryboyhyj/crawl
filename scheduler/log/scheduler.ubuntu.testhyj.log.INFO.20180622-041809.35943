@@ -1,4 +1,0 @@
-Log file created at: 2018/06/22 04:18:09
-Running on machine: ubuntu
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0622 04:18:09.117069 35943 scheduler.cpp:22] first info
