@@ -1,0 +1,16 @@
+I0624 00:07:20.133041 11735 bloomfilter.h:36] original hash_val:3776620240
+I0624 00:07:20.133116 11735 bloomfilter.h:39] hashval:3776620240
+I0624 00:07:20.133122 11735 bloomfilter.h:41] bit:26
+I0624 00:07:20.133126 11735 bloomfilter.h:39] hashval:881006429
+I0624 00:07:20.133131 11735 bloomfilter.h:41] bit:3
+I0624 00:07:20.133134 11735 bloomfilter.h:45] keyhttp://www.baidu.com:  hash_val2280359914
+I0624 00:07:20.133139 11735 bloomfilter.h:50] original hash_val:3776620240
+I0624 00:07:20.133143 11735 bloomfilter.h:53] hashval:3776620240
+I0624 00:07:20.133147 11735 bloomfilter.h:55] bit_pos:208   1<<bit_pos % 8 10
+I0624 00:07:20.133152 11735 bloomfilter.h:53] hashval:881006429
+I0624 00:07:20.133154 11735 bloomfilter.h:55] bit_pos:29   1<<bit_pos % 8 15
+yes
+I0624 00:07:20.133173 11735 bloomfilter.h:50] original hash_val:3000037993
+I0624 00:07:20.133183 11735 bloomfilter.h:53] hashval:3000037993
+I0624 00:07:20.133186 11735 bloomfilter.h:55] bit_pos:169   1<<bit_pos % 8 11
+no

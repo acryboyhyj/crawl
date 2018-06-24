@@ -1,0 +1,4 @@
+Log file created at: 2018/06/22 01:15:32
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0622 01:15:32.294395 31730 fetcher_manager.cpp:52] fetcher name:fethcer1
