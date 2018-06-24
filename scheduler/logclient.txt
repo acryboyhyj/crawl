@@ -1,2 +1,0 @@
-Rpc success :
-client received: 20180617
