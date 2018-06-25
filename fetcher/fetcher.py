@@ -26,7 +26,6 @@ def _install_args():
     parser.add_argument("--crawler", default="sspider")
     parser.add_argument("--scheduler", default="127.0.0.1:5008")
    # parser.add_argument("--handler", default="127.0.0.1:40000")
-   # parser.add_argument("--bind", default="10.230.76.167")
     return parser
 
 def _append_library(crawler_name):
@@ -53,7 +52,6 @@ def get_crawler(args):
     settings.set("RPC_ADDR", args.addr)
     settings.set("SCHEDULER_ADDR", args.scheduler)
     #settings.set("HANDLER_ADDR", args.handler)
-    #settings.set("BIND_ADDRESS", args.bind)
 
     #3. Command and its CrawlProcess surely be crawl
     crawler_process = CustomCrawlerProcess(settings)
@@ -71,11 +69,11 @@ def main():
     _append_library(crawler_name)
     crawler_process = get_crawler(args)
 
-    #1. get spider and its queue
+    #1. get spider and queue
     spider = crawler_process.spider_loader._spiders[crawler_name]
     queue = spider.queue
     
-    #2. start rpc server, get fetch name
+    #2. start rpc server
     fetch_server = FetchServer(args.name, queue)
     gprc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     add_FetchServicer_to_server(fetch_server, gprc_server)
@@ -83,7 +81,7 @@ def main():
     gprc_server.start()
     logger.info("start server at %s" % args.addr)
 
-    #3. crawler run cmd.run(args=[name])
+    #3. crawler run cmd.ru
     crawler_process.crawl(crawler_name)
     crawler_process.start()
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 syntax = "proto3";
 package spiderproto;
-// url's type
+
 enum UrlLevel {
     LEVEL_INDEX    = 0;
     LEVEL_LIST     = 1;
@@ -22,10 +22,20 @@ message Feature {
 }
 
 message LinkRule {
-    UrlLevel in_level            = 1;  // apply this rule to url with in_level
-    repeated bytes rules         = 2;  // xpath:rule or re:rule
-    repeated UrlLevel url_levels = 3;  // the extracted urls' types
-    UrlLevel out_level           = 4;  // extracted url
+    UrlLevel in_level            = 1;
+    repeated bytes rules         = 2;
+    repeated UrlLevel url_levels = 3;
+    UrlLevel out_level           = 4;
+}
+
+message Storage {
+    enum StorageType {
+        STORAGE_HDFS = 0;
+        STORAGE_MQ   = 1;
+    }
+    StorageType store_type = 1;
+    bytes dest             = 2;
+    bytes attachment       = 3;
 }
 
 message Runtime {
@@ -104,12 +114,23 @@ service Fetch {
     rpc add_crawlingtask(CrawlingTask) returns (TaskResponse) {
     }
 }
+
+message Segment {
+    bytes word  = 1;
+    int32 score = 2;
+}
+
+message SegmentList {
+    repeated Segment segments = 1;
+}
+
 message CrawlDoc {
-    bytes taskid    = 1;
-    bytes url       = 2;
-    int32 status    = 3;
-    bytes content   = 4;
-    Storage storage = 5;
+    bytes taskid             = 1;
+    bytes url                = 2;
+    int32 status             = 3;
+    bytes content            = 4;
+    Storage storage          = 5;
+    SegmentList segment_list = 6;
 }
 
 message CrawlDocs {

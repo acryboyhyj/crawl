@@ -40,7 +40,6 @@ class SspiderSpider(scrapy.Spider):
                     yield None
                 else:
                     taskid = task.taskid
-                    #TODO
                     url = urllib.unquote(task.crawl_urls[0].url)
                     item = SspiderItem(taskid=taskid, url=url,\
                             crawling_task=task)
@@ -57,7 +56,6 @@ class SspiderSpider(scrapy.Spider):
             item["content_encoding"] = response.headers.get("Content-Encoding")
         content = item.get('content', "")
         item["content"] = response.body
-        #item["content"] = "this is fake content for simple log."
         item['time_spend'] = response.meta.get("download_latency", -1)
 
         logger.debug("start extract links for %s" % response.url)

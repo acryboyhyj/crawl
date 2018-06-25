@@ -1,6 +1,6 @@
 syntax = "proto3";
 package spiderproto;
-// url's type
+
 enum UrlLevel {
     LEVEL_INDEX    = 0;
     LEVEL_LIST     = 1;
@@ -11,7 +11,7 @@ enum UrlLevel {
 
 message CrawlUrl {
     bytes url                    = 1;
-    repeated UrlLevel url_levels = 2;  // a url may has mutiple types
+    repeated UrlLevel url_levels = 2;
 }
 
 message Feature {
@@ -22,10 +22,10 @@ message Feature {
 }
 
 message LinkRule {
-    UrlLevel in_level            = 1;  // apply this rule to url with in_level
-    repeated bytes rules         = 2;  // xpath:rule or re:rule
-    repeated UrlLevel url_levels = 3;  // the extracted urls' types
-    UrlLevel out_level           = 4;  // extracted url
+    UrlLevel in_level            = 1;
+    repeated bytes rules         = 2;
+    repeated UrlLevel url_levels = 3;
+    UrlLevel out_level           = 4;
 }
 
 message Storage {
@@ -34,8 +34,8 @@ message Storage {
         STORAGE_MQ   = 1;
     }
     StorageType store_type = 1;
-    bytes dest             = 2;  // hdfs://ss-wxg-2/
-    bytes attachment       = 3;  // user:pass hadoop.job.ugi
+    bytes dest             = 2;
+    bytes attachment       = 3;
 }
 
 message Runtime {
