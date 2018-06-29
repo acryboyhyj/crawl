@@ -16,7 +16,6 @@ crawl="sspider"
 addr=127.0.0.1
 port=50000
 scheduler="127.0.0.1:50080"
-#handler="127.0.0.1:40000"
 
 
 cd $dir_name

@@ -4,7 +4,6 @@ import sys
 import os
 import scrapy
 from scrapy.settings import Settings
-from importlib import import_module
 from six.moves.configparser import SafeConfigParser
 
 import grpc
@@ -25,7 +24,6 @@ def _install_args():
     parser.add_argument("--addr", default="127.0.0.1:50000")
     parser.add_argument("--crawler", default="sspider")
     parser.add_argument("--scheduler", default="127.0.0.1:5008")
-   # parser.add_argument("--handler", default="127.0.0.1:40000")
     return parser
 
 def _append_library(crawler_name):
@@ -51,7 +49,6 @@ def get_crawler(args):
     settings.set("FETCHER_NAME", args.name)
     settings.set("RPC_ADDR", args.addr)
     settings.set("SCHEDULER_ADDR", args.scheduler)
-    #settings.set("HANDLER_ADDR", args.handler)
 
     #3. Command and its CrawlProcess surely be crawl
     crawler_process = CustomCrawlerProcess(settings)
