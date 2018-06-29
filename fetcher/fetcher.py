@@ -4,7 +4,6 @@ import sys
 import os
 import scrapy
 from scrapy.settings import Settings
-from six.moves.configparser import SafeConfigParser
 
 import grpc
 from concurrent import futures
