@@ -22,10 +22,17 @@ message Feature {
 }
 
 message LinkRule {
+<<<<<<< HEAD
     UrlLevel in_level            = 1;
     repeated bytes rules         = 2;
     repeated UrlLevel url_levels = 3;
     UrlLevel out_level           = 4;
+=======
+    UrlLevel in_level            = 1;
+    repeated bytes rules         = 2;
+    repeated UrlLevel url_levels = 3;
+    UrlLevel out_level           = 4;  
+>>>>>>> 606f5deb4465c43b58354f49bed698accd900509
 }
 
 message Storage {
@@ -34,8 +41,12 @@ message Storage {
         STORAGE_MQ   = 1;
     }
     StorageType store_type = 1;
+<<<<<<< HEAD
     bytes dest             = 2;
-    bytes attachment       = 3;
+    bytes attachment = 3;
+=======
+  
+>>>>>>> 606f5deb4465c43b58354f49bed698accd900509
 }
 
 message Runtime {
@@ -94,9 +105,6 @@ message TaskResponse {
     bytes taskid = 1;
     int32 code   = 2;
     bytes msg    = 3;
-}
-
-message Empty {
 }
 
 message Fetcher {
