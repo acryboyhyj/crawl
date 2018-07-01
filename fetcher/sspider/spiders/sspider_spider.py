@@ -19,7 +19,6 @@ logger = logging.getLogger(__name__)
 class SspiderSpider(scrapy.Spider):
     name = "sspider"
     queue = Queue.Queue()
-    response_type_whitelist=(r'text', )
     
     def __init__(self, *args, **kwargs):
         super(SspiderSpider, self).__init__(*args, **kwargs)

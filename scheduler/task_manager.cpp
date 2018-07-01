@@ -20,6 +20,21 @@ bool TaskManager::AddTask(const std::vector<spiderproto::BasicTask>& btasks) {
     return true;
 }
 
+bool TaskManager::AddTask(const spiderproto::BasicTask& btask) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    spiderproto::BasicTask temp_task;
+    temp_task.CopyFrom(btask);
+
+    temp_task.set_taskid(GenerateTaskid());
+
+    std::shared_ptr<TaskInfo> p(new TaskInfo(temp_task));
+    m_taskinfos[temp_task.taskid()] = p;
+    LOG(INFO) << "addtask sucess, the taskid is" << temp_task.taskid();
+
+    return true;
+}
+
 void TaskManager::ShowTasks() const {
     for (const auto& task : m_taskinfos) {
         LOG(INFO) << "taskid : " << task.first << std::endl << " taskinfo : ";
@@ -36,23 +51,6 @@ std::string TaskManager::GenerateTaskid() {
         return std::string(timestr);
     }
     return "";
-}
-
-std::string TaskManager::AddTask(const spiderproto::BasicTask& btask) {
-    std::cout << btask.taskid() << std::endl;
-
-    std::lock_guard<std::mutex> lock(m_mutex);
-
-    spiderproto::BasicTask temp_task;
-    temp_task.CopyFrom(btask);
-
-    temp_task.set_taskid(GenerateTaskid());
-
-    std::shared_ptr<TaskInfo> p(new TaskInfo(temp_task));
-    m_taskinfos[temp_task.taskid()] = p;
-    LOG(INFO) << "addtask sucess, the taskid is" << temp_task.taskid();
-
-    return temp_task.taskid();
 }
 
 std::string TaskManager::UpdateTask(const spiderproto::BasicTask& btask) {

@@ -3,15 +3,18 @@
 #include <chrono>
 #include <string>
 #include "fetcher_manager.h"
+#include "task_handler.h"
 #include "task_manager.h"
 ScheduleServer::ScheduleServer(
-    const std::shared_ptr<TaskManager>& task_manager,
-    const std::shared_ptr<FetcherManager>& fetcher_manager)
-    : m_task_manager(task_manager),
-      m_fetcher_manager(fetcher_manager),
+    const std::shared_ptr<FetcherManager>& fetcher_manager,
+    const std::shared_ptr<TaskHandler>& task_handler,
+    const std::shared_ptr<ConcurrentQueue<spiderproto::CrawledTask>>
+        concurrent_queue)
+    : m_fetcher_manager(fetcher_manager),
+      m_task_handler(task_handler),
+      m_concurrent_queue(concurrent_queue),
       m_rpc_thd(nullptr),
-      m_stop(false),
-      m_bloom_filter(new BloomFilter(100, 0.1)) {}
+      m_stop(false) {}
 
 ScheduleServer::~ScheduleServer() {}
 
@@ -21,11 +24,11 @@ grpc::Status ScheduleServer::add_task(grpc::ServerContext* context,
     LOG(INFO) << "schedulerserver receive a new task, return taskid"
               << std::endl;
     if (task->taskid() == "") {
-        std::string taskid = m_task_manager->AddTask(*task);
-        response->set_taskid(taskid);
+        m_task_handler->AddTask(*task);
+        response->set_taskid(task->taskid());
     } else {
-        if (m_task_manager->FindTaskInfo(task->taskid())) {
-            m_task_manager->UpdateTask(*task);
+        if (m_task_handler->FindTask(task->taskid())) {
+            m_task_handler->UpdateTask(*task);
             response->set_taskid(task->taskid());
         } else {
             LOG(INFO) << "there are not this task" << std::endl;
@@ -57,13 +60,7 @@ grpc::Status ScheduleServer::add_crawledtask(
     grpc::ServerContext* context, const spiderproto::CrawledTask* task,
     spiderproto::TaskResponse* response) {
     LOG(INFO) << "receive a CrawledTask" << std::endl;
-    int newlink_count = task->links_size();
-    for (int i = 0; i < newlink_count; i++) {
-        if (!m_bloom_filter->KeyMatch(task->links(i).url())) {
-            m_bloom_filter->Insert(task->links(i).url());
-            m_task_manager->AddCrawlUrl(task->taskid(), task->links(i));
-        }
-    }
+    m_concurrent_queue->push(*task);
 
     return grpc::Status::OK;
 }
@@ -71,7 +68,8 @@ grpc::Status ScheduleServer::add_crawledtask(
 void ScheduleServer::RunServer() {
     std::string server_address("0.0.0.0:50080");
 
-    ScheduleServer service(m_task_manager, m_fetcher_manager);
+    ScheduleServer service(m_fetcher_manager, m_task_handler,
+                           m_concurrent_queue);
 
     grpc::ServerBuilder builder;
 

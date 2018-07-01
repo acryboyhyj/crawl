@@ -16,7 +16,7 @@ public:
 
     bool AddTask(const std::vector<spiderproto::BasicTask>& btasks);
     void ShowTasks() const;
-    std::string AddTask(const spiderproto::BasicTask& btask);
+    bool AddTask(const spiderproto::BasicTask& btask);
 
     bool FindTaskInfo(const std::string& taskid);
     std::string UpdateTask(const spiderproto::BasicTask& btask);
