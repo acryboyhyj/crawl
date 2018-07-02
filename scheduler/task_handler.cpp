@@ -1,4 +1,5 @@
 #include "task_handler.h"
+#include <mysql++/mysql++.h>
 #include "mysqlpp.h"
 #include "task_manager.h"
 TaskHandler::TaskHandler(const std::shared_ptr<TaskManager>& task_manager,

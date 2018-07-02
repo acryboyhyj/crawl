@@ -1,5 +1,5 @@
-#ifndef _TASK_HANDLER_H
-#define _TASK_HANDLER_H
+#ifndef TASK_HANDLER_H
+#define TASK_HANDLER_H
 #include <memory>
 #include <string>
 #include "proto/spider.pb.h"
