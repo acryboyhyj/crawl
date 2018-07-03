@@ -27,7 +27,7 @@ grpc::Status ScheduleServer::add_task(grpc::ServerContext* context,
         m_task_handler->AddTask(*task);
         response->set_taskid(task->taskid());
     } else {
-        if (m_task_handler->FindTask(task->taskid())) {
+        if (m_task_handler->Exsit(task->taskid())) {
             m_task_handler->UpdateTask(*task);
             response->set_taskid(task->taskid());
         } else {

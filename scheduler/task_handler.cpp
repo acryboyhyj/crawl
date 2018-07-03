@@ -9,19 +9,21 @@ TaskHandler::TaskHandler(const std::shared_ptr<TaskManager>& task_manager,
 TaskHandler::~TaskHandler() {}
 
 bool TaskHandler::AddTask(const spiderproto::BasicTask& btask) {
-    if (!m_task_manager->AddTask(btask)) return false;
-    if (!m_mysqlpp->InsertTask(btask)) return false;
+    const std::string newtaskid = m_task_manager->AddTask(btask);
+    if (newtaskid.empty()) return false;
+    if (!m_mysqlpp->InsertTask(btask, newtaskid)) return false;
 
     return true;
 }
 
-bool TaskHandler::FindTask(const std::string& taskid) {
-    if (m_task_manager->FindTaskInfo(taskid))
+bool TaskHandler::Exsit(const std::string& taskid) {
+    if (m_task_manager->Exist(taskid))
         return true;
     else
         return false;
 }
 
 std::string TaskHandler::UpdateTask(const spiderproto::BasicTask& btask) {
-    return m_task_manager->UpdateTask(btask);
+    m_task_manager->UpdateTask(btask);
+    m_mysqlpp->UpdateTask(btask);
 }

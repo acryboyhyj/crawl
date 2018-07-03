@@ -3,6 +3,7 @@
 #include "bloomfilter.h"
 #include "mysqlpp.h"
 #include "task_manager.h"
+#include "taskinfo.h"
 CrawledtaskHandler::CrawledtaskHandler(
     const std::shared_ptr<TaskManager>& task_manager,
     const std::shared_ptr<MySqlpp> mysqlpp,
@@ -24,24 +25,19 @@ void CrawledtaskHandler::AddCrawledTask() {
         // write mysqlpp
         // wrie taskmanager
         spiderproto::CrawledTask cdtask = m_concurrent_queue->pop();
-        spiderproto::BasicTask btask;
-        btask.set_taskid(cdtask.taskid());
+
+        std::shared_ptr<TaskInfo> task =
+            m_task_manager->FindTask(cdtask.taskid());
+
+        task->DelCrawledUrl(cdtask.crawl_url());
+
         for (int i = 0; i < cdtask.links_size(); ++i) {
             if (!m_bf->KeyMatch(cdtask.links(i).url())) {
                 m_bf->Insert(cdtask.links(i).url());
-
-                spiderproto::CrawlUrlList* crawlurl_list =
-                    btask.mutable_crawl_list();
-
-                spiderproto::CrawlUrl* crawlurl =
-                    crawlurl_list->add_crawl_urls();
-
-                crawlurl->CopyFrom(cdtask.links(i));
+                task->AddCrawlUrl(cdtask.links(i));
             }
         }
-
-        m_mysqlpp->UpdateTask(btask);
-        m_task_manager->UpdateTask(btask);
+        m_mysqlpp->AddLink(cdtask);
     }
 }
 

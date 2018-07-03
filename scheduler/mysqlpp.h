@@ -8,18 +8,20 @@
 namespace mysqlpp {
 class Connection;
 }
-
+class TaskInfo;
 class MySqlpp {
 public:
     MySqlpp() : m_connected(false) {}
     virtual ~MySqlpp() {}
 
     bool UpdateTask(const spiderproto::BasicTask& task);
-    bool InsertTask(const spiderproto::BasicTask& task);
+    bool InsertTask(const spiderproto::BasicTask& task,
+                    const std::string& taskid);
     std::vector<spiderproto::BasicTask> QueryAllTblTask();
     bool QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks);
     bool DeleteTask(const spiderproto::BasicTask& task);
 
+    bool AddLink(const spiderproto::CrawledTask& task);
     std::vector<spiderproto::Fetcher> QueryAllFetchers();
     bool UpdateFetchers(const spiderproto::Fetcher& fetcher);
     bool InsertFetchers(const spiderproto::Fetcher& fetcher);

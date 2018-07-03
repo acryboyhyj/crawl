@@ -26,33 +26,37 @@ void Dispatcher::Stop() { m_stop.store(true, std::memory_order_relaxed); }
 
 void Dispatcher::DispatchInternal() {
     LOG(INFO) << "DispatchInternal start";
-    // while (!m_stop.load(std::memory_order_relaxed)) {
-    std::shared_ptr<TaskInfo> taskinfo = m_task_manager->GetTaskInfo();
-    std::vector<std::shared_ptr<FetchClient>> fetch_clients =
-        m_fetcher_manager->GetAllFetchers();
-    taskinfo->ShowTaskInfo();
-    int client_count = m_fetcher_manager->GetClientCount();
-    int url_count    = taskinfo->GetCrawlurlCount();
-    LOG(INFO) << client_count << " " << url_count;
-    std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
-        taskinfo->SpilitTask(client_count, url_count);
-    for (const auto& vec : tasks) {
-        for (const auto& c : vec) {
-            LOG(INFO) << c.url();
+    while (!m_stop.load(std::memory_order_relaxed)) {
+        m_seq++;
+        std::shared_ptr<TaskInfo> taskinfo = m_task_manager->GetOptTask();
+        taskinfo->SetSeq(m_seq.load(std::memory_order_relaxed));
+
+        std::vector<std::shared_ptr<FetchClient>> fetch_clients =
+            m_fetcher_manager->GetAllFetchers();
+
+        int client_count = m_fetcher_manager->GetClientCount();
+        int url_count    = taskinfo->GetCrawlurlCount();
+
+        LOG(INFO) << client_count << " " << url_count;
+        std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
+            taskinfo->SpilitTask(client_count, url_count);
+        for (const auto& vec : tasks) {
+            for (const auto& c : vec) {
+                LOG(INFO) << c.url();
+            }
+        }
+        // shuffle
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(fetch_clients.begin(), fetch_clients.end(), g);
+
+        for (size_t i = 0; i < tasks.size(); i++) {
+            spiderproto::CrawlingTask crawling_task = CombineCrawlingTask(
+                *taskinfo, fetch_clients[i]->GetName(), tasks[i]);
+            LOG(INFO) << "add_crawlingtask " << crawling_task.fetcher();
+            fetch_clients[i]->add_crawlingtask(crawling_task);
         }
     }
-    // shuffle
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(fetch_clients.begin(), fetch_clients.end(), g);
-
-    for (size_t i = 0; i < tasks.size(); i++) {
-        spiderproto::CrawlingTask crawling_task = CombineCrawlingTask(
-            *taskinfo, fetch_clients[i]->GetName(), tasks[i]);
-        LOG(INFO) << "add_crawlingtask " << crawling_task.fetcher();
-        fetch_clients[i]->add_crawlingtask(crawling_task);
-    }
-    // }
 }
 
 spiderproto::CrawlingTask Dispatcher::CombineCrawlingTask(

@@ -1,5 +1,7 @@
 #ifndef _TASKINFO_H_
 #define _TASKINFO_H_
+#include <atomic>
+#include <mutex>
 #include <utility>
 #include <vector>
 #include "proto/spider.pb.h"
@@ -7,8 +9,7 @@ class TaskInfo {
     friend class MySqlpp;
 
 public:
-    ~TaskInfo() {}
-
+    ~TaskInfo();
     TaskInfo()                    = delete;
     TaskInfo(const TaskInfo& rhs) = delete;
     TaskInfo& operator=(const TaskInfo& rhs) = delete;
@@ -18,19 +19,24 @@ public:
     explicit TaskInfo(const spiderproto::BasicTask& btask);
 
     bool AddCrawlUrl(const spiderproto::CrawlUrl& crawurl);
-    void ShowTaskInfo() const;
-    bool Update(const spiderproto::BasicTask& btask);
-    spiderproto::BasicTask GetBasicTask() const;
-    std::vector<spiderproto::CrawlUrl> GetAllCrawlurl() const;
+    void DelCrawledUrl(const spiderproto::CrawlUrl& crawurl);
 
+    bool Update(const spiderproto::BasicTask& btask);
+    std::vector<spiderproto::CrawlUrl> GetAllCrawlurl() const;
     std::vector<std::vector<spiderproto::CrawlUrl>> SpilitTask(int client_count,
                                                                int url_count);
+    void SetSeq(uint64_t t) noexcept;
+    uint64_t GetSeq() const noexcept;
 
     int GetCrawlurlCount();
+    spiderproto::BasicTask GetBasicTask() const;
+    void ShowTaskInfo() const;
 
 private:
     spiderproto::BasicTask m_btask;
     std::vector<spiderproto::CrawlUrl> m_crawlurls;
+    mutable std::mutex m_mutex;
+    std::atomic<uint64_t> m_seq;
 };
 
-#endif  // _TASKINF0_H_
+#endif  // _TASKINFO_H_

@@ -30,6 +30,7 @@ private:
     const std::shared_ptr<FetcherManager> m_fetcher_manager;
     std::unique_ptr<std::thread> m_dispatch_thd;
     std::atomic<bool> m_stop;
+    std::atomic<uint64_t> m_seq{0};
 };
 
 #endif  // _DISPATCHER_H_

@@ -11,7 +11,7 @@ public:
                 const std::shared_ptr<MySqlpp>& mysqlpp);
     ~TaskHandler();
     bool AddTask(const spiderproto::BasicTask& task);
-    bool FindTask(const std::string& taskid);
+    bool Exsit(const std::string& taskid);
     std::string UpdateTask(const spiderproto::BasicTask& task);
 
 private:

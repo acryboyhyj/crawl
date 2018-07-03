@@ -4,7 +4,6 @@
 #include <mysql++/mysql++.h>
 #include <algorithm>
 #include <map>
-#include <typeinfo>
 #include "taskinfo.h"
 #include "util.h"
 bool MySqlpp::Connect() {
@@ -33,7 +32,8 @@ std::string MySqlpp::formatsql(spiderproto::CrawlUrl crawlurl) {
     return value;
 }
 
-bool MySqlpp::InsertTask(const spiderproto::BasicTask& task) {
+bool MySqlpp::InsertTask(const spiderproto::BasicTask& task,
+                         const std::string& taskid) {
     if (!Connect()) return false;
     std::string storage;
     task.storage().SerializeToString(&storage);
@@ -49,7 +49,7 @@ bool MySqlpp::InsertTask(const spiderproto::BasicTask& task) {
         << "insert into "
            "tbl_task(taskid, name, user, feature, storage, runtime, rule_"
            "list) values("
-        << StrToSql(task.taskid()) << "," << StrToSql(task.name()) << ","
+        << StrToSql(taskid) << "," << StrToSql(task.name()) << ","
         << StrToSql(task.user()) << "," << StrToSql(StringToHex(feature)) << ","
         << StrToSql(StringToHex(storage)) << ","
         << StrToSql(StringToHex(run_time)) << ","
@@ -106,6 +106,38 @@ bool MySqlpp::UpdateTask(const spiderproto::BasicTask& task) {
     query << m_string_stream.str();
     query.execute();
 
+    m_string_stream.str("");
+    return true;
+}
+
+bool MySqlpp::AddLink(const spiderproto::CrawledTask& task) {
+    if (!Connect()) return false;
+    m_string_stream.str("");
+    std::string url = task.crawl_url().url();
+    m_string_stream << "update tbl_link"
+                       "set code="
+                    << task.status() << "where url=" << StrToSql(url) << ";";
+    LOG(INFO) << m_string_stream.str();
+    mysqlpp::Query query = m_mysql_conn->query();
+    query << m_string_stream.str();
+    query.execute();
+
+    int crawlurl_count = task.links_size();
+    for (int i = 0; i < crawlurl_count; ++i) {
+        const spiderproto::CrawlUrl crawlurl = task.links(i);
+
+        m_string_stream.str("");
+        std::string levels = formatsql(crawlurl);
+        m_string_stream << "insert into "
+                           "tbl_link(taskid, url, levels) values("
+                        << StrToSql(task.taskid()) << ","
+                        << StrToSql(crawlurl.url()) << "," << StrToSql(levels)
+                        << ");";
+        LOG(INFO) << m_string_stream.str() << std::endl;
+        query.reset();
+        query << m_string_stream.str();
+        query.execute();
+    }
     return true;
 }
 
@@ -162,20 +194,24 @@ bool MySqlpp::QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks) {
     mysqlpp::UseQueryResult res = query.use();
 
     while (mysqlpp::Row row = res.fetch_row()) {
-        for (size_t i = 0; i < btasks->size(); ++i) {
-            if ((*btasks)[i].taskid() == row["taskid"].c_str()) {
-                spiderproto::CrawlUrlList* crawl_list =
-                    (*btasks)[i].mutable_crawl_list();
+        if (row["code"] == "0") {
+            for (size_t i = 0; i < btasks->size(); ++i) {
+                if ((*btasks)[i].taskid() == row["taskid"].c_str()) {
+                    spiderproto::CrawlUrlList* crawl_list =
+                        (*btasks)[i].mutable_crawl_list();
 
-                spiderproto::CrawlUrl* crawlurl = crawl_list->add_crawl_urls();
+                    spiderproto::CrawlUrl* crawlurl =
+                        crawl_list->add_crawl_urls();
 
-                crawlurl->set_url(row["url"].c_str());
+                    crawlurl->set_url(row["url"].c_str());
 
-                std::string levels                 = row["levels"].c_str();
-                std::vector<std::string> levelsvec = Split(levels, ',');
-                for (const auto& level : levelsvec) {
-                    int tempint = std::stoi(level);
-                    crawlurl->add_url_levels((spiderproto::UrlLevel)tempint);
+                    std::string levels                 = row["levels"].c_str();
+                    std::vector<std::string> levelsvec = Split(levels, ',');
+                    for (const auto& level : levelsvec) {
+                        int tempint = std::stoi(level);
+                        crawlurl->add_url_levels(
+                            (spiderproto::UrlLevel)tempint);
+                    }
                 }
             }
         }

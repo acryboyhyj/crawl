@@ -45,13 +45,14 @@ bool Scheduler::Start() {
     m_dispatcher->Start();
 
     m_schedule_server->Start();
-
+    m_crawledtask_handler->Start();
     return true;
 }
 
 void Scheduler::Join() {
     m_schedule_server->Join();
     m_dispatcher->Join();
+    m_crawledtask_handler->Join();
 }
 /*void Scheduler::Dispatch() {
     spiderproto::CrawlingTask crawling_task;
