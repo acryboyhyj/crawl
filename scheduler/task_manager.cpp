@@ -28,19 +28,21 @@ std::string TaskManager::AddTask(const spiderproto::BasicTask& btask) {
     temp_task.set_taskid(GenerateTaskid());
     std::shared_ptr<TaskInfo> p(new TaskInfo(temp_task));
     m_taskinfos[temp_task.taskid()] = p;
+
     LOG(INFO) << "addtask sucess, the taskid is" << temp_task.taskid();
 
     return temp_task.taskid();
 }
+
 std::shared_ptr<TaskInfo> TaskManager::FindTask(const std::string& taskid) {
+    std::lock_guard<std::mutex> lock(m_mutex);
     auto search = m_taskinfos.find(taskid);
     if (search == m_taskinfos.end()) LOG(WARNING) << "not find this task";
     return search->second;
 }
 
 std::shared_ptr<TaskInfo> TaskManager::GetOptTask() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    LOG(INFO) << "GetTaskInfos" << std::endl;
+    std::unique_lock<std::mutex> lock(m_mutex);
     // find min seq's TaskInfo
     uint64_t min_seq{UINT64_MAX};
     std::shared_ptr<TaskInfo> target_taskinfo;

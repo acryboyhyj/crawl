@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
     google::InitGoogleLogging(argv[0]);
 
     FLAGS_logtostderr = true;
+
     Scheduler scheduler1;
     scheduler1.Load();
     LOG(INFO) << "load is done" << std::endl;

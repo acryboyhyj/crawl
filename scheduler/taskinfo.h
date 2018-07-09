@@ -1,6 +1,7 @@
 #ifndef _TASKINFO_H_
 #define _TASKINFO_H_
 #include <atomic>
+#include <chrono>
 #include <mutex>
 #include <utility>
 #include <vector>
@@ -32,11 +33,20 @@ public:
     spiderproto::BasicTask GetBasicTask() const;
     void ShowTaskInfo() const;
 
+    // time , speed control
+    bool NotCalled();
+    std::chrono::steady_clock::time_point GetTime();
+    void SetTime();
+    double GetDelay();
+    int GetCrawlingUrlCount();
+    int GetConcurrentCount();
+
 private:
     spiderproto::BasicTask m_btask;
     std::vector<spiderproto::CrawlUrl> m_crawlurls;
     mutable std::mutex m_mutex;
     std::atomic<uint64_t> m_seq;
+    std::chrono::steady_clock::time_point m_last_calltime;
 };
 
 #endif  // _TASKINFO_H_

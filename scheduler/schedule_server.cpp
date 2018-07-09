@@ -70,7 +70,6 @@ void ScheduleServer::RunServer() {
 
     ScheduleServer service(m_fetcher_manager, m_task_handler,
                            m_concurrent_queue);
-
     grpc::ServerBuilder builder;
 
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());

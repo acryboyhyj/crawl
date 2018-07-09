@@ -34,6 +34,7 @@ bool Scheduler::Load() {
     }
     m_task_manager->AddTask(btasks);
     std::vector<spiderproto::Fetcher> fetchers = m_mysqlpp->QueryAllFetchers();
+    LOG(INFO) << "fecher's size():" << fetchers.size();
     m_fetcher_manager->AddFetcher(fetchers);
 
     m_fetcher_manager->ShowFetcher();
@@ -42,9 +43,9 @@ bool Scheduler::Load() {
 
 bool Scheduler::Start() {
     LOG(INFO) << "schedule server and dispathcer will start" << std::endl;
-    m_dispatcher->Start();
 
     m_schedule_server->Start();
+    m_dispatcher->Start();
     m_crawledtask_handler->Start();
     return true;
 }
@@ -54,16 +55,3 @@ void Scheduler::Join() {
     m_dispatcher->Join();
     m_crawledtask_handler->Join();
 }
-/*void Scheduler::Dispatch() {
-    spiderproto::CrawlingTask crawling_task;
-    crawling_task.set_taskid("00002");
-    crawling_task.set_fetcher("fetcher1");
-    spiderproto::CrawlUrl* crawlurl = crawling_task.add_crawl_urls();
-    crawlurl->set_url("http://www.hdu.edu.cn/news/important");
-    crawlurl->add_url_levels(spiderproto::LEVEL_INDEX);
-
-    spiderproto::LinkRule* linkrule = crawling_task.add_rules();
-    linkrule->set_in_level(spiderproto::LEVEL_LIST);
-    std::string response = m_dispatcher->dispatch(crawling_task);
-    std::cout << "addcrawling task respose: " << response << std::endl;
-}*/

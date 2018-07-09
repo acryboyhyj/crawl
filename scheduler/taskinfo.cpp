@@ -1,7 +1,7 @@
 #include "taskinfo.h"
 #include <glog/logging.h>
 TaskInfo::TaskInfo(const spiderproto::BasicTask& btask)
-    : m_btask(btask), m_seq(0) {
+    : m_btask(btask), m_seq(0), m_last_calltime() {
     int crawlurl_count = btask.crawl_list().crawl_urls_size();
     for (int i = 0; i < crawlurl_count; ++i) {
         m_crawlurls.push_back(btask.crawl_list().crawl_urls(i));
@@ -40,9 +40,6 @@ void TaskInfo::ShowTaskInfo() const {
     for (size_t i = 0; i < m_crawlurls.size(); ++i) {
         LOG(INFO) << "CrawUrl : " << std::endl;
         LOG(INFO) << "url: " << m_crawlurls[i].url();
-        for (int j = 0; j < m_crawlurls[i].url_levels_size(); j++) {
-            LOG(INFO) << "  level : " << m_crawlurls[i].url_levels(j);
-        }
     }
 }
 
@@ -67,26 +64,32 @@ spiderproto::BasicTask TaskInfo::GetBasicTask() const {
 
 std::vector<spiderproto::CrawlUrl> TaskInfo::GetAllCrawlurl() const {
     std::lock_guard<std::mutex> lock(m_mutex);
-    return m_crawlurls;
+    std::vector<spiderproto::CrawlUrl> result{};
+    for (const auto& url : m_crawlurls) {
+        if (url.usedable() == false) {
+            result.push_back(url);
+        }
+    }
+    return result;
 }
 
 std::vector<std::vector<spiderproto::CrawlUrl>> TaskInfo::SpilitTask(
     int client_count, int url_count) {
     std::lock_guard<std::mutex> lock(m_mutex);
-    LOG(INFO) << "SplitTask";
 
     std::vector<std::vector<spiderproto::CrawlUrl>> result{};
+    if (url_count == 0) return result;
     int every_url_count = url_count / client_count + 1;
-
     std::vector<spiderproto::CrawlUrl> temp{};
     int count = 0;
     for (size_t i = 0; i < m_crawlurls.size(); i++) {
         LOG(INFO) << m_crawlurls[i].url();
+        m_crawlurls[i].set_usedable(true);
         temp.push_back(m_crawlurls[i]);
         count++;
         if (count == every_url_count) {
             for (const auto& c : temp) {
-                LOG(INFO) << "temp" << c.url();
+                LOG(INFO) << "temp:" << c.url();
             }
             result.push_back(temp);
             temp.clear();
@@ -99,7 +102,13 @@ std::vector<std::vector<spiderproto::CrawlUrl>> TaskInfo::SpilitTask(
 
 int TaskInfo::GetCrawlurlCount() {
     std::lock_guard<std::mutex> lock(m_mutex);
-    return m_crawlurls.size();
+    int count = 0;
+    for (const auto& c : m_crawlurls) {
+        if (c.usedable() == false) {
+            count++;
+        }
+    }
+    return count;
 }
 
 uint64_t TaskInfo::GetSeq() const noexcept {
@@ -108,4 +117,43 @@ uint64_t TaskInfo::GetSeq() const noexcept {
 
 void TaskInfo::SetSeq(uint64_t t) noexcept {
     m_seq.store(t, std::memory_order_relaxed);
+}
+
+bool TaskInfo::NotCalled() {
+    std::chrono::steady_clock::time_point t;
+    if (m_last_calltime == t)
+        return true;
+    else
+        return false;
+}
+
+std::chrono::steady_clock::time_point TaskInfo::GetTime() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    return m_last_calltime;
+}
+
+void TaskInfo::SetTime() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_last_calltime = std::chrono::steady_clock::now();
+}
+
+double TaskInfo::GetDelay() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    return m_btask.runtime().download_delay();
+}
+
+int TaskInfo::GetCrawlingUrlCount() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    int count = 0;
+    for (const auto& c : m_crawlurls) {
+        if (c.usedable() == true) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int TaskInfo::GetConcurrentCount() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    return m_btask.runtime().concurrent_reqs();
 }
