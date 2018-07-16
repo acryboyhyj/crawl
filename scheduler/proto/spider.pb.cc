@@ -422,7 +422,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::CrawlUrl, url_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::CrawlUrl, url_levels_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::CrawlUrl, level_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::CrawlUrl, usedable_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::Feature, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -439,7 +440,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::LinkRule, in_level_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::LinkRule, rules_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::LinkRule, url_levels_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::LinkRule, out_level_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::Storage, _internal_metadata_),
@@ -572,8 +572,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::spiderproto::CrawlUrl)},
-  { 7, -1, sizeof(::spiderproto::Feature)},
-  { 16, -1, sizeof(::spiderproto::LinkRule)},
+  { 8, -1, sizeof(::spiderproto::Feature)},
+  { 17, -1, sizeof(::spiderproto::LinkRule)},
   { 25, -1, sizeof(::spiderproto::Storage)},
   { 33, -1, sizeof(::spiderproto::Runtime)},
   { 42, -1, sizeof(::spiderproto::BasicTask)},
@@ -633,69 +633,67 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014spider.proto\022\013spiderproto\"B\n\010CrawlUrl\022"
-      "\013\n\003url\030\001 \001(\014\022)\n\nurl_levels\030\002 \003(\0162\025.spide"
-      "rproto.UrlLevel\"P\n\007Feature\022\022\n\ndup_ignore"
-      "\030\001 \001(\010\022\017\n\007testing\030\002 \001(\010\022\016\n\006period\030\003 \001(\010\022"
-      "\020\n\010interval\030\004 \001(\005\"\227\001\n\010LinkRule\022\'\n\010in_lev"
-      "el\030\001 \001(\0162\025.spiderproto.UrlLevel\022\r\n\005rules"
-      "\030\002 \003(\014\022)\n\nurl_levels\030\003 \003(\0162\025.spiderproto"
-      ".UrlLevel\022(\n\tout_level\030\004 \001(\0162\025.spiderpro"
-      "to.UrlLevel\"\222\001\n\007Storage\0224\n\nstore_type\030\001 "
-      "\001(\0162 .spiderproto.Storage.StorageType\022\014\n"
-      "\004dest\030\002 \001(\014\022\022\n\nattachment\030\003 \001(\014\"/\n\013Stora"
-      "geType\022\020\n\014STORAGE_HDFS\020\000\022\016\n\nSTORAGE_MQ\020\001"
-      "\"i\n\007Runtime\022\026\n\016download_delay\030\001 \001(\002\022\027\n\017c"
-      "oncurrent_reqs\030\002 \001(\005\022\026\n\016allow_fetchers\030\003"
-      " \003(\014\022\025\n\rdeny_fetchers\030\004 \003(\014\"\211\002\n\tBasicTas"
-      "k\022\016\n\006taskid\030\001 \001(\014\022\014\n\004name\030\002 \001(\014\022\014\n\004user\030"
-      "\003 \001(\014\022-\n\ncrawl_list\030\004 \001(\0132\031.spiderproto."
-      "CrawlUrlList\022%\n\007feature\030\005 \001(\0132\024.spiderpr"
-      "oto.Feature\022,\n\trule_list\030\006 \001(\0132\031.spiderp"
-      "roto.LinkRuleList\022%\n\007storage\030\007 \001(\0132\024.spi"
-      "derproto.Storage\022%\n\007runtime\030\010 \001(\0132\024.spid"
-      "erproto.Runtime\"9\n\014CrawlUrlList\022)\n\ncrawl"
-      "_urls\030\001 \003(\0132\025.spiderproto.CrawlUrl\"4\n\014Li"
-      "nkRuleList\022$\n\005rules\030\001 \003(\0132\025.spiderproto."
-      "LinkRule\"\247\001\n\014CrawlingTask\022\016\n\006taskid\030\001 \001("
-      "\014\022\017\n\007fetcher\030\002 \001(\014\022)\n\ncrawl_urls\030\003 \003(\0132\025"
-      ".spiderproto.CrawlUrl\022$\n\005rules\030\004 \003(\0132\025.s"
-      "piderproto.LinkRule\022%\n\007storage\030\005 \001(\0132\024.s"
-      "piderproto.Storage\"\216\001\n\013CrawledTask\022\016\n\006ta"
-      "skid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022(\n\tcrawl_url"
-      "\030\003 \001(\0132\025.spiderproto.CrawlUrl\022\016\n\006status\030"
-      "\004 \001(\005\022$\n\005links\030\005 \003(\0132\025.spiderproto.Crawl"
-      "Url\"\274\001\n\nCrawlStats\022\016\n\006taskid\030\001 \001(\014\022\022\n\nst"
-      "art_time\030\002 \001(\014\022\023\n\013last_update\030\003 \001(\014\022\021\n\tt"
-      "otal_url\030\004 \001(\005\022\017\n\007success\030\005 \001(\005\022\017\n\007code4"
-      "0x\030\006 \001(\005\022\017\n\007code404\030\007 \001(\005\022\017\n\007code50x\030\010 \001"
-      "(\005\022\017\n\007codexxx\030\t \001(\005\022\r\n\005links\030\n \001(\005\"9\n\014Ta"
-      "skResponse\022\016\n\006taskid\030\001 \001(\014\022\014\n\004code\030\002 \001(\005"
-      "\022\013\n\003msg\030\003 \001(\014\"\007\n\005Empty\"%\n\007Fetcher\022\014\n\004nam"
-      "e\030\001 \001(\014\022\014\n\004addr\030\002 \001(\014\"&\n\007Segment\022\014\n\004word"
-      "\030\001 \001(\014\022\r\n\005score\030\002 \001(\005\"5\n\013SegmentList\022&\n\010"
-      "segments\030\001 \003(\0132\024.spiderproto.Segment\"\237\001\n"
-      "\010CrawlDoc\022\016\n\006taskid\030\001 \001(\014\022\013\n\003url\030\002 \001(\014\022\016"
-      "\n\006status\030\003 \001(\005\022\017\n\007content\030\004 \001(\014\022%\n\007stora"
-      "ge\030\005 \001(\0132\024.spiderproto.Storage\022.\n\014segmen"
-      "t_list\030\006 \001(\0132\030.spiderproto.SegmentList\"@"
-      "\n\tCrawlDocs\022\016\n\006taskid\030\001 \001(\014\022#\n\004docs\030\002 \003("
-      "\0132\025.spiderproto.CrawlDoc*d\n\010UrlLevel\022\017\n\013"
-      "LEVEL_INDEX\020\000\022\016\n\nLEVEL_LIST\020\001\022\022\n\016LEVEL_S"
-      "UB_LIST\020\002\022\021\n\rLEVEL_CONTENT\020\003\022\020\n\014LEVEL_DE"
-      "TAIL\020\0042\327\001\n\010Schedule\022\?\n\010add_task\022\026.spider"
-      "proto.BasicTask\032\031.spiderproto.TaskRespon"
-      "se\"\000\022@\n\013add_fetcher\022\024.spiderproto.Fetche"
-      "r\032\031.spiderproto.TaskResponse\"\000\022H\n\017add_cr"
-      "awledtask\022\030.spiderproto.CrawledTask\032\031.sp"
-      "iderproto.TaskResponse\"\0002S\n\005Fetch\022J\n\020add"
-      "_crawlingtask\022\031.spiderproto.CrawlingTask"
-      "\032\031.spiderproto.TaskResponse\"\0002L\n\006Handle\022"
-      "B\n\014add_crawldoc\022\025.spiderproto.CrawlDoc\032\031"
-      ".spiderproto.TaskResponse\"\000b\006proto3"
+      "\n\014spider.proto\022\013spiderproto\"O\n\010CrawlUrl\022"
+      "\013\n\003url\030\001 \001(\014\022$\n\005level\030\002 \001(\0162\025.spiderprot"
+      "o.UrlLevel\022\020\n\010usedable\030\003 \001(\010\"P\n\007Feature\022"
+      "\022\n\ndup_ignore\030\001 \001(\010\022\017\n\007testing\030\002 \001(\010\022\016\n\006"
+      "period\030\003 \001(\010\022\020\n\010interval\030\004 \001(\005\"l\n\010LinkRu"
+      "le\022\'\n\010in_level\030\001 \001(\0162\025.spiderproto.UrlLe"
+      "vel\022\r\n\005rules\030\002 \003(\014\022(\n\tout_level\030\003 \001(\0162\025."
+      "spiderproto.UrlLevel\"\222\001\n\007Storage\0224\n\nstor"
+      "e_type\030\001 \001(\0162 .spiderproto.Storage.Stora"
+      "geType\022\014\n\004dest\030\002 \001(\014\022\022\n\nattachment\030\003 \001(\014"
+      "\"/\n\013StorageType\022\020\n\014STORAGE_HDFS\020\000\022\016\n\nSTO"
+      "RAGE_MQ\020\001\"i\n\007Runtime\022\026\n\016download_delay\030\001"
+      " \001(\002\022\027\n\017concurrent_reqs\030\002 \001(\005\022\026\n\016allow_f"
+      "etchers\030\003 \003(\014\022\025\n\rdeny_fetchers\030\004 \003(\014\"\211\002\n"
+      "\tBasicTask\022\016\n\006taskid\030\001 \001(\014\022\014\n\004name\030\002 \001(\014"
+      "\022\014\n\004user\030\003 \001(\014\022-\n\ncrawl_list\030\004 \001(\0132\031.spi"
+      "derproto.CrawlUrlList\022%\n\007feature\030\005 \001(\0132\024"
+      ".spiderproto.Feature\022,\n\trule_list\030\006 \001(\0132"
+      "\031.spiderproto.LinkRuleList\022%\n\007storage\030\007 "
+      "\001(\0132\024.spiderproto.Storage\022%\n\007runtime\030\010 \001"
+      "(\0132\024.spiderproto.Runtime\"9\n\014CrawlUrlList"
+      "\022)\n\ncrawl_urls\030\001 \003(\0132\025.spiderproto.Crawl"
+      "Url\"4\n\014LinkRuleList\022$\n\005rules\030\001 \003(\0132\025.spi"
+      "derproto.LinkRule\"\247\001\n\014CrawlingTask\022\016\n\006ta"
+      "skid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022)\n\ncrawl_url"
+      "s\030\003 \003(\0132\025.spiderproto.CrawlUrl\022$\n\005rules\030"
+      "\004 \003(\0132\025.spiderproto.LinkRule\022%\n\007storage\030"
+      "\005 \001(\0132\024.spiderproto.Storage\"\216\001\n\013CrawledT"
+      "ask\022\016\n\006taskid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022(\n\t"
+      "crawl_url\030\003 \001(\0132\025.spiderproto.CrawlUrl\022\016"
+      "\n\006status\030\004 \001(\005\022$\n\005links\030\005 \003(\0132\025.spiderpr"
+      "oto.CrawlUrl\"\274\001\n\nCrawlStats\022\016\n\006taskid\030\001 "
+      "\001(\014\022\022\n\nstart_time\030\002 \001(\014\022\023\n\013last_update\030\003"
+      " \001(\014\022\021\n\ttotal_url\030\004 \001(\005\022\017\n\007success\030\005 \001(\005"
+      "\022\017\n\007code40x\030\006 \001(\005\022\017\n\007code404\030\007 \001(\005\022\017\n\007co"
+      "de50x\030\010 \001(\005\022\017\n\007codexxx\030\t \001(\005\022\r\n\005links\030\n "
+      "\001(\005\"9\n\014TaskResponse\022\016\n\006taskid\030\001 \001(\014\022\014\n\004c"
+      "ode\030\002 \001(\005\022\013\n\003msg\030\003 \001(\014\"\007\n\005Empty\"%\n\007Fetch"
+      "er\022\014\n\004name\030\001 \001(\014\022\014\n\004addr\030\002 \001(\014\"&\n\007Segmen"
+      "t\022\014\n\004word\030\001 \001(\014\022\r\n\005score\030\002 \001(\005\"5\n\013Segmen"
+      "tList\022&\n\010segments\030\001 \003(\0132\024.spiderproto.Se"
+      "gment\"\237\001\n\010CrawlDoc\022\016\n\006taskid\030\001 \001(\014\022\013\n\003ur"
+      "l\030\002 \001(\014\022\016\n\006status\030\003 \001(\005\022\017\n\007content\030\004 \001(\014"
+      "\022%\n\007storage\030\005 \001(\0132\024.spiderproto.Storage\022"
+      ".\n\014segment_list\030\006 \001(\0132\030.spiderproto.Segm"
+      "entList\"@\n\tCrawlDocs\022\016\n\006taskid\030\001 \001(\014\022#\n\004"
+      "docs\030\002 \003(\0132\025.spiderproto.CrawlDoc*-\n\010Url"
+      "Level\022\016\n\nLEVEL_LIST\020\000\022\021\n\rLEVEL_CONTENT\020\001"
+      "2\327\001\n\010Schedule\022\?\n\010add_task\022\026.spiderproto."
+      "BasicTask\032\031.spiderproto.TaskResponse\"\000\022@"
+      "\n\013add_fetcher\022\024.spiderproto.Fetcher\032\031.sp"
+      "iderproto.TaskResponse\"\000\022H\n\017add_crawledt"
+      "ask\022\030.spiderproto.CrawledTask\032\031.spiderpr"
+      "oto.TaskResponse\"\0002S\n\005Fetch\022J\n\020add_crawl"
+      "ingtask\022\031.spiderproto.CrawlingTask\032\031.spi"
+      "derproto.TaskResponse\"\0002L\n\006Handle\022B\n\014add"
+      "_crawldoc\022\025.spiderproto.CrawlDoc\032\031.spide"
+      "rproto.TaskResponse\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2395);
+      descriptor, 2309);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "spider.proto", &protobuf_RegisterTypes);
 }
@@ -741,9 +739,6 @@ bool UrlLevel_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
-    case 2:
-    case 3:
-    case 4:
       return true;
     default:
       return false;
@@ -757,7 +752,8 @@ void CrawlUrl::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlUrl::kUrlFieldNumber;
-const int CrawlUrl::kUrlLevelsFieldNumber;
+const int CrawlUrl::kLevelFieldNumber;
+const int CrawlUrl::kUsedableFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CrawlUrl::CrawlUrl()
@@ -769,18 +765,23 @@ CrawlUrl::CrawlUrl()
 }
 CrawlUrl::CrawlUrl(const CrawlUrl& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      url_levels_(from.url_levels_) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   url_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.url().size() > 0) {
     url_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.url_);
   }
+  ::memcpy(&level_, &from.level_,
+    static_cast<size_t>(reinterpret_cast<char*>(&usedable_) -
+    reinterpret_cast<char*>(&level_)) + sizeof(usedable_));
   // @@protoc_insertion_point(copy_constructor:spiderproto.CrawlUrl)
 }
 
 void CrawlUrl::SharedCtor() {
   url_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&level_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&usedable_) -
+      reinterpret_cast<char*>(&level_)) + sizeof(usedable_));
 }
 
 CrawlUrl::~CrawlUrl() {
@@ -812,8 +813,10 @@ void CrawlUrl::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  url_levels_.Clear();
   url_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&level_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&usedable_) -
+      reinterpret_cast<char*>(&level_)) + sizeof(usedable_));
   _internal_metadata_.Clear();
 }
 
@@ -839,29 +842,29 @@ bool CrawlUrl::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .spiderproto.UrlLevel url_levels = 2;
+      // .spiderproto.UrlLevel level = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          ::google::protobuf::uint32 length;
-          DO_(input->ReadVarint32(&length));
-          ::google::protobuf::io::CodedInputStream::Limit limit = input->PushLimit(static_cast<int>(length));
-          while (input->BytesUntilLimit() > 0) {
-            int value;
-            DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-            add_url_levels(static_cast< ::spiderproto::UrlLevel >(value));
-          }
-          input->PopLimit(limit);
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          add_url_levels(static_cast< ::spiderproto::UrlLevel >(value));
+          set_level(static_cast< ::spiderproto::UrlLevel >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bool usedable = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &usedable_)));
         } else {
           goto handle_unusual;
         }
@@ -900,18 +903,15 @@ void CrawlUrl::SerializeWithCachedSizes(
       1, this->url(), output);
   }
 
-  // repeated .spiderproto.UrlLevel url_levels = 2;
-  if (this->url_levels_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      output);
-    output->WriteVarint32(
-        static_cast< ::google::protobuf::uint32>(_url_levels_cached_byte_size_));
+  // .spiderproto.UrlLevel level = 2;
+  if (this->level() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->level(), output);
   }
-  for (int i = 0, n = this->url_levels_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnumNoTag(
-      this->url_levels(i), output);
+
+  // bool usedable = 3;
+  if (this->usedable() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->usedable(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -935,16 +935,15 @@ void CrawlUrl::SerializeWithCachedSizes(
         1, this->url(), target);
   }
 
-  // repeated .spiderproto.UrlLevel url_levels = 2;
-  if (this->url_levels_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(      static_cast< ::google::protobuf::uint32>(
-            _url_levels_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumNoTagToArray(
-      this->url_levels_, target);
+  // .spiderproto.UrlLevel level = 2;
+  if (this->level() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->level(), target);
+  }
+
+  // bool usedable = 3;
+  if (this->usedable() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->usedable(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -964,30 +963,22 @@ size_t CrawlUrl::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .spiderproto.UrlLevel url_levels = 2;
-  {
-    size_t data_size = 0;
-    unsigned int count = static_cast<unsigned int>(this->url_levels_size());for (unsigned int i = 0; i < count; i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::EnumSize(
-        this->url_levels(static_cast<int>(i)));
-    }
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _url_levels_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
   // bytes url = 1;
   if (this->url().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->url());
+  }
+
+  // .spiderproto.UrlLevel level = 2;
+  if (this->level() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->level());
+  }
+
+  // bool usedable = 3;
+  if (this->usedable() != 0) {
+    total_size += 1 + 1;
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1017,10 +1008,15 @@ void CrawlUrl::MergeFrom(const CrawlUrl& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  url_levels_.MergeFrom(from.url_levels_);
   if (from.url().size() > 0) {
 
     url_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.url_);
+  }
+  if (from.level() != 0) {
+    set_level(from.level());
+  }
+  if (from.usedable() != 0) {
+    set_usedable(from.usedable());
   }
 }
 
@@ -1048,9 +1044,10 @@ void CrawlUrl::Swap(CrawlUrl* other) {
 }
 void CrawlUrl::InternalSwap(CrawlUrl* other) {
   using std::swap;
-  url_levels_.InternalSwap(&other->url_levels_);
   url_.Swap(&other->url_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  swap(level_, other->level_);
+  swap(usedable_, other->usedable_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -1398,7 +1395,6 @@ void LinkRule::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int LinkRule::kInLevelFieldNumber;
 const int LinkRule::kRulesFieldNumber;
-const int LinkRule::kUrlLevelsFieldNumber;
 const int LinkRule::kOutLevelFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1412,8 +1408,7 @@ LinkRule::LinkRule()
 LinkRule::LinkRule(const LinkRule& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      rules_(from.rules_),
-      url_levels_(from.url_levels_) {
+      rules_(from.rules_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&in_level_, &from.in_level_,
     static_cast<size_t>(reinterpret_cast<char*>(&out_level_) -
@@ -1456,7 +1451,6 @@ void LinkRule::Clear() {
   (void) cached_has_bits;
 
   rules_.Clear();
-  url_levels_.Clear();
   ::memset(&in_level_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&out_level_) -
       reinterpret_cast<char*>(&in_level_)) + sizeof(out_level_));
@@ -1500,39 +1494,10 @@ bool LinkRule::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .spiderproto.UrlLevel url_levels = 3;
+      // .spiderproto.UrlLevel out_level = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          ::google::protobuf::uint32 length;
-          DO_(input->ReadVarint32(&length));
-          ::google::protobuf::io::CodedInputStream::Limit limit = input->PushLimit(static_cast<int>(length));
-          while (input->BytesUntilLimit() > 0) {
-            int value;
-            DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-            add_url_levels(static_cast< ::spiderproto::UrlLevel >(value));
-          }
-          input->PopLimit(limit);
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          add_url_levels(static_cast< ::spiderproto::UrlLevel >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .spiderproto.UrlLevel out_level = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -1582,24 +1547,10 @@ void LinkRule::SerializeWithCachedSizes(
       2, this->rules(i), output);
   }
 
-  // repeated .spiderproto.UrlLevel url_levels = 3;
-  if (this->url_levels_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      output);
-    output->WriteVarint32(
-        static_cast< ::google::protobuf::uint32>(_url_levels_cached_byte_size_));
-  }
-  for (int i = 0, n = this->url_levels_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnumNoTag(
-      this->url_levels(i), output);
-  }
-
-  // .spiderproto.UrlLevel out_level = 4;
+  // .spiderproto.UrlLevel out_level = 3;
   if (this->out_level() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->out_level(), output);
+      3, this->out_level(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1628,22 +1579,10 @@ void LinkRule::SerializeWithCachedSizes(
       WriteBytesToArray(2, this->rules(i), target);
   }
 
-  // repeated .spiderproto.UrlLevel url_levels = 3;
-  if (this->url_levels_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(      static_cast< ::google::protobuf::uint32>(
-            _url_levels_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumNoTagToArray(
-      this->url_levels_, target);
-  }
-
-  // .spiderproto.UrlLevel out_level = 4;
+  // .spiderproto.UrlLevel out_level = 3;
   if (this->out_level() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->out_level(), target);
+      3, this->out_level(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1671,32 +1610,13 @@ size_t LinkRule::ByteSizeLong() const {
       this->rules(i));
   }
 
-  // repeated .spiderproto.UrlLevel url_levels = 3;
-  {
-    size_t data_size = 0;
-    unsigned int count = static_cast<unsigned int>(this->url_levels_size());for (unsigned int i = 0; i < count; i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::EnumSize(
-        this->url_levels(static_cast<int>(i)));
-    }
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _url_levels_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
   // .spiderproto.UrlLevel in_level = 1;
   if (this->in_level() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->in_level());
   }
 
-  // .spiderproto.UrlLevel out_level = 4;
+  // .spiderproto.UrlLevel out_level = 3;
   if (this->out_level() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->out_level());
@@ -1730,7 +1650,6 @@ void LinkRule::MergeFrom(const LinkRule& from) {
   (void) cached_has_bits;
 
   rules_.MergeFrom(from.rules_);
-  url_levels_.MergeFrom(from.url_levels_);
   if (from.in_level() != 0) {
     set_in_level(from.in_level());
   }
@@ -1764,7 +1683,6 @@ void LinkRule::Swap(LinkRule* other) {
 void LinkRule::InternalSwap(LinkRule* other) {
   using std::swap;
   rules_.InternalSwap(CastToBase(&other->rules_));
-  url_levels_.InternalSwap(&other->url_levels_);
   swap(in_level_, other->in_level_);
   swap(out_level_, other->out_level_);
   _internal_metadata_.Swap(&other->_internal_metadata_);

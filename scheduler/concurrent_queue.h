@@ -1,6 +1,6 @@
 #ifndef CONCURRENT_QUEUE_H_
 #define CONCURRENT_QUEUE_H_
-
+#include <glog/logging.h>
 #include <condition_variable>  // NOLINT
 #include <iostream>
 #include <mutex>  // NOLINT
@@ -31,12 +31,13 @@ public:
         }
         m_condition_variable.notify_one();
     }
+
     Data pop() {
         std::unique_lock<std::mutex> lock(m_mutex);
         m_condition_variable.wait(lock,
                                   [this] { return !this->m_queue.empty(); });
         auto data = m_queue.front();
-        m_queue.pop();
+        return data;
     }
     void pop(Data& data) {  // NOLINT
         std::unique_lock<std::mutex> lock(m_mutex);

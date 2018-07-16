@@ -9,11 +9,13 @@
 #include "task_manager.h"
 #include "taskinfo.h"
 Dispatcher::Dispatcher(const std::shared_ptr<TaskManager>& task_manager,
-                       const std::shared_ptr<FetcherManager> fetch_manager)
+                       const std::shared_ptr<FetcherManager>& fetch_manager)
     : m_task_manager(task_manager),
       m_fetcher_manager(fetch_manager),
       m_dispatch_thd(nullptr),
-      m_stop(false) {}
+      m_stop(false),
+      m_seq(0),
+      m_g(std::random_device()()) {}
 
 Dispatcher::~Dispatcher() {}
 
@@ -29,13 +31,15 @@ void Dispatcher::DispatchInternal() {
     LOG(INFO) << "DispatchInternal start";
     while (!m_stop.load(std::memory_order_relaxed)) {
         m_seq++;
+
+        // find a  min seq task
         std::shared_ptr<TaskInfo> taskinfo = m_task_manager->GetOptTask();
         if (taskinfo == nullptr) {
-            LOG(INFO) << "taskinfo is nullptr";
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::this_thread::sleep_for(std::chrono::seconds(2));
             continue;
         }
 
+        // judge delay
         std::chrono::steady_clock::time_point current_time =
             std::chrono::steady_clock::now();
         std::chrono::steady_clock::time_point last_call_time =
@@ -47,52 +51,88 @@ void Dispatcher::DispatchInternal() {
                     current_time - last_call_time);
             if (time_span.count() < taskinfo->GetDelay()) continue;
         }
-
-        taskinfo->SetSeq(m_seq.load(std::memory_order_relaxed));
-
-        std::vector<std::shared_ptr<FetchClient>> fetch_clients =
-            m_fetcher_manager->GetAllFetchers();
-
-        int client_count         = m_fetcher_manager->GetClientCount();
-        int url_count            = taskinfo->GetCrawlurlCount();
-        int urled_count          = taskinfo->GetCrawlingUrlCount();
-        int concurrent_url_count = taskinfo->GetConcurrentCount();
-        int actual_count         = 0;
-        if (concurrent_url_count != 0) {
-            actual_count = concurrent_url_count - urled_count;
-            if (actual_count > url_count) actual_count = url_count;
-        }
-
-        taskinfo->SetTime();
-        std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
-            taskinfo->SpilitTask(client_count, actual_count);
-        // if actual_count is zero , will return a empty task
-        if (tasks.empty()) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            continue;
-        }
-        // shuffle
-        std::random_device rd;
-        std::mt19937 g(rd());
-        std::shuffle(fetch_clients.begin(), fetch_clients.end(), g);
-        for (size_t i = 0; i < tasks.size(); i++) {
-            spiderproto::CrawlingTask crawling_task = CombineCrawlingTask(
-                *taskinfo, fetch_clients[i]->GetName(), tasks[i]);
-            LOG(INFO) << "add_crawlingtask " << crawling_task.fetcher();
-            fetch_clients[i]->add_crawlingtask(crawling_task);
-        }
+        Distribute(taskinfo);
+        taskinfo->SetSeq(m_seq);
     }
 }
 
+bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
+    int client_count         = m_fetcher_manager->GetClientCount();
+    int url_count            = taskinfo->GetCrawlurlCount();
+    int urled_count          = taskinfo->GetCrawlingUrlCount();
+    int concurrent_url_count = taskinfo->GetConcurrentCount();
+    int actual_count         = 0;
+    if (concurrent_url_count != 0) {
+        actual_count = concurrent_url_count - urled_count;
+        if (actual_count > url_count) actual_count = url_count;
+    }
+    taskinfo->SetTime();
+    std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
+        SpilitTask(taskinfo, client_count, actual_count);
+    // if actual_count is zero , will return a empty task
+    if (tasks.empty()) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        return false;
+    }
+    // shuffle
+    std::vector<std::shared_ptr<FetchClient>> fetch_clients =
+        m_fetcher_manager->GetAllFetchers();
+    LOG(INFO) << "fetcher's size():" << fetch_clients.size();
+    if (fetch_clients.size() == 0) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        return false;
+    }
+    std::shuffle(fetch_clients.begin(), fetch_clients.end(), m_g);
+
+    for (size_t i = 0; i < tasks.size(); i++) {
+        spiderproto::CrawlingTask crawling_task = CombineCrawlingTask(
+            taskinfo, fetch_clients[i]->GetName(), tasks[i]);
+        LOG(INFO) << "add_crawlingtask  " << crawling_task.taskid() << " to "
+                  << crawling_task.fetcher();
+        fetch_clients[i]->add_crawlingtask(crawling_task);
+    }
+
+    return true;
+}
+
+std::vector<std::vector<spiderproto::CrawlUrl>> Dispatcher::SpilitTask(
+    const std::shared_ptr<TaskInfo>& taskinfo, int client_count,
+    int url_count) {
+    std::vector<std::vector<spiderproto::CrawlUrl>> result{};
+    if (url_count == 0 || client_count == 0) return result;
+    int every_url_count = url_count / client_count + 1;
+
+    std::vector<spiderproto::CrawlUrl> temp{};
+
+    std::vector<spiderproto::CrawlUrl> urls = taskinfo->GetCrawlurl(url_count);
+
+    int count = 0;
+    for (int i = 0; i < url_count; i++) {
+        LOG(INFO) << urls[i].url();
+        temp.push_back(urls[i]);
+        count++;
+        if (count == every_url_count) {
+            for (const auto& c : temp) {
+                LOG(INFO) << "temp:" << c.url();
+            }
+            result.push_back(temp);
+            temp.clear();
+            count = 0;
+        }
+    }
+    result.push_back(temp);
+    return result;
+}
+
 spiderproto::CrawlingTask Dispatcher::CombineCrawlingTask(
-    const TaskInfo& taskinfo, const std::string fetcher_name,
-    std::vector<spiderproto::CrawlUrl> urls) {
+    const std::shared_ptr<TaskInfo>& taskinfo, const std::string& fetcher_name,
+    std::vector<spiderproto::CrawlUrl>& urls) {
     spiderproto::CrawlingTask crawling_task;
-    spiderproto::BasicTask btask = taskinfo.GetBasicTask();
+    spiderproto::BasicTask btask = taskinfo->GetBasicTask();
     crawling_task.set_taskid(btask.taskid());
 
     crawling_task.set_fetcher(fetcher_name);
-    for (auto& url : taskinfo.GetAllCrawlurl()) {
+    for (auto& url : urls) {
         spiderproto::CrawlUrl* purl = crawling_task.add_crawl_urls();
         purl->CopyFrom(url);
     }

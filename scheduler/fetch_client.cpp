@@ -18,7 +18,8 @@ std::string FetchClient::add_crawlingtask(
     grpc::Status status = m_stub->add_crawlingtask(&context, ctask, &response);
 
     if (status.ok()) {
-        LOG(INFO) << "add crawlingTask rpc success :" << std::endl;
+        LOG(INFO) << "add crawlingTask rpc success :" << ctask.taskid()
+                  << std::endl;
         return response.taskid();
     } else {
         LOG(INFO) << status.error_code() << ":" << status.error_message()

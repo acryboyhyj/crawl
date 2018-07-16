@@ -6,25 +6,23 @@ from proto.spider_pb2_grpc import FetchStub
 
 
 def run():
-    conn = grpc.insecure_channel("127.0.0.1:50000")
+    conn = grpc.insecure_channel("127.0.0.1:40000")
     client = FetchStub(conn)
 
     task = spider_pb2.CrawlingTask()
     task.taskid = str("Test-20180503095100-0001")
     
     crawl_url = task.crawl_urls.add()
-    crawl_url.url = "http://www.hdu.edu.cn/news/important"
-    crawl_url.url_levels.append(spider_pb2.LEVEL_LIST)
+    crawl_url.url = "https://www.jianshu.com/"
+    crawl_url.level = spider_pb2.LEVEL_LIST
    
     linkrule = task.rules.add()
-    linkrule.in_level = 1
+    linkrule.in_level = spider_pb2.LEVEL_LIST
     
 
-    linkrule.rules.append('xpath://*[@class="foot"]')
+    linkrule.rules.append("xpath://ul[@class='note-list']/li")
     
-    linkrule.url_levels.append(spider_pb2.LEVEL_CONTENT)
-    linkrule.out_level = 1
-        print "add_crawlingtask with task %s" % str(task)
+    print "add_crawlingtask with task %s" % str(task)
     response = client.add_crawlingtask(task)
     print "response %s" % str(response)
 

@@ -1,17 +1,15 @@
 syntax = "proto3";
 package spiderproto;
-
+// url's type
 enum UrlLevel {
-    LEVEL_INDEX    = 0;
-    LEVEL_LIST     = 1;
-    LEVEL_SUB_LIST = 2;
-    LEVEL_CONTENT  = 3;
-    LEVEL_DETAIL   = 4;
+    LEVEL_LIST    = 0;
+    LEVEL_CONTENT = 1;
 }
 
 message CrawlUrl {
-    bytes url                    = 1;
-    repeated UrlLevel url_levels = 2;
+    bytes url      = 1;
+    UrlLevel level = 2;
+    bool usedable  = 3;
 }
 
 message Feature {
@@ -22,10 +20,9 @@ message Feature {
 }
 
 message LinkRule {
-    UrlLevel in_level            = 1;
-    repeated bytes rules         = 2;
-    repeated UrlLevel url_levels = 3;
-    UrlLevel out_level           = 4;
+    UrlLevel in_level    = 1;
+    repeated bytes rules = 2;  // xpath:rule or re:rule
+    UrlLevel out_level   = 3;  // the extracted urls' types
 }
 
 message Storage {
@@ -94,6 +91,9 @@ message TaskResponse {
     bytes taskid = 1;
     int32 code   = 2;
     bytes msg    = 3;
+}
+
+message Empty {
 }
 
 message Fetcher {

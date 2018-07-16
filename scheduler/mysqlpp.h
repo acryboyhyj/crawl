@@ -19,18 +19,12 @@ public:
                     const std::string& taskid);
     std::vector<spiderproto::BasicTask> QueryAllTblTask();
     bool QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks);
-    bool DeleteTask(const spiderproto::BasicTask& task);
 
+    bool DeleteTask(const spiderproto::BasicTask& task);
     bool AddLink(const spiderproto::CrawledTask& task);
-    std::vector<spiderproto::Fetcher> QueryAllFetchers();
-    bool UpdateFetchers(const spiderproto::Fetcher& fetcher);
-    bool InsertFetchers(const spiderproto::Fetcher& fetcher);
-    bool DeleteFetcher(const spiderproto::Fetcher& fetcher);
 
 private:
     bool Connect();
-    std::string formatsql(spiderproto::CrawlUrl crawurl);
-
     std::string StrToSql(const std::string& str) const;
 
 private:

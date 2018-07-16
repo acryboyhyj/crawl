@@ -24,13 +24,19 @@ void CrawledtaskHandler::AddCrawledTask() {
         // bloomfilter
         // write mysqlpp
         // wrie taskmanager
-        spiderproto::CrawledTask cdtask = m_concurrent_queue->pop();
+        spiderproto::CrawledTask cdtask;
+        m_concurrent_queue->pop(cdtask);
 
         std::shared_ptr<TaskInfo> task =
             m_task_manager->FindTask(cdtask.taskid());
+        if (task == nullptr) {
+            LOG(INFO) << "task is nullptr";
+            continue;
+        }
 
+        task->ShowTaskInfo();
         task->DelCrawledUrl(cdtask.crawl_url());
-
+        task->ShowTaskInfo();
         for (int i = 0; i < cdtask.links_size(); ++i) {
             if (!m_bf->KeyMatch(cdtask.links(i).url())) {
                 m_bf->Insert(cdtask.links(i).url());

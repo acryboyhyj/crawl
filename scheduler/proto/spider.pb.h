@@ -148,17 +148,14 @@ inline bool Storage_StorageType_Parse(
     Storage_StorageType_descriptor(), name, value);
 }
 enum UrlLevel {
-  LEVEL_INDEX = 0,
-  LEVEL_LIST = 1,
-  LEVEL_SUB_LIST = 2,
-  LEVEL_CONTENT = 3,
-  LEVEL_DETAIL = 4,
+  LEVEL_LIST = 0,
+  LEVEL_CONTENT = 1,
   UrlLevel_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   UrlLevel_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool UrlLevel_IsValid(int value);
-const UrlLevel UrlLevel_MIN = LEVEL_INDEX;
-const UrlLevel UrlLevel_MAX = LEVEL_DETAIL;
+const UrlLevel UrlLevel_MIN = LEVEL_LIST;
+const UrlLevel UrlLevel_MAX = LEVEL_CONTENT;
 const int UrlLevel_ARRAYSIZE = UrlLevel_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* UrlLevel_descriptor();
@@ -260,16 +257,6 @@ class CrawlUrl : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
-  // repeated .spiderproto.UrlLevel url_levels = 2;
-  int url_levels_size() const;
-  void clear_url_levels();
-  static const int kUrlLevelsFieldNumber = 2;
-  ::spiderproto::UrlLevel url_levels(int index) const;
-  void set_url_levels(int index, ::spiderproto::UrlLevel value);
-  void add_url_levels(::spiderproto::UrlLevel value);
-  const ::google::protobuf::RepeatedField<int>& url_levels() const;
-  ::google::protobuf::RepeatedField<int>* mutable_url_levels();
-
   // bytes url = 1;
   void clear_url();
   static const int kUrlFieldNumber = 1;
@@ -284,13 +271,25 @@ class CrawlUrl : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_url();
   void set_allocated_url(::std::string* url);
 
+  // .spiderproto.UrlLevel level = 2;
+  void clear_level();
+  static const int kLevelFieldNumber = 2;
+  ::spiderproto::UrlLevel level() const;
+  void set_level(::spiderproto::UrlLevel value);
+
+  // bool usedable = 3;
+  void clear_usedable();
+  static const int kUsedableFieldNumber = 3;
+  bool usedable() const;
+  void set_usedable(bool value);
+
   // @@protoc_insertion_point(class_scope:spiderproto.CrawlUrl)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedField<int> url_levels_;
-  mutable int _url_levels_cached_byte_size_;
   ::google::protobuf::internal::ArenaStringPtr url_;
+  int level_;
+  bool usedable_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_spider_2eproto::TableStruct;
 };
@@ -529,25 +528,15 @@ class LinkRule : public ::google::protobuf::Message /* @@protoc_insertion_point(
   const ::google::protobuf::RepeatedPtrField< ::std::string>& rules() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_rules();
 
-  // repeated .spiderproto.UrlLevel url_levels = 3;
-  int url_levels_size() const;
-  void clear_url_levels();
-  static const int kUrlLevelsFieldNumber = 3;
-  ::spiderproto::UrlLevel url_levels(int index) const;
-  void set_url_levels(int index, ::spiderproto::UrlLevel value);
-  void add_url_levels(::spiderproto::UrlLevel value);
-  const ::google::protobuf::RepeatedField<int>& url_levels() const;
-  ::google::protobuf::RepeatedField<int>* mutable_url_levels();
-
   // .spiderproto.UrlLevel in_level = 1;
   void clear_in_level();
   static const int kInLevelFieldNumber = 1;
   ::spiderproto::UrlLevel in_level() const;
   void set_in_level(::spiderproto::UrlLevel value);
 
-  // .spiderproto.UrlLevel out_level = 4;
+  // .spiderproto.UrlLevel out_level = 3;
   void clear_out_level();
-  static const int kOutLevelFieldNumber = 4;
+  static const int kOutLevelFieldNumber = 3;
   ::spiderproto::UrlLevel out_level() const;
   void set_out_level(::spiderproto::UrlLevel value);
 
@@ -556,8 +545,6 @@ class LinkRule : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::std::string> rules_;
-  ::google::protobuf::RepeatedField<int> url_levels_;
-  mutable int _url_levels_cached_byte_size_;
   int in_level_;
   int out_level_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -2760,34 +2747,32 @@ inline void CrawlUrl::set_allocated_url(::std::string* url) {
   // @@protoc_insertion_point(field_set_allocated:spiderproto.CrawlUrl.url)
 }
 
-// repeated .spiderproto.UrlLevel url_levels = 2;
-inline int CrawlUrl::url_levels_size() const {
-  return url_levels_.size();
+// .spiderproto.UrlLevel level = 2;
+inline void CrawlUrl::clear_level() {
+  level_ = 0;
 }
-inline void CrawlUrl::clear_url_levels() {
-  url_levels_.Clear();
+inline ::spiderproto::UrlLevel CrawlUrl::level() const {
+  // @@protoc_insertion_point(field_get:spiderproto.CrawlUrl.level)
+  return static_cast< ::spiderproto::UrlLevel >(level_);
 }
-inline ::spiderproto::UrlLevel CrawlUrl::url_levels(int index) const {
-  // @@protoc_insertion_point(field_get:spiderproto.CrawlUrl.url_levels)
-  return static_cast< ::spiderproto::UrlLevel >(url_levels_.Get(index));
+inline void CrawlUrl::set_level(::spiderproto::UrlLevel value) {
+  
+  level_ = value;
+  // @@protoc_insertion_point(field_set:spiderproto.CrawlUrl.level)
 }
-inline void CrawlUrl::set_url_levels(int index, ::spiderproto::UrlLevel value) {
-  url_levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:spiderproto.CrawlUrl.url_levels)
+
+// bool usedable = 3;
+inline void CrawlUrl::clear_usedable() {
+  usedable_ = false;
 }
-inline void CrawlUrl::add_url_levels(::spiderproto::UrlLevel value) {
-  url_levels_.Add(value);
-  // @@protoc_insertion_point(field_add:spiderproto.CrawlUrl.url_levels)
+inline bool CrawlUrl::usedable() const {
+  // @@protoc_insertion_point(field_get:spiderproto.CrawlUrl.usedable)
+  return usedable_;
 }
-inline const ::google::protobuf::RepeatedField<int>&
-CrawlUrl::url_levels() const {
-  // @@protoc_insertion_point(field_list:spiderproto.CrawlUrl.url_levels)
-  return url_levels_;
-}
-inline ::google::protobuf::RepeatedField<int>*
-CrawlUrl::mutable_url_levels() {
-  // @@protoc_insertion_point(field_mutable_list:spiderproto.CrawlUrl.url_levels)
-  return &url_levels_;
+inline void CrawlUrl::set_usedable(bool value) {
+  
+  usedable_ = value;
+  // @@protoc_insertion_point(field_set:spiderproto.CrawlUrl.usedable)
 }
 
 // -------------------------------------------------------------------
@@ -2937,37 +2922,7 @@ LinkRule::mutable_rules() {
   return &rules_;
 }
 
-// repeated .spiderproto.UrlLevel url_levels = 3;
-inline int LinkRule::url_levels_size() const {
-  return url_levels_.size();
-}
-inline void LinkRule::clear_url_levels() {
-  url_levels_.Clear();
-}
-inline ::spiderproto::UrlLevel LinkRule::url_levels(int index) const {
-  // @@protoc_insertion_point(field_get:spiderproto.LinkRule.url_levels)
-  return static_cast< ::spiderproto::UrlLevel >(url_levels_.Get(index));
-}
-inline void LinkRule::set_url_levels(int index, ::spiderproto::UrlLevel value) {
-  url_levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:spiderproto.LinkRule.url_levels)
-}
-inline void LinkRule::add_url_levels(::spiderproto::UrlLevel value) {
-  url_levels_.Add(value);
-  // @@protoc_insertion_point(field_add:spiderproto.LinkRule.url_levels)
-}
-inline const ::google::protobuf::RepeatedField<int>&
-LinkRule::url_levels() const {
-  // @@protoc_insertion_point(field_list:spiderproto.LinkRule.url_levels)
-  return url_levels_;
-}
-inline ::google::protobuf::RepeatedField<int>*
-LinkRule::mutable_url_levels() {
-  // @@protoc_insertion_point(field_mutable_list:spiderproto.LinkRule.url_levels)
-  return &url_levels_;
-}
-
-// .spiderproto.UrlLevel out_level = 4;
+// .spiderproto.UrlLevel out_level = 3;
 inline void LinkRule::clear_out_level() {
   out_level_ = 0;
 }

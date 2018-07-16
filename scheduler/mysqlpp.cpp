@@ -118,8 +118,8 @@ bool MySqlpp::AddLink(const spiderproto::CrawledTask& task) {
     {
         mysqlpp::Transaction trans(*m_mysql_conn);
         m_string_stream << "update tbl_link"
-                           "set code="
-                        << task.status() << "where url=" << StrToSql(url)
+                           " set code="
+                        << task.status() << " where url=" << StrToSql(url)
                         << ";";
         LOG(INFO) << m_string_stream.str();
         mysqlpp::Query query = m_mysql_conn->query();
@@ -206,7 +206,6 @@ bool MySqlpp::QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks) {
                 if ((*btasks)[i].taskid() == row["taskid"].c_str()) {
                     spiderproto::CrawlUrlList* crawl_list =
                         (*btasks)[i].mutable_crawl_list();
-                    LOG(INFO) << "this ";
                     spiderproto::CrawlUrl* crawlurl =
                         crawl_list->add_crawl_urls();
 
@@ -243,87 +242,6 @@ bool MySqlpp::DeleteTask(const spiderproto::BasicTask& task) {
         query.execute();
         trans.commit();
         LOG(INFO) << "delete task" << std::endl;
-    }
-    return true;
-}
-
-std::vector<spiderproto::Fetcher> MySqlpp::QueryAllFetchers() {
-    if (!Connect()) {
-        std::cout << "connect faled,QueryAllFetchers failed" << std::endl;
-        return {};
-    }
-    mysqlpp::Query query = m_mysql_conn->query();
-
-    m_string_stream.str("");
-    m_string_stream << "select* from fetcher";
-
-    LOG(INFO) << m_string_stream.str() << std::endl;
-    query << m_string_stream.str();
-
-    mysqlpp::UseQueryResult res = query.use();
-
-    std::vector<spiderproto::Fetcher> fetchers;
-    while (mysqlpp::Row row = res.fetch_row()) {
-        spiderproto::Fetcher temp_fecher;
-        temp_fecher.set_name(row["name"].c_str());
-        temp_fecher.set_addr(row["addr"].c_str());
-        fetchers.push_back(temp_fecher);
-    }
-
-    return fetchers;
-}
-
-bool MySqlpp::UpdateFetchers(const spiderproto::Fetcher& fetcher) {
-    if (!Connect()) return false;
-
-    m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-        m_string_stream << "update fetcher "
-                           "set name="
-                        << StrToSql(fetcher.name())
-                        << ", addr=" << StrToSql(fetcher.addr()) << ";";
-        mysqlpp::Query query = m_mysql_conn->query();
-        query << m_string_stream.str();
-        query.execute();
-        LOG(INFO) << "update fetcher" << std::endl;
-        trans.commit();
-    }
-    return true;
-}
-
-bool MySqlpp::InsertFetchers(const spiderproto::Fetcher& fetcher) {
-    if (!Connect()) return false;
-
-    m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-
-        m_string_stream << "insert into fetcher(name,addr) values("
-                        << StrToSql(fetcher.name()) << ","
-                        << StrToSql(fetcher.addr()) << ");";
-        LOG(INFO) << m_string_stream.str() << std::endl;
-        mysqlpp::Query query = m_mysql_conn->query();
-        query << m_string_stream.str();
-        query.execute();
-        trans.commit();
-    }
-    return true;
-}
-
-bool MySqlpp::DeleteFetcher(const spiderproto::Fetcher& fetcher) {
-    if (!Connect()) return false;
-
-    m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-        m_string_stream << "delete from fetcher"
-                        << "where name=" << fetcher.name() << ";";
-        LOG(INFO) << m_string_stream.str() << std::endl;
-        mysqlpp::Query query = m_mysql_conn->query();
-        query << m_string_stream.str();
-        query.execute();
-        trans.commit();
     }
     return true;
 }

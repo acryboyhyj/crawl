@@ -3,6 +3,8 @@
 #include <atomic>
 #include <chrono>
 #include <memory>
+
+#include <random>
 #include <string>
 #include <thread>
 #include <vector>
@@ -14,24 +16,31 @@ class FetcherManager;
 class Dispatcher {
 public:
     Dispatcher(const std::shared_ptr<TaskManager>& task_manager,
-               const std::shared_ptr<FetcherManager> fetch_manager);
+               const std::shared_ptr<FetcherManager>& fetch_manager);
     ~Dispatcher();
     spiderproto::CrawlingTask CombineCrawlingTask(
-        const TaskInfo& taskinfo, const std::string fetcher_name,
-        std::vector<spiderproto::CrawlUrl> urls);
+        const std::shared_ptr<TaskInfo>& taskinfo,
+        const std::string& fetcher_name,
+        std::vector<spiderproto::CrawlUrl>& urls);
     void Start();
     void Join();
     void Stop();
+    std::vector<std::vector<spiderproto::CrawlUrl>> SpilitTask(
+        const std::shared_ptr<TaskInfo>& taskinfo, int client_count,
+        int url_count);
+
+    bool Distribute(const std::shared_ptr<TaskInfo>& taskinfo);
 
 private:
     void DispatchInternal();
 
 private:
-    const std::shared_ptr<TaskManager> m_task_manager;
-    const std::shared_ptr<FetcherManager> m_fetcher_manager;
+    const std::shared_ptr<TaskManager>& m_task_manager;
+    const std::shared_ptr<FetcherManager>& m_fetcher_manager;
     std::unique_ptr<std::thread> m_dispatch_thd;
     std::atomic<bool> m_stop;
-    std::atomic<uint64_t> m_seq{0};
+    uint64_t m_seq;
+    std::mt19937 m_g;  // shuffle device
 };
 
 #endif  // _DISPATCHER_H_
