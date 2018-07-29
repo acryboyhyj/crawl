@@ -1,4 +1,0 @@
-Log file created at: 2018/06/22 02:04:14
-Running on machine: ubuntu
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0622 02:04:14.240406 33241 mysqlpp.cpp:118] select* from tbl_task
