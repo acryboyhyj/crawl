@@ -9,8 +9,7 @@
 #include "util.h"
 bool MySqlpp::Connect() {
     m_mysql_conn.reset(new mysqlpp::Connection());
-    m_connected =
-        m_mysql_conn->connect("crawl", "localhost", "root", "hyj147258");
+    m_connected = m_mysql_conn->connect("crawl", "localhost", "root", "123456");
     if (!m_connected) {
         LOG(ERROR) << "connect erro" << std::endl;
         return m_connected;

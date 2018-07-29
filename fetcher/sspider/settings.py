@@ -12,13 +12,13 @@
 MAXDOC_IN_PROTO = 1024
 
 FETCHER_NAME = "fetcher"
-RPC_ADDR = "127.0.0.1:50000"
-SCHEDULER_ADDR = '127.0.0.1:50080'
-#HANDLER_ADDR = '127.0.0.1:40000'
+RPC_ADDR = "127.0.0.1:40000"
+SCHEDULER_ADDR = '127.0.0.1:30000'
+HANDLER_ADDR = '127.0.0.1:50000'
+
 LOG_FILE='spider.log'
 LOG_LEVEL='DEBUG'
 MODE_TEST=False
-
 
 
 
@@ -50,7 +50,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1 #1s second waiting to download the pages from same website
+DOWNLOAD_DELAY = 0.2 #1s second waiting to download the pages from same website
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 8
 #CONCURRENT_REQUESTS_PER_IP = 8
@@ -103,7 +103,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     #'sspider.pipelines.SspiderPipeline': 300,
     'sspider.pipelines.StatusPipeline' : 1,
-    #'sspider.pipelines.LinkPipeline' : 100,
+    'sspider.pipelines.LinkPipeline' : 100,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

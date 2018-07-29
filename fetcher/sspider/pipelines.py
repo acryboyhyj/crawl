@@ -12,8 +12,8 @@ from scrapy.exceptions import DropItem
 
 import grpc
 from proto.spider_pb2 import *
-#from scheduler_client import SchedulerClient
-#from handler_client import HandlerClient
+from scheduler_client import SchedulerClient
+from handler_client import HandlerClient
 
 import logging
 logger = logging.getLogger(__name__)
@@ -153,18 +153,16 @@ class LinkPipeline(object):
         self.name = name
         self.rpc_addr = rpc_addr
         self.scheduler_addr = scheduler_addr
-        self.handler_addr = handler_addr
+        logger.info("scheduler.addr:%s rpc_addr:%s" % (scheduler_addr,rpc_addr))
+        self.scheduler = SchedulerClient(scheduler_addr) 
 
-        self.scheduler = SchedulerClient(scheduler_addr)
         self.handler = HandlerClient(handler_addr)
-
-        self.istesting = istesting
+        self.istesting = istesting 
         self._connect()
 
-    def _connect(self):
-        if self.istesting:
-            return
+    def _connect(self): 
         fetcher = Fetcher(name=self.name, addr=self.rpc_addr)
+
         self.scheduler.add_fetcher(fetcher)
     
     @classmethod
@@ -174,54 +172,47 @@ class LinkPipeline(object):
                 scheduler_addr=crawler.settings.get('SCHEDULER_ADDR'),
                 handler_addr=crawler.settings.get('HANDLER_ADDR'),
                 istesting=crawler.settings.get('MODE_TEST', False))
+                
 
     def _get_crawledtask(self, item):
         crawling_task = item["crawling_task"]
         crawl_url = crawling_task.crawl_urls[0]
 
         task = CrawledTask()
-        task.taskid.CopyFrom(crawling_task.taskid)
+        logger.info("taskid:%s" %crawling_task.taskid)
+        task.taskid = crawling_task.taskid
         task.fetcher = crawling_task.fetcher
-        task.crawled_url.CopyFrom(crawl_url)
+        task.crawl_url.CopyFrom(crawl_url)
         task.status = item["status"]
-        task.content_empty = (len(item["content"]) < 10)
         extracted_urls = item.get("extracted_urls", [])
         if extracted_urls is not None:
             for url in extracted_urls:
-                crawling_url = task.crawling_urls.add()
+                crawling_url = task.links.add()
                 crawling_url.CopyFrom(url)
         logger.debug("get crawled task %s" % str(task))
         return task
-
+    
     def _get_crawldoc(self, item):
         crawling_task = item["crawling_task"]
         crawl_url = crawling_task.crawl_urls[0]
 
-        if len(crawl_url.url_types) == 1 and crawl_url.url_types[0] == URL_LIST:
-            return None
 
         crawldoc = CrawlDoc()
         crawldoc.url = crawl_url.url
         crawldoc.status = item["status"]
-        crawldoc.content_type = item.get("content_encoding", "")
         try:
             crawldoc.content = item["content"]
         except Exception, e:
             logger.warning("content decode error for %s" % crawl_url.url)
-            #crawldoc.content = "charset error with %s" % str(e)
-            #logger.debug("charset error: {0}".format(e))
+
             crawldoc.content = ""
             crawldoc.status = 406
             item["status"] = 406
 
-
-
-
-        crawldoc.payload = crawl_url.payload
-        crawldoc.taskid.CopyFrom(crawling_task.taskid)
+        crawldoc.taskid = crawling_task.taskid
         crawldoc.storage.CopyFrom(crawling_task.storage)
         return crawldoc
-
+        
     def process_item(self, item, spider):
         crawldoc = self._get_crawldoc(item)
         crawled_task = self._get_crawledtask(item)
@@ -229,7 +220,7 @@ class LinkPipeline(object):
 
         handler_healthy = True
         if crawldoc is not None and not self.istesting:
-            handler_healthy = self.handler.add_crawldoc(crawldoc)
+           handler_healthy = self.handler.add_crawldoc(crawldoc)
         if not self.istesting and handler_healthy:
             self.scheduler.add_crawledtask(crawled_task)
         return item

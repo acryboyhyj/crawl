@@ -13,9 +13,10 @@ bool TaskManager::AddTask(const std::vector<spiderproto::BasicTask>& btasks) {
         for (const auto& btask : btasks) {
             std::shared_ptr<TaskInfo> temp(new TaskInfo(btask));
             m_taskinfos[btask.taskid()] = temp;
+            LOG(INFO) << "add a task from db :" << btask.taskid();
         }
     }
-    LOG(INFO) << "add task from db success" << std::endl;
+    LOG(INFO) << "added all task from db success" << std::endl;
     return true;
 }
 
@@ -37,8 +38,13 @@ std::string TaskManager::AddTask(const spiderproto::BasicTask& btask) {
 std::shared_ptr<TaskInfo> TaskManager::FindTask(const std::string& taskid) {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto search = m_taskinfos.find(taskid);
-    if (search == m_taskinfos.end()) LOG(WARNING) << "not find this task";
-    return search->second;
+    if (search != m_taskinfos.end()) {
+        return search->second;
+    }
+
+    LOG(WARNING) << "not find this task";
+
+    return nullptr;
 }
 
 std::shared_ptr<TaskInfo> TaskManager::GetOptTask() {

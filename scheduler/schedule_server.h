@@ -25,10 +25,10 @@ public:
 
     grpc::Status add_fetcher(grpc::ServerContext* context,
                              const spiderproto::Fetcher* fetcher,
-                             spiderproto::TaskResponse* response);
+                             spiderproto::TaskResponse* response) override;
     grpc::Status add_crawledtask(grpc::ServerContext* context,
                                  const spiderproto::CrawledTask* task,
-                                 spiderproto::TaskResponse* response);
+                                 spiderproto::TaskResponse* response) override;
 
     void Start();
     void Stop();

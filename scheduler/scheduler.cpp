@@ -33,11 +33,6 @@ bool Scheduler::Load() {
         LOG(WARNING) << "query link is failed" << std::endl;
     }
     m_task_manager->AddTask(btasks);
-    std::vector<spiderproto::Fetcher> fetchers = m_mysqlpp->QueryAllFetchers();
-    LOG(INFO) << "fecher's size():" << fetchers.size();
-    m_fetcher_manager->AddFetcher(fetchers);
-
-    m_fetcher_manager->ShowFetcher();
     return false;
 }
 

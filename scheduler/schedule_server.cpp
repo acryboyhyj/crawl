@@ -5,6 +5,7 @@
 #include "fetcher_manager.h"
 #include "task_handler.h"
 #include "task_manager.h"
+
 ScheduleServer::ScheduleServer(
     const std::shared_ptr<FetcherManager>& fetcher_manager,
     const std::shared_ptr<TaskHandler>& task_handler,
@@ -44,12 +45,12 @@ grpc::Status ScheduleServer::add_fetcher(grpc::ServerContext* context,
     std::cout << "schedulerserver receive a new task for add_fetcher"
               << std::endl;
     if (m_fetcher_manager->FindFetcher(fetcher->name())) {
-        std::cout << "the fetcher have existed,can't add" << std::endl;
+        LOG(INFO) << "the fetcher have existed,can't add";
     } else {
         if (m_fetcher_manager->AddFetcher(*fetcher)) {
-            LOG(INFO) << "add fetcher success" << std::endl;
+            LOG(INFO) << "add fetcher success: " << fetcher->name();
         } else {
-            LOG(INFO) << "add fetcher failed" << std::endl;
+            LOG(INFO) << "add fetcher failed: " << fetcher->name();
         }
     }
 
@@ -59,14 +60,14 @@ grpc::Status ScheduleServer::add_fetcher(grpc::ServerContext* context,
 grpc::Status ScheduleServer::add_crawledtask(
     grpc::ServerContext* context, const spiderproto::CrawledTask* task,
     spiderproto::TaskResponse* response) {
-    LOG(INFO) << "receive a CrawledTask" << std::endl;
+    LOG(INFO) << "receive a CrawledTask:" << task->taskid();
     m_concurrent_queue->push(*task);
 
     return grpc::Status::OK;
 }
 
 void ScheduleServer::RunServer() {
-    std::string server_address("0.0.0.0:50080");
+    std::string server_address("0.0.0.0:30000");
 
     ScheduleServer service(m_fetcher_manager, m_task_handler,
                            m_concurrent_queue);

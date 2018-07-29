@@ -23,9 +23,6 @@ public:
     void DelCrawledUrl(const spiderproto::CrawlUrl& crawurl);
 
     bool Update(const spiderproto::BasicTask& btask);
-    std::vector<spiderproto::CrawlUrl> GetAllCrawlurl() const;
-    std::vector<std::vector<spiderproto::CrawlUrl>> SpilitTask(int client_count,
-                                                               int url_count);
     void SetSeq(uint64_t t) noexcept;
     uint64_t GetSeq() const noexcept;
 
@@ -40,6 +37,8 @@ public:
     double GetDelay();
     int GetCrawlingUrlCount();
     int GetConcurrentCount();
+
+    std::vector<spiderproto::CrawlUrl> GetCrawlurl(int url_count);
 
 private:
     spiderproto::BasicTask m_btask;

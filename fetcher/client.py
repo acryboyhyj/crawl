@@ -10,7 +10,7 @@ def run():
     client = FetchStub(conn)
 
     task = spider_pb2.CrawlingTask()
-    task.taskid = str("Test-20180503095100-0001")
+    task.taskid = str("20180503095100-0001")
     
     crawl_url = task.crawl_urls.add()
     crawl_url.url = "https://www.jianshu.com/"

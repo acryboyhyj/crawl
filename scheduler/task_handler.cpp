@@ -23,7 +23,7 @@ bool TaskHandler::Exsit(const std::string& taskid) {
         return false;
 }
 
-std::string TaskHandler::UpdateTask(const spiderproto::BasicTask& btask) {
+void TaskHandler::UpdateTask(const spiderproto::BasicTask& btask) {
     m_task_manager->UpdateTask(btask);
     m_mysqlpp->UpdateTask(btask);
 }

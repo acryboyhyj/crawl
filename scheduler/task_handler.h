@@ -12,7 +12,7 @@ public:
     ~TaskHandler();
     bool AddTask(const spiderproto::BasicTask& task);
     bool Exsit(const std::string& taskid);
-    std::string UpdateTask(const spiderproto::BasicTask& task);
+    void UpdateTask(const spiderproto::BasicTask& task);
 
 private:
     std::shared_ptr<TaskManager> m_task_manager;

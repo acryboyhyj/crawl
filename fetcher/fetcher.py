@@ -4,6 +4,7 @@ import sys
 import os
 import scrapy
 from scrapy.settings import Settings
+from six.moves.configparser import SafeConfigParser
 
 import grpc
 from concurrent import futures
@@ -20,9 +21,10 @@ logger = logging.getLogger(__name__)
 def _install_args():
     parser = argparse.ArgumentParser(fromfile_prefix_chars='@')
     parser.add_argument("--name", default="fetcher_0")
-    parser.add_argument("--addr", default="127.0.0.1:50000")
+    parser.add_argument("--addr", default="127.0.0.1:40000")
     parser.add_argument("--crawler", default="sspider")
-    parser.add_argument("--scheduler", default="127.0.0.1:5008")
+    parser.add_argument("--scheduler", default="127.0.0.1:30000")
+    parser.add_argument("--handler", default="127.0.0.1:50000")
     return parser
 
 def _append_library(crawler_name):
@@ -48,6 +50,7 @@ def get_crawler(args):
     settings.set("FETCHER_NAME", args.name)
     settings.set("RPC_ADDR", args.addr)
     settings.set("SCHEDULER_ADDR", args.scheduler)
+    settings.set("HANDLER_ADDR", args.handler)
 
     #3. Command and its CrawlProcess surely be crawl
     crawler_process = CustomCrawlerProcess(settings)
@@ -65,11 +68,11 @@ def main():
     _append_library(crawler_name)
     crawler_process = get_crawler(args)
 
-    #1. get spider and queue
+    #1. get spider and its queue
     spider = crawler_process.spider_loader._spiders[crawler_name]
     queue = spider.queue
     
-    #2. start rpc server
+    #2. start rpc server, get fetch name
     fetch_server = FetchServer(args.name, queue)
     gprc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     add_FetchServicer_to_server(fetch_server, gprc_server)
@@ -77,7 +80,7 @@ def main():
     gprc_server.start()
     logger.info("start server at %s" % args.addr)
 
-    #3. crawler run cmd.ru
+    #3. crawler run cmd.run(args=[name])
     crawler_process.crawl(crawler_name)
     crawler_process.start()
 if __name__ == "__main__":

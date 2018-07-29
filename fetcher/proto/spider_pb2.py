@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='spiderproto',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0cspider.proto\x12\x0bspiderproto\"B\n\x08\x43rawlUrl\x12\x0b\n\x03url\x18\x01 \x01(\x0c\x12)\n\nurl_levels\x18\x02 \x03(\x0e\x32\x15.spiderproto.UrlLevel\"P\n\x07\x46\x65\x61ture\x12\x12\n\ndup_ignore\x18\x01 \x01(\x08\x12\x0f\n\x07testing\x18\x02 \x01(\x08\x12\x0e\n\x06period\x18\x03 \x01(\x08\x12\x10\n\x08interval\x18\x04 \x01(\x05\"\x97\x01\n\x08LinkRule\x12\'\n\x08in_level\x18\x01 \x01(\x0e\x32\x15.spiderproto.UrlLevel\x12\r\n\x05rules\x18\x02 \x03(\x0c\x12)\n\nurl_levels\x18\x03 \x03(\x0e\x32\x15.spiderproto.UrlLevel\x12(\n\tout_level\x18\x04 \x01(\x0e\x32\x15.spiderproto.UrlLevel\"\x92\x01\n\x07Storage\x12\x34\n\nstore_type\x18\x01 \x01(\x0e\x32 .spiderproto.Storage.StorageType\x12\x0c\n\x04\x64\x65st\x18\x02 \x01(\x0c\x12\x12\n\nattachment\x18\x03 \x01(\x0c\"/\n\x0bStorageType\x12\x10\n\x0cSTORAGE_HDFS\x10\x00\x12\x0e\n\nSTORAGE_MQ\x10\x01\"i\n\x07Runtime\x12\x16\n\x0e\x64ownload_delay\x18\x01 \x01(\x02\x12\x17\n\x0f\x63oncurrent_reqs\x18\x02 \x01(\x05\x12\x16\n\x0e\x61llow_fetchers\x18\x03 \x03(\x0c\x12\x15\n\rdeny_fetchers\x18\x04 \x03(\x0c\"\x89\x02\n\tBasicTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\x0c\x12\x0c\n\x04user\x18\x03 \x01(\x0c\x12-\n\ncrawl_list\x18\x04 \x01(\x0b\x32\x19.spiderproto.CrawlUrlList\x12%\n\x07\x66\x65\x61ture\x18\x05 \x01(\x0b\x32\x14.spiderproto.Feature\x12,\n\trule_list\x18\x06 \x01(\x0b\x32\x19.spiderproto.LinkRuleList\x12%\n\x07storage\x18\x07 \x01(\x0b\x32\x14.spiderproto.Storage\x12%\n\x07runtime\x18\x08 \x01(\x0b\x32\x14.spiderproto.Runtime\"9\n\x0c\x43rawlUrlList\x12)\n\ncrawl_urls\x18\x01 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\"4\n\x0cLinkRuleList\x12$\n\x05rules\x18\x01 \x03(\x0b\x32\x15.spiderproto.LinkRule\"\xa7\x01\n\x0c\x43rawlingTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0f\n\x07\x66\x65tcher\x18\x02 \x01(\x0c\x12)\n\ncrawl_urls\x18\x03 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\x12$\n\x05rules\x18\x04 \x03(\x0b\x32\x15.spiderproto.LinkRule\x12%\n\x07storage\x18\x05 \x01(\x0b\x32\x14.spiderproto.Storage\"\x8e\x01\n\x0b\x43rawledTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0f\n\x07\x66\x65tcher\x18\x02 \x01(\x0c\x12(\n\tcrawl_url\x18\x03 \x01(\x0b\x32\x15.spiderproto.CrawlUrl\x12\x0e\n\x06status\x18\x04 \x01(\x05\x12$\n\x05links\x18\x05 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\"\xbc\x01\n\nCrawlStats\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x12\n\nstart_time\x18\x02 \x01(\x0c\x12\x13\n\x0blast_update\x18\x03 \x01(\x0c\x12\x11\n\ttotal_url\x18\x04 \x01(\x05\x12\x0f\n\x07success\x18\x05 \x01(\x05\x12\x0f\n\x07\x63ode40x\x18\x06 \x01(\x05\x12\x0f\n\x07\x63ode404\x18\x07 \x01(\x05\x12\x0f\n\x07\x63ode50x\x18\x08 \x01(\x05\x12\x0f\n\x07\x63odexxx\x18\t \x01(\x05\x12\r\n\x05links\x18\n \x01(\x05\"9\n\x0cTaskResponse\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0c\n\x04\x63ode\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\x0c\"\x07\n\x05\x45mpty\"%\n\x07\x46\x65tcher\x12\x0c\n\x04name\x18\x01 \x01(\x0c\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x0c\"&\n\x07Segment\x12\x0c\n\x04word\x18\x01 \x01(\x0c\x12\r\n\x05score\x18\x02 \x01(\x05\"5\n\x0bSegmentList\x12&\n\x08segments\x18\x01 \x03(\x0b\x32\x14.spiderproto.Segment\"\x9f\x01\n\x08\x43rawlDoc\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0b\n\x03url\x18\x02 \x01(\x0c\x12\x0e\n\x06status\x18\x03 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\x0c\x12%\n\x07storage\x18\x05 \x01(\x0b\x32\x14.spiderproto.Storage\x12.\n\x0csegment_list\x18\x06 \x01(\x0b\x32\x18.spiderproto.SegmentList\"@\n\tCrawlDocs\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12#\n\x04\x64ocs\x18\x02 \x03(\x0b\x32\x15.spiderproto.CrawlDoc*d\n\x08UrlLevel\x12\x0f\n\x0bLEVEL_INDEX\x10\x00\x12\x0e\n\nLEVEL_LIST\x10\x01\x12\x12\n\x0eLEVEL_SUB_LIST\x10\x02\x12\x11\n\rLEVEL_CONTENT\x10\x03\x12\x10\n\x0cLEVEL_DETAIL\x10\x04\x32\xd7\x01\n\x08Schedule\x12?\n\x08\x61\x64\x64_task\x12\x16.spiderproto.BasicTask\x1a\x19.spiderproto.TaskResponse\"\x00\x12@\n\x0b\x61\x64\x64_fetcher\x12\x14.spiderproto.Fetcher\x1a\x19.spiderproto.TaskResponse\"\x00\x12H\n\x0f\x61\x64\x64_crawledtask\x12\x18.spiderproto.CrawledTask\x1a\x19.spiderproto.TaskResponse\"\x00\x32S\n\x05\x46\x65tch\x12J\n\x10\x61\x64\x64_crawlingtask\x12\x19.spiderproto.CrawlingTask\x1a\x19.spiderproto.TaskResponse\"\x00\x32L\n\x06Handle\x12\x42\n\x0c\x61\x64\x64_crawldoc\x12\x15.spiderproto.CrawlDoc\x1a\x19.spiderproto.TaskResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0cspider.proto\x12\x0bspiderproto\"O\n\x08\x43rawlUrl\x12\x0b\n\x03url\x18\x01 \x01(\x0c\x12$\n\x05level\x18\x02 \x01(\x0e\x32\x15.spiderproto.UrlLevel\x12\x10\n\x08usedable\x18\x03 \x01(\x08\"P\n\x07\x46\x65\x61ture\x12\x12\n\ndup_ignore\x18\x01 \x01(\x08\x12\x0f\n\x07testing\x18\x02 \x01(\x08\x12\x0e\n\x06period\x18\x03 \x01(\x08\x12\x10\n\x08interval\x18\x04 \x01(\x05\"l\n\x08LinkRule\x12\'\n\x08in_level\x18\x01 \x01(\x0e\x32\x15.spiderproto.UrlLevel\x12\r\n\x05rules\x18\x02 \x03(\x0c\x12(\n\tout_level\x18\x03 \x01(\x0e\x32\x15.spiderproto.UrlLevel\"\x92\x01\n\x07Storage\x12\x34\n\nstore_type\x18\x01 \x01(\x0e\x32 .spiderproto.Storage.StorageType\x12\x0c\n\x04\x64\x65st\x18\x02 \x01(\x0c\x12\x12\n\nattachment\x18\x03 \x01(\x0c\"/\n\x0bStorageType\x12\x10\n\x0cSTORAGE_HDFS\x10\x00\x12\x0e\n\nSTORAGE_MQ\x10\x01\"i\n\x07Runtime\x12\x16\n\x0e\x64ownload_delay\x18\x01 \x01(\x02\x12\x17\n\x0f\x63oncurrent_reqs\x18\x02 \x01(\x05\x12\x16\n\x0e\x61llow_fetchers\x18\x03 \x03(\x0c\x12\x15\n\rdeny_fetchers\x18\x04 \x03(\x0c\"\x89\x02\n\tBasicTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\x0c\x12\x0c\n\x04user\x18\x03 \x01(\x0c\x12-\n\ncrawl_list\x18\x04 \x01(\x0b\x32\x19.spiderproto.CrawlUrlList\x12%\n\x07\x66\x65\x61ture\x18\x05 \x01(\x0b\x32\x14.spiderproto.Feature\x12,\n\trule_list\x18\x06 \x01(\x0b\x32\x19.spiderproto.LinkRuleList\x12%\n\x07storage\x18\x07 \x01(\x0b\x32\x14.spiderproto.Storage\x12%\n\x07runtime\x18\x08 \x01(\x0b\x32\x14.spiderproto.Runtime\"9\n\x0c\x43rawlUrlList\x12)\n\ncrawl_urls\x18\x01 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\"4\n\x0cLinkRuleList\x12$\n\x05rules\x18\x01 \x03(\x0b\x32\x15.spiderproto.LinkRule\"\xa7\x01\n\x0c\x43rawlingTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0f\n\x07\x66\x65tcher\x18\x02 \x01(\x0c\x12)\n\ncrawl_urls\x18\x03 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\x12$\n\x05rules\x18\x04 \x03(\x0b\x32\x15.spiderproto.LinkRule\x12%\n\x07storage\x18\x05 \x01(\x0b\x32\x14.spiderproto.Storage\"\x8e\x01\n\x0b\x43rawledTask\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0f\n\x07\x66\x65tcher\x18\x02 \x01(\x0c\x12(\n\tcrawl_url\x18\x03 \x01(\x0b\x32\x15.spiderproto.CrawlUrl\x12\x0e\n\x06status\x18\x04 \x01(\x05\x12$\n\x05links\x18\x05 \x03(\x0b\x32\x15.spiderproto.CrawlUrl\"\xbc\x01\n\nCrawlStats\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x12\n\nstart_time\x18\x02 \x01(\x0c\x12\x13\n\x0blast_update\x18\x03 \x01(\x0c\x12\x11\n\ttotal_url\x18\x04 \x01(\x05\x12\x0f\n\x07success\x18\x05 \x01(\x05\x12\x0f\n\x07\x63ode40x\x18\x06 \x01(\x05\x12\x0f\n\x07\x63ode404\x18\x07 \x01(\x05\x12\x0f\n\x07\x63ode50x\x18\x08 \x01(\x05\x12\x0f\n\x07\x63odexxx\x18\t \x01(\x05\x12\r\n\x05links\x18\n \x01(\x05\"9\n\x0cTaskResponse\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0c\n\x04\x63ode\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\x0c\"\x07\n\x05\x45mpty\"%\n\x07\x46\x65tcher\x12\x0c\n\x04name\x18\x01 \x01(\x0c\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x0c\"&\n\x07Segment\x12\x0c\n\x04word\x18\x01 \x01(\x0c\x12\r\n\x05score\x18\x02 \x01(\x05\"5\n\x0bSegmentList\x12&\n\x08segments\x18\x01 \x03(\x0b\x32\x14.spiderproto.Segment\"\x9f\x01\n\x08\x43rawlDoc\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12\x0b\n\x03url\x18\x02 \x01(\x0c\x12\x0e\n\x06status\x18\x03 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\x0c\x12%\n\x07storage\x18\x05 \x01(\x0b\x32\x14.spiderproto.Storage\x12.\n\x0csegment_list\x18\x06 \x01(\x0b\x32\x18.spiderproto.SegmentList\"@\n\tCrawlDocs\x12\x0e\n\x06taskid\x18\x01 \x01(\x0c\x12#\n\x04\x64ocs\x18\x02 \x03(\x0b\x32\x15.spiderproto.CrawlDoc*-\n\x08UrlLevel\x12\x0e\n\nLEVEL_LIST\x10\x00\x12\x11\n\rLEVEL_CONTENT\x10\x01\x32\xd7\x01\n\x08Schedule\x12?\n\x08\x61\x64\x64_task\x12\x16.spiderproto.BasicTask\x1a\x19.spiderproto.TaskResponse\"\x00\x12@\n\x0b\x61\x64\x64_fetcher\x12\x14.spiderproto.Fetcher\x1a\x19.spiderproto.TaskResponse\"\x00\x12H\n\x0f\x61\x64\x64_crawledtask\x12\x18.spiderproto.CrawledTask\x1a\x19.spiderproto.TaskResponse\"\x00\x32S\n\x05\x46\x65tch\x12J\n\x10\x61\x64\x64_crawlingtask\x12\x19.spiderproto.CrawlingTask\x1a\x19.spiderproto.TaskResponse\"\x00\x32L\n\x06Handle\x12\x42\n\x0c\x61\x64\x64_crawldoc\x12\x15.spiderproto.CrawlDoc\x1a\x19.spiderproto.TaskResponse\"\x00\x62\x06proto3')
 )
 
 _URLLEVEL = _descriptor.EnumDescriptor(
@@ -30,39 +30,24 @@ _URLLEVEL = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='LEVEL_INDEX', index=0, number=0,
+      name='LEVEL_LIST', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LEVEL_LIST', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='LEVEL_SUB_LIST', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='LEVEL_CONTENT', index=3, number=3,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='LEVEL_DETAIL', index=4, number=4,
+      name='LEVEL_CONTENT', index=1, number=1,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1906,
-  serialized_end=2006,
+  serialized_start=1875,
+  serialized_end=1920,
 )
 _sym_db.RegisterEnumDescriptor(_URLLEVEL)
 
 UrlLevel = enum_type_wrapper.EnumTypeWrapper(_URLLEVEL)
-LEVEL_INDEX = 0
-LEVEL_LIST = 1
-LEVEL_SUB_LIST = 2
-LEVEL_CONTENT = 3
-LEVEL_DETAIL = 4
+LEVEL_LIST = 0
+LEVEL_CONTENT = 1
 
 
 _STORAGE_STORAGETYPE = _descriptor.EnumDescriptor(
@@ -82,8 +67,8 @@ _STORAGE_STORAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=433,
-  serialized_end=480,
+  serialized_start=402,
+  serialized_end=449,
 )
 _sym_db.RegisterEnumDescriptor(_STORAGE_STORAGETYPE)
 
@@ -103,9 +88,16 @@ _CRAWLURL = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='url_levels', full_name='spiderproto.CrawlUrl.url_levels', index=1,
-      number=2, type=14, cpp_type=8, label=3,
-      has_default_value=False, default_value=[],
+      name='level', full_name='spiderproto.CrawlUrl.level', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='usedable', full_name='spiderproto.CrawlUrl.usedable', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -122,7 +114,7 @@ _CRAWLURL = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=29,
-  serialized_end=95,
+  serialized_end=108,
 )
 
 
@@ -173,8 +165,8 @@ _FEATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=97,
-  serialized_end=177,
+  serialized_start=110,
+  serialized_end=190,
 )
 
 
@@ -200,15 +192,8 @@ _LINKRULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='url_levels', full_name='spiderproto.LinkRule.url_levels', index=2,
-      number=3, type=14, cpp_type=8, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='out_level', full_name='spiderproto.LinkRule.out_level', index=3,
-      number=4, type=14, cpp_type=8, label=1,
+      name='out_level', full_name='spiderproto.LinkRule.out_level', index=2,
+      number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -225,8 +210,8 @@ _LINKRULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=180,
-  serialized_end=331,
+  serialized_start=192,
+  serialized_end=300,
 )
 
 
@@ -271,8 +256,8 @@ _STORAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=334,
-  serialized_end=480,
+  serialized_start=303,
+  serialized_end=449,
 )
 
 
@@ -323,8 +308,8 @@ _RUNTIME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=482,
-  serialized_end=587,
+  serialized_start=451,
+  serialized_end=556,
 )
 
 
@@ -403,8 +388,8 @@ _BASICTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=590,
-  serialized_end=855,
+  serialized_start=559,
+  serialized_end=824,
 )
 
 
@@ -434,8 +419,8 @@ _CRAWLURLLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=857,
-  serialized_end=914,
+  serialized_start=826,
+  serialized_end=883,
 )
 
 
@@ -465,8 +450,8 @@ _LINKRULELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=916,
-  serialized_end=968,
+  serialized_start=885,
+  serialized_end=937,
 )
 
 
@@ -524,8 +509,8 @@ _CRAWLINGTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=971,
-  serialized_end=1138,
+  serialized_start=940,
+  serialized_end=1107,
 )
 
 
@@ -583,8 +568,8 @@ _CRAWLEDTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1141,
-  serialized_end=1283,
+  serialized_start=1110,
+  serialized_end=1252,
 )
 
 
@@ -677,8 +662,8 @@ _CRAWLSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1286,
-  serialized_end=1474,
+  serialized_start=1255,
+  serialized_end=1443,
 )
 
 
@@ -722,8 +707,8 @@ _TASKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1476,
-  serialized_end=1533,
+  serialized_start=1445,
+  serialized_end=1502,
 )
 
 
@@ -746,8 +731,8 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1535,
-  serialized_end=1542,
+  serialized_start=1504,
+  serialized_end=1511,
 )
 
 
@@ -784,8 +769,8 @@ _FETCHER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1544,
-  serialized_end=1581,
+  serialized_start=1513,
+  serialized_end=1550,
 )
 
 
@@ -822,8 +807,8 @@ _SEGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1583,
-  serialized_end=1621,
+  serialized_start=1552,
+  serialized_end=1590,
 )
 
 
@@ -853,8 +838,8 @@ _SEGMENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1623,
-  serialized_end=1676,
+  serialized_start=1592,
+  serialized_end=1645,
 )
 
 
@@ -919,8 +904,8 @@ _CRAWLDOC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1679,
-  serialized_end=1838,
+  serialized_start=1648,
+  serialized_end=1807,
 )
 
 
@@ -957,13 +942,12 @@ _CRAWLDOCS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1840,
-  serialized_end=1904,
+  serialized_start=1809,
+  serialized_end=1873,
 )
 
-_CRAWLURL.fields_by_name['url_levels'].enum_type = _URLLEVEL
+_CRAWLURL.fields_by_name['level'].enum_type = _URLLEVEL
 _LINKRULE.fields_by_name['in_level'].enum_type = _URLLEVEL
-_LINKRULE.fields_by_name['url_levels'].enum_type = _URLLEVEL
 _LINKRULE.fields_by_name['out_level'].enum_type = _URLLEVEL
 _STORAGE.fields_by_name['store_type'].enum_type = _STORAGE_STORAGETYPE
 _STORAGE_STORAGETYPE.containing_type = _STORAGE
@@ -1138,8 +1122,8 @@ _SCHEDULE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2009,
-  serialized_end=2224,
+  serialized_start=1923,
+  serialized_end=2138,
   methods=[
   _descriptor.MethodDescriptor(
     name='add_task',
@@ -1180,8 +1164,8 @@ _FETCH = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=2226,
-  serialized_end=2309,
+  serialized_start=2140,
+  serialized_end=2223,
   methods=[
   _descriptor.MethodDescriptor(
     name='add_crawlingtask',
@@ -1204,8 +1188,8 @@ _HANDLE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   serialized_options=None,
-  serialized_start=2311,
-  serialized_end=2387,
+  serialized_start=2225,
+  serialized_end=2301,
   methods=[
   _descriptor.MethodDescriptor(
     name='add_crawldoc',

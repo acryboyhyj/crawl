@@ -16,7 +16,7 @@ crawl="sspider"
 addr=127.0.0.1
 port=40000
 scheduler="127.0.0.1:30000"
-#handler="127.0.0.1:40000"
+handler="127.0.0.1:50000"
 
 
 cd $dir_name
@@ -25,15 +25,17 @@ cmd="$bin
     --name="fetcher1" 
     --addr=$addr:$port
     --crawl=$crawl
-    --scheduler=$scheduler" 
-  #  --handler=$handler  
-#--bind=$bindaddr
-function_start() {
+    --scheduler=$scheduler
+    --handler=$handler"  
+
+    function_start() {
     echo "start with: $cmd"
     ulimit -c unlimited
     rm log.txt
     rm spider.log
     $cmd > log.txt 2>&1 &
+
+    pid=$(ps aux | grep "$bin" | grep "addr=$addr:$port" | awk '{print $2}')
     time_left=1
     while [ $time_left -gt 1 ]; do
         sleep 1
@@ -58,15 +60,7 @@ function_stop() {
     echo "stop $bin with pid $pid"
     kill $pid
     time_left=10
-    while [ $time_left -gt 0 ]; do
-        pid=$(ps aux | grep "$bin" | grep "addr=$addr:$port" | awk '{print $2}')
-        if [ ! -e /proc/$pid ]; then
-            return 0
-        fi
-        sleep 1
-        time_left=$(($time_left-1))
-    done
-    return 1
+ 
 }
 
 if [ $operation == "start" ]; then

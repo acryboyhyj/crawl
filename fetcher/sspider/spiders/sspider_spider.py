@@ -8,8 +8,8 @@ import re
 
 from scrapy.linkextractors import LinkExtractor
 from sspider.items import SspiderItem
+from proto.spider_pb2 import *
 
-import proto.spider_pb2 
 import copy
 import urllib
 
@@ -80,9 +80,9 @@ class SspiderSpider(scrapy.Spider):
         return extracted_urls
 
     def _should_rule(self, link_rule, crawl_url):
-        if link_rule.in_level == "*" or crawl_url.url_levels == "" :
+        if link_rule.in_level ==  crawl_url.level :
             return True
-        return link_rule.in_level == crawl_url.url_levels
+        return False
 
     def _extract_crawlurls(self, link_rule, crawling_task, response):
         """Return CrawlUrls"""
@@ -101,15 +101,15 @@ class SspiderSpider(scrapy.Spider):
                 logger.error("unsupported rule %s for url %s from task %s" \
                         % (rule, response.url, crawling_task.taskid.taskid))
 
+        logger.debug("xpaths:  %s" %xpaths)
         link_extractor = LinkExtractor(allow=re_patterns,restrict_xpaths=xpaths)
         links = link_extractor.extract_links(response)
-
+        logger.debug("links : %s" %str(links))
         extracted_urls = []
         for link in links:
             crawl_url = CrawlUrl()
-            for url_level in link_rule.url_levels:
-                crawl_url.url_levels.append(url_level)
             crawl_url.level = link_rule.out_level
+            crawl_url.url = link.url
             extracted_urls.append(crawl_url)
             logger.debug("extract link %s" % str(crawl_url))        
 
