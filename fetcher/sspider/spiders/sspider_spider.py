@@ -99,10 +99,11 @@ class SspiderSpider(scrapy.Spider):
                 xpaths.append(rule[6:])
             else:
                 logger.error("unsupported rule %s for url %s from task %s" \
-                        % (rule, response.url, crawling_task.taskid.taskid))
+                        % (rule, response.url, crawling_task.taskid))
 
         logger.debug("xpaths:  %s" %xpaths)
-        link_extractor = LinkExtractor(allow=re_patterns,restrict_xpaths=xpaths)
+        link_extractor = LinkExtractor(allow=re_patterns,restrict_xpaths=xpaths,
+                canonicalize=True)
         links = link_extractor.extract_links(response)
         logger.debug("links : %s" %str(links))
         extracted_urls = []

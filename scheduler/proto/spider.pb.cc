@@ -6,8 +6,8 @@
 #include <algorithm>
 
 #include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -18,113 +18,93 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
 
-namespace protobuf_spider_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CrawlUrl;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Feature;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_LinkRule;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Runtime;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Segment;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Storage;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_CrawlUrlList;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LinkRuleList;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SegmentList;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_spider_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_CrawlDoc;
-}  // namespace protobuf_spider_2eproto
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CrawlUrl_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Feature_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_LinkRule_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Runtime_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Segment_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Storage_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_CrawlUrlList_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LinkRuleList_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SegmentList_spider_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_spider_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_CrawlDoc_spider_2eproto;
 namespace spiderproto {
 class CrawlUrlDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlUrl>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlUrl> _instance;
 } _CrawlUrl_default_instance_;
 class FeatureDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Feature>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Feature> _instance;
 } _Feature_default_instance_;
 class LinkRuleDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<LinkRule>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<LinkRule> _instance;
 } _LinkRule_default_instance_;
 class StorageDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Storage>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Storage> _instance;
 } _Storage_default_instance_;
 class RuntimeDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Runtime>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Runtime> _instance;
 } _Runtime_default_instance_;
 class BasicTaskDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BasicTask>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<BasicTask> _instance;
 } _BasicTask_default_instance_;
 class CrawlUrlListDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlUrlList>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlUrlList> _instance;
 } _CrawlUrlList_default_instance_;
 class LinkRuleListDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<LinkRuleList>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<LinkRuleList> _instance;
 } _LinkRuleList_default_instance_;
 class CrawlingTaskDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlingTask>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlingTask> _instance;
 } _CrawlingTask_default_instance_;
 class CrawledTaskDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawledTask>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawledTask> _instance;
 } _CrawledTask_default_instance_;
 class CrawlStatsDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlStats>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlStats> _instance;
 } _CrawlStats_default_instance_;
 class TaskResponseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TaskResponse>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<TaskResponse> _instance;
 } _TaskResponse_default_instance_;
 class EmptyDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Empty>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Empty> _instance;
 } _Empty_default_instance_;
 class FetcherDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Fetcher>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Fetcher> _instance;
 } _Fetcher_default_instance_;
 class SegmentDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Segment>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<Segment> _instance;
 } _Segment_default_instance_;
 class SegmentListDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SegmentList>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<SegmentList> _instance;
 } _SegmentList_default_instance_;
 class CrawlDocDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlDoc>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlDoc> _instance;
 } _CrawlDoc_default_instance_;
 class CrawlDocsDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CrawlDocs>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<CrawlDocs> _instance;
 } _CrawlDocs_default_instance_;
 }  // namespace spiderproto
-namespace protobuf_spider_2eproto {
-static void InitDefaultsCrawlUrl() {
+static void InitDefaultsCrawlUrl_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -135,10 +115,10 @@ static void InitDefaultsCrawlUrl() {
   ::spiderproto::CrawlUrl::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CrawlUrl =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCrawlUrl}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_CrawlUrl_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCrawlUrl_spider_2eproto}, {}};
 
-static void InitDefaultsFeature() {
+static void InitDefaultsFeature_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -149,10 +129,10 @@ static void InitDefaultsFeature() {
   ::spiderproto::Feature::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Feature =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFeature}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Feature_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFeature_spider_2eproto}, {}};
 
-static void InitDefaultsLinkRule() {
+static void InitDefaultsLinkRule_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -163,10 +143,10 @@ static void InitDefaultsLinkRule() {
   ::spiderproto::LinkRule::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_LinkRule =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLinkRule}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_LinkRule_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLinkRule_spider_2eproto}, {}};
 
-static void InitDefaultsStorage() {
+static void InitDefaultsStorage_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -177,10 +157,10 @@ static void InitDefaultsStorage() {
   ::spiderproto::Storage::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Storage =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStorage}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Storage_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStorage_spider_2eproto}, {}};
 
-static void InitDefaultsRuntime() {
+static void InitDefaultsRuntime_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -191,10 +171,10 @@ static void InitDefaultsRuntime() {
   ::spiderproto::Runtime::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Runtime =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRuntime}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Runtime_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRuntime_spider_2eproto}, {}};
 
-static void InitDefaultsBasicTask() {
+static void InitDefaultsBasicTask_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -205,15 +185,15 @@ static void InitDefaultsBasicTask() {
   ::spiderproto::BasicTask::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<5> scc_info_BasicTask =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsBasicTask}, {
-      &protobuf_spider_2eproto::scc_info_CrawlUrlList.base,
-      &protobuf_spider_2eproto::scc_info_Feature.base,
-      &protobuf_spider_2eproto::scc_info_LinkRuleList.base,
-      &protobuf_spider_2eproto::scc_info_Storage.base,
-      &protobuf_spider_2eproto::scc_info_Runtime.base,}};
+::google::protobuf::internal::SCCInfo<5> scc_info_BasicTask_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsBasicTask_spider_2eproto}, {
+      &scc_info_CrawlUrlList_spider_2eproto.base,
+      &scc_info_Feature_spider_2eproto.base,
+      &scc_info_LinkRuleList_spider_2eproto.base,
+      &scc_info_Storage_spider_2eproto.base,
+      &scc_info_Runtime_spider_2eproto.base,}};
 
-static void InitDefaultsCrawlUrlList() {
+static void InitDefaultsCrawlUrlList_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -224,11 +204,11 @@ static void InitDefaultsCrawlUrlList() {
   ::spiderproto::CrawlUrlList::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_CrawlUrlList =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawlUrlList}, {
-      &protobuf_spider_2eproto::scc_info_CrawlUrl.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_CrawlUrlList_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawlUrlList_spider_2eproto}, {
+      &scc_info_CrawlUrl_spider_2eproto.base,}};
 
-static void InitDefaultsLinkRuleList() {
+static void InitDefaultsLinkRuleList_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -239,11 +219,11 @@ static void InitDefaultsLinkRuleList() {
   ::spiderproto::LinkRuleList::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_LinkRuleList =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsLinkRuleList}, {
-      &protobuf_spider_2eproto::scc_info_LinkRule.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_LinkRuleList_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsLinkRuleList_spider_2eproto}, {
+      &scc_info_LinkRule_spider_2eproto.base,}};
 
-static void InitDefaultsCrawlingTask() {
+static void InitDefaultsCrawlingTask_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -254,13 +234,13 @@ static void InitDefaultsCrawlingTask() {
   ::spiderproto::CrawlingTask::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<3> scc_info_CrawlingTask =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsCrawlingTask}, {
-      &protobuf_spider_2eproto::scc_info_CrawlUrl.base,
-      &protobuf_spider_2eproto::scc_info_LinkRule.base,
-      &protobuf_spider_2eproto::scc_info_Storage.base,}};
+::google::protobuf::internal::SCCInfo<3> scc_info_CrawlingTask_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsCrawlingTask_spider_2eproto}, {
+      &scc_info_CrawlUrl_spider_2eproto.base,
+      &scc_info_LinkRule_spider_2eproto.base,
+      &scc_info_Storage_spider_2eproto.base,}};
 
-static void InitDefaultsCrawledTask() {
+static void InitDefaultsCrawledTask_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -271,11 +251,11 @@ static void InitDefaultsCrawledTask() {
   ::spiderproto::CrawledTask::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_CrawledTask =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawledTask}, {
-      &protobuf_spider_2eproto::scc_info_CrawlUrl.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_CrawledTask_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawledTask_spider_2eproto}, {
+      &scc_info_CrawlUrl_spider_2eproto.base,}};
 
-static void InitDefaultsCrawlStats() {
+static void InitDefaultsCrawlStats_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -286,10 +266,10 @@ static void InitDefaultsCrawlStats() {
   ::spiderproto::CrawlStats::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CrawlStats =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCrawlStats}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_CrawlStats_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCrawlStats_spider_2eproto}, {}};
 
-static void InitDefaultsTaskResponse() {
+static void InitDefaultsTaskResponse_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -300,10 +280,10 @@ static void InitDefaultsTaskResponse() {
   ::spiderproto::TaskResponse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TaskResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTaskResponse}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_TaskResponse_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTaskResponse_spider_2eproto}, {}};
 
-static void InitDefaultsEmpty() {
+static void InitDefaultsEmpty_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -314,10 +294,10 @@ static void InitDefaultsEmpty() {
   ::spiderproto::Empty::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Empty =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsEmpty}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Empty_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsEmpty_spider_2eproto}, {}};
 
-static void InitDefaultsFetcher() {
+static void InitDefaultsFetcher_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -328,10 +308,10 @@ static void InitDefaultsFetcher() {
   ::spiderproto::Fetcher::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Fetcher =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFetcher}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Fetcher_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFetcher_spider_2eproto}, {}};
 
-static void InitDefaultsSegment() {
+static void InitDefaultsSegment_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -342,10 +322,10 @@ static void InitDefaultsSegment() {
   ::spiderproto::Segment::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Segment =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSegment}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Segment_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSegment_spider_2eproto}, {}};
 
-static void InitDefaultsSegmentList() {
+static void InitDefaultsSegmentList_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -356,11 +336,11 @@ static void InitDefaultsSegmentList() {
   ::spiderproto::SegmentList::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_SegmentList =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSegmentList}, {
-      &protobuf_spider_2eproto::scc_info_Segment.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_SegmentList_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSegmentList_spider_2eproto}, {
+      &scc_info_Segment_spider_2eproto.base,}};
 
-static void InitDefaultsCrawlDoc() {
+static void InitDefaultsCrawlDoc_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -371,12 +351,12 @@ static void InitDefaultsCrawlDoc() {
   ::spiderproto::CrawlDoc::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_CrawlDoc =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsCrawlDoc}, {
-      &protobuf_spider_2eproto::scc_info_Storage.base,
-      &protobuf_spider_2eproto::scc_info_SegmentList.base,}};
+::google::protobuf::internal::SCCInfo<2> scc_info_CrawlDoc_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsCrawlDoc_spider_2eproto}, {
+      &scc_info_Storage_spider_2eproto.base,
+      &scc_info_SegmentList_spider_2eproto.base,}};
 
-static void InitDefaultsCrawlDocs() {
+static void InitDefaultsCrawlDocs_spider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -387,35 +367,36 @@ static void InitDefaultsCrawlDocs() {
   ::spiderproto::CrawlDocs::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_CrawlDocs =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawlDocs}, {
-      &protobuf_spider_2eproto::scc_info_CrawlDoc.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_CrawlDocs_spider_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCrawlDocs_spider_2eproto}, {
+      &scc_info_CrawlDoc_spider_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlUrl.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Feature.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LinkRule.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Storage.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Runtime.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BasicTask.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlUrlList.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LinkRuleList.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlingTask.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawledTask.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlStats.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TaskResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Empty.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Fetcher.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Segment.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SegmentList.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlDoc.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CrawlDocs.base);
+void InitDefaults_spider_2eproto() {
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlUrl_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Feature_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_LinkRule_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Storage_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Runtime_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_BasicTask_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlUrlList_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_LinkRuleList_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlingTask_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawledTask_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlStats_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_TaskResponse_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Empty_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Fetcher_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Segment_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_SegmentList_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlDoc_spider_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CrawlDocs_spider_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[18];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
+::google::protobuf::Metadata file_level_metadata_spider_2eproto[18];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_spider_2eproto[2];
+constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_spider_2eproto = nullptr;
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+const ::google::protobuf::uint32 TableStruct_spider_2eproto::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::spiderproto::CrawlUrl, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -612,107 +593,89 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::spiderproto::_CrawlDocs_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "spider.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_spider_2eproto = {
+  {}, AddDescriptors_spider_2eproto, "spider.proto", schemas,
+  file_default_instances, TableStruct_spider_2eproto::offsets,
+  file_level_metadata_spider_2eproto, 18, file_level_enum_descriptors_spider_2eproto, file_level_service_descriptors_spider_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
+::google::protobuf::internal::DescriptorTable descriptor_table_spider_2eproto = {
+  false, InitDefaults_spider_2eproto, 
+  "\n\014spider.proto\022\013spiderproto\"O\n\010CrawlUrl\022"
+  "\013\n\003url\030\001 \001(\014\022$\n\005level\030\002 \001(\0162\025.spiderprot"
+  "o.UrlLevel\022\020\n\010usedable\030\003 \001(\010\"P\n\007Feature\022"
+  "\022\n\ndup_ignore\030\001 \001(\010\022\017\n\007testing\030\002 \001(\010\022\016\n\006"
+  "period\030\003 \001(\010\022\020\n\010interval\030\004 \001(\005\"l\n\010LinkRu"
+  "le\022\'\n\010in_level\030\001 \001(\0162\025.spiderproto.UrlLe"
+  "vel\022\r\n\005rules\030\002 \003(\014\022(\n\tout_level\030\003 \001(\0162\025."
+  "spiderproto.UrlLevel\"\222\001\n\007Storage\0224\n\nstor"
+  "e_type\030\001 \001(\0162 .spiderproto.Storage.Stora"
+  "geType\022\014\n\004dest\030\002 \001(\014\022\022\n\nattachment\030\003 \001(\014"
+  "\"/\n\013StorageType\022\020\n\014STORAGE_HDFS\020\000\022\016\n\nSTO"
+  "RAGE_MQ\020\001\"i\n\007Runtime\022\026\n\016download_delay\030\001"
+  " \001(\002\022\027\n\017concurrent_reqs\030\002 \001(\005\022\026\n\016allow_f"
+  "etchers\030\003 \003(\014\022\025\n\rdeny_fetchers\030\004 \003(\014\"\211\002\n"
+  "\tBasicTask\022\016\n\006taskid\030\001 \001(\014\022\014\n\004name\030\002 \001(\014"
+  "\022\014\n\004user\030\003 \001(\014\022-\n\ncrawl_list\030\004 \001(\0132\031.spi"
+  "derproto.CrawlUrlList\022%\n\007feature\030\005 \001(\0132\024"
+  ".spiderproto.Feature\022,\n\trule_list\030\006 \001(\0132"
+  "\031.spiderproto.LinkRuleList\022%\n\007storage\030\007 "
+  "\001(\0132\024.spiderproto.Storage\022%\n\007runtime\030\010 \001"
+  "(\0132\024.spiderproto.Runtime\"9\n\014CrawlUrlList"
+  "\022)\n\ncrawl_urls\030\001 \003(\0132\025.spiderproto.Crawl"
+  "Url\"4\n\014LinkRuleList\022$\n\005rules\030\001 \003(\0132\025.spi"
+  "derproto.LinkRule\"\247\001\n\014CrawlingTask\022\016\n\006ta"
+  "skid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022)\n\ncrawl_url"
+  "s\030\003 \003(\0132\025.spiderproto.CrawlUrl\022$\n\005rules\030"
+  "\004 \003(\0132\025.spiderproto.LinkRule\022%\n\007storage\030"
+  "\005 \001(\0132\024.spiderproto.Storage\"\216\001\n\013CrawledT"
+  "ask\022\016\n\006taskid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022(\n\t"
+  "crawl_url\030\003 \001(\0132\025.spiderproto.CrawlUrl\022\016"
+  "\n\006status\030\004 \001(\005\022$\n\005links\030\005 \003(\0132\025.spiderpr"
+  "oto.CrawlUrl\"\274\001\n\nCrawlStats\022\016\n\006taskid\030\001 "
+  "\001(\014\022\022\n\nstart_time\030\002 \001(\014\022\023\n\013last_update\030\003"
+  " \001(\014\022\021\n\ttotal_url\030\004 \001(\005\022\017\n\007success\030\005 \001(\005"
+  "\022\017\n\007code40x\030\006 \001(\005\022\017\n\007code404\030\007 \001(\005\022\017\n\007co"
+  "de50x\030\010 \001(\005\022\017\n\007codexxx\030\t \001(\005\022\r\n\005links\030\n "
+  "\001(\005\"9\n\014TaskResponse\022\016\n\006taskid\030\001 \001(\014\022\014\n\004c"
+  "ode\030\002 \001(\005\022\013\n\003msg\030\003 \001(\014\"\007\n\005Empty\"%\n\007Fetch"
+  "er\022\014\n\004name\030\001 \001(\014\022\014\n\004addr\030\002 \001(\014\"&\n\007Segmen"
+  "t\022\014\n\004word\030\001 \001(\014\022\r\n\005score\030\002 \001(\005\"5\n\013Segmen"
+  "tList\022&\n\010segments\030\001 \003(\0132\024.spiderproto.Se"
+  "gment\"\237\001\n\010CrawlDoc\022\016\n\006taskid\030\001 \001(\014\022\013\n\003ur"
+  "l\030\002 \001(\014\022\016\n\006status\030\003 \001(\005\022\017\n\007content\030\004 \001(\014"
+  "\022%\n\007storage\030\005 \001(\0132\024.spiderproto.Storage\022"
+  ".\n\014segment_list\030\006 \001(\0132\030.spiderproto.Segm"
+  "entList\"@\n\tCrawlDocs\022\016\n\006taskid\030\001 \001(\014\022#\n\004"
+  "docs\030\002 \003(\0132\025.spiderproto.CrawlDoc*-\n\010Url"
+  "Level\022\016\n\nLEVEL_LIST\020\000\022\021\n\rLEVEL_CONTENT\020\001"
+  "2\327\001\n\010Schedule\022\?\n\010add_task\022\026.spiderproto."
+  "BasicTask\032\031.spiderproto.TaskResponse\"\000\022@"
+  "\n\013add_fetcher\022\024.spiderproto.Fetcher\032\031.sp"
+  "iderproto.TaskResponse\"\000\022H\n\017add_crawledt"
+  "ask\022\030.spiderproto.CrawledTask\032\031.spiderpr"
+  "oto.TaskResponse\"\0002S\n\005Fetch\022J\n\020add_crawl"
+  "ingtask\022\031.spiderproto.CrawlingTask\032\031.spi"
+  "derproto.TaskResponse\"\0002L\n\006Handle\022B\n\014add"
+  "_crawldoc\022\025.spiderproto.CrawlDoc\032\031.spide"
+  "rproto.TaskResponse\"\000b\006proto3"
+,
+  "spider.proto", &assign_descriptors_table_spider_2eproto, 2309,
+};
 
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 18);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014spider.proto\022\013spiderproto\"O\n\010CrawlUrl\022"
-      "\013\n\003url\030\001 \001(\014\022$\n\005level\030\002 \001(\0162\025.spiderprot"
-      "o.UrlLevel\022\020\n\010usedable\030\003 \001(\010\"P\n\007Feature\022"
-      "\022\n\ndup_ignore\030\001 \001(\010\022\017\n\007testing\030\002 \001(\010\022\016\n\006"
-      "period\030\003 \001(\010\022\020\n\010interval\030\004 \001(\005\"l\n\010LinkRu"
-      "le\022\'\n\010in_level\030\001 \001(\0162\025.spiderproto.UrlLe"
-      "vel\022\r\n\005rules\030\002 \003(\014\022(\n\tout_level\030\003 \001(\0162\025."
-      "spiderproto.UrlLevel\"\222\001\n\007Storage\0224\n\nstor"
-      "e_type\030\001 \001(\0162 .spiderproto.Storage.Stora"
-      "geType\022\014\n\004dest\030\002 \001(\014\022\022\n\nattachment\030\003 \001(\014"
-      "\"/\n\013StorageType\022\020\n\014STORAGE_HDFS\020\000\022\016\n\nSTO"
-      "RAGE_MQ\020\001\"i\n\007Runtime\022\026\n\016download_delay\030\001"
-      " \001(\002\022\027\n\017concurrent_reqs\030\002 \001(\005\022\026\n\016allow_f"
-      "etchers\030\003 \003(\014\022\025\n\rdeny_fetchers\030\004 \003(\014\"\211\002\n"
-      "\tBasicTask\022\016\n\006taskid\030\001 \001(\014\022\014\n\004name\030\002 \001(\014"
-      "\022\014\n\004user\030\003 \001(\014\022-\n\ncrawl_list\030\004 \001(\0132\031.spi"
-      "derproto.CrawlUrlList\022%\n\007feature\030\005 \001(\0132\024"
-      ".spiderproto.Feature\022,\n\trule_list\030\006 \001(\0132"
-      "\031.spiderproto.LinkRuleList\022%\n\007storage\030\007 "
-      "\001(\0132\024.spiderproto.Storage\022%\n\007runtime\030\010 \001"
-      "(\0132\024.spiderproto.Runtime\"9\n\014CrawlUrlList"
-      "\022)\n\ncrawl_urls\030\001 \003(\0132\025.spiderproto.Crawl"
-      "Url\"4\n\014LinkRuleList\022$\n\005rules\030\001 \003(\0132\025.spi"
-      "derproto.LinkRule\"\247\001\n\014CrawlingTask\022\016\n\006ta"
-      "skid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022)\n\ncrawl_url"
-      "s\030\003 \003(\0132\025.spiderproto.CrawlUrl\022$\n\005rules\030"
-      "\004 \003(\0132\025.spiderproto.LinkRule\022%\n\007storage\030"
-      "\005 \001(\0132\024.spiderproto.Storage\"\216\001\n\013CrawledT"
-      "ask\022\016\n\006taskid\030\001 \001(\014\022\017\n\007fetcher\030\002 \001(\014\022(\n\t"
-      "crawl_url\030\003 \001(\0132\025.spiderproto.CrawlUrl\022\016"
-      "\n\006status\030\004 \001(\005\022$\n\005links\030\005 \003(\0132\025.spiderpr"
-      "oto.CrawlUrl\"\274\001\n\nCrawlStats\022\016\n\006taskid\030\001 "
-      "\001(\014\022\022\n\nstart_time\030\002 \001(\014\022\023\n\013last_update\030\003"
-      " \001(\014\022\021\n\ttotal_url\030\004 \001(\005\022\017\n\007success\030\005 \001(\005"
-      "\022\017\n\007code40x\030\006 \001(\005\022\017\n\007code404\030\007 \001(\005\022\017\n\007co"
-      "de50x\030\010 \001(\005\022\017\n\007codexxx\030\t \001(\005\022\r\n\005links\030\n "
-      "\001(\005\"9\n\014TaskResponse\022\016\n\006taskid\030\001 \001(\014\022\014\n\004c"
-      "ode\030\002 \001(\005\022\013\n\003msg\030\003 \001(\014\"\007\n\005Empty\"%\n\007Fetch"
-      "er\022\014\n\004name\030\001 \001(\014\022\014\n\004addr\030\002 \001(\014\"&\n\007Segmen"
-      "t\022\014\n\004word\030\001 \001(\014\022\r\n\005score\030\002 \001(\005\"5\n\013Segmen"
-      "tList\022&\n\010segments\030\001 \003(\0132\024.spiderproto.Se"
-      "gment\"\237\001\n\010CrawlDoc\022\016\n\006taskid\030\001 \001(\014\022\013\n\003ur"
-      "l\030\002 \001(\014\022\016\n\006status\030\003 \001(\005\022\017\n\007content\030\004 \001(\014"
-      "\022%\n\007storage\030\005 \001(\0132\024.spiderproto.Storage\022"
-      ".\n\014segment_list\030\006 \001(\0132\030.spiderproto.Segm"
-      "entList\"@\n\tCrawlDocs\022\016\n\006taskid\030\001 \001(\014\022#\n\004"
-      "docs\030\002 \003(\0132\025.spiderproto.CrawlDoc*-\n\010Url"
-      "Level\022\016\n\nLEVEL_LIST\020\000\022\021\n\rLEVEL_CONTENT\020\001"
-      "2\327\001\n\010Schedule\022\?\n\010add_task\022\026.spiderproto."
-      "BasicTask\032\031.spiderproto.TaskResponse\"\000\022@"
-      "\n\013add_fetcher\022\024.spiderproto.Fetcher\032\031.sp"
-      "iderproto.TaskResponse\"\000\022H\n\017add_crawledt"
-      "ask\022\030.spiderproto.CrawledTask\032\031.spiderpr"
-      "oto.TaskResponse\"\0002S\n\005Fetch\022J\n\020add_crawl"
-      "ingtask\022\031.spiderproto.CrawlingTask\032\031.spi"
-      "derproto.TaskResponse\"\0002L\n\006Handle\022B\n\014add"
-      "_crawldoc\022\025.spiderproto.CrawlDoc\032\031.spide"
-      "rproto.TaskResponse\"\000b\006proto3"
+void AddDescriptors_spider_2eproto() {
+  static constexpr ::google::protobuf::internal::InitFunc deps[1] =
+  {
   };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2309);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "spider.proto", &protobuf_RegisterTypes);
+ ::google::protobuf::internal::AddDescriptors(&descriptor_table_spider_2eproto, deps, 0);
 }
 
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_spider_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_spider_2eproto = []() { AddDescriptors_spider_2eproto(); return true; }();
 namespace spiderproto {
 const ::google::protobuf::EnumDescriptor* Storage_StorageType_descriptor() {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_spider_2eproto::file_level_enum_descriptors[0];
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_spider_2eproto);
+  return file_level_enum_descriptors_spider_2eproto[0];
 }
 bool Storage_StorageType_IsValid(int value) {
   switch (value) {
@@ -732,8 +695,8 @@ const Storage_StorageType Storage::StorageType_MAX;
 const int Storage::StorageType_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 const ::google::protobuf::EnumDescriptor* UrlLevel_descriptor() {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_spider_2eproto::file_level_enum_descriptors[1];
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_spider_2eproto);
+  return file_level_enum_descriptors_spider_2eproto[1];
 }
 bool UrlLevel_IsValid(int value) {
   switch (value) {
@@ -750,6 +713,10 @@ bool UrlLevel_IsValid(int value) {
 
 void CrawlUrl::InitAsDefaultInstance() {
 }
+class CrawlUrl::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlUrl::kUrlFieldNumber;
 const int CrawlUrl::kLevelFieldNumber;
@@ -758,8 +725,6 @@ const int CrawlUrl::kUsedableFieldNumber;
 
 CrawlUrl::CrawlUrl()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlUrl.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlUrl)
 }
@@ -778,6 +743,8 @@ CrawlUrl::CrawlUrl(const CrawlUrl& from)
 }
 
 void CrawlUrl::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlUrl_spider_2eproto.base);
   url_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&level_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&usedable_) -
@@ -796,13 +763,8 @@ void CrawlUrl::SharedDtor() {
 void CrawlUrl::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlUrl::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlUrl& CrawlUrl::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlUrl.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlUrl_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -820,9 +782,83 @@ void CrawlUrl::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlUrl::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlUrl*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes url = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_url();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.UrlLevel level = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::spiderproto::UrlLevel value = static_cast<::spiderproto::UrlLevel>(val);
+        msg->set_level(value);
+        break;
+      }
+      // bool usedable = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_usedable(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlUrl::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlUrl)
   for (;;) {
@@ -832,8 +868,7 @@ bool CrawlUrl::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes url = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_url()));
         } else {
@@ -844,9 +879,8 @@ bool CrawlUrl::MergePartialFromCodedStream(
 
       // .spiderproto.UrlLevel level = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -859,8 +893,7 @@ bool CrawlUrl::MergePartialFromCodedStream(
 
       // bool usedable = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -890,6 +923,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlUrl::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -914,9 +948,9 @@ void CrawlUrl::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->usedable(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlUrl)
 }
@@ -946,9 +980,9 @@ void CrawlUrl::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->usedable(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlUrl)
   return target;
@@ -958,11 +992,15 @@ size_t CrawlUrl::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlUrl)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes url = 1;
   if (this->url().size() > 0) {
     total_size += 1 +
@@ -990,7 +1028,7 @@ void CrawlUrl::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlUrl)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlUrl* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlUrl>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlUrl>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlUrl)
@@ -1044,16 +1082,16 @@ void CrawlUrl::Swap(CrawlUrl* other) {
 }
 void CrawlUrl::InternalSwap(CrawlUrl* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   url_.Swap(&other->url_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(level_, other->level_);
   swap(usedable_, other->usedable_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawlUrl::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1061,6 +1099,10 @@ void CrawlUrl::InternalSwap(CrawlUrl* other) {
 
 void Feature::InitAsDefaultInstance() {
 }
+class Feature::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Feature::kDupIgnoreFieldNumber;
 const int Feature::kTestingFieldNumber;
@@ -1070,8 +1112,6 @@ const int Feature::kIntervalFieldNumber;
 
 Feature::Feature()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Feature.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Feature)
 }
@@ -1102,13 +1142,8 @@ void Feature::SharedDtor() {
 void Feature::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Feature::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Feature& Feature::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Feature.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Feature_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1125,9 +1160,88 @@ void Feature::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Feature::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Feature*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bool dup_ignore = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_dup_ignore(value);
+        break;
+      }
+      // bool testing = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_testing(value);
+        break;
+      }
+      // bool period = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_period(value);
+        break;
+      }
+      // int32 interval = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_interval(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Feature::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Feature)
   for (;;) {
@@ -1137,8 +1251,7 @@ bool Feature::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bool dup_ignore = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -1151,8 +1264,7 @@ bool Feature::MergePartialFromCodedStream(
 
       // bool testing = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -1165,8 +1277,7 @@ bool Feature::MergePartialFromCodedStream(
 
       // bool period = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -1179,8 +1290,7 @@ bool Feature::MergePartialFromCodedStream(
 
       // int32 interval = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1210,6 +1320,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Feature::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1237,9 +1348,9 @@ void Feature::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->interval(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Feature)
 }
@@ -1271,9 +1382,9 @@ void Feature::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->interval(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Feature)
   return target;
@@ -1283,11 +1394,15 @@ size_t Feature::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Feature)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bool dup_ignore = 1;
   if (this->dup_ignore() != 0) {
     total_size += 1 + 1;
@@ -1319,7 +1434,7 @@ void Feature::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Feature)
   GOOGLE_DCHECK_NE(&from, this);
   const Feature* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Feature>(
+      ::google::protobuf::DynamicCastToGenerated<Feature>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Feature)
@@ -1375,16 +1490,16 @@ void Feature::Swap(Feature* other) {
 }
 void Feature::InternalSwap(Feature* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(dup_ignore_, other->dup_ignore_);
   swap(testing_, other->testing_);
   swap(period_, other->period_);
   swap(interval_, other->interval_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata Feature::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1392,6 +1507,10 @@ void Feature::InternalSwap(Feature* other) {
 
 void LinkRule::InitAsDefaultInstance() {
 }
+class LinkRule::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int LinkRule::kInLevelFieldNumber;
 const int LinkRule::kRulesFieldNumber;
@@ -1400,8 +1519,6 @@ const int LinkRule::kOutLevelFieldNumber;
 
 LinkRule::LinkRule()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_LinkRule.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.LinkRule)
 }
@@ -1417,6 +1534,8 @@ LinkRule::LinkRule(const LinkRule& from)
 }
 
 void LinkRule::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_LinkRule_spider_2eproto.base);
   ::memset(&in_level_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&out_level_) -
       reinterpret_cast<char*>(&in_level_)) + sizeof(out_level_));
@@ -1433,13 +1552,8 @@ void LinkRule::SharedDtor() {
 void LinkRule::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* LinkRule::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const LinkRule& LinkRule::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_LinkRule.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_LinkRule_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1457,9 +1571,86 @@ void LinkRule::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* LinkRule::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<LinkRule*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // .spiderproto.UrlLevel in_level = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::spiderproto::UrlLevel value = static_cast<::spiderproto::UrlLevel>(val);
+        msg->set_in_level(value);
+        break;
+      }
+      // repeated bytes rules = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::google::protobuf::internal::StringParser;
+          ::std::string* str = msg->add_rules();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 18 && (ptr += 1));
+        break;
+      }
+      // .spiderproto.UrlLevel out_level = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::spiderproto::UrlLevel value = static_cast<::spiderproto::UrlLevel>(val);
+        msg->set_out_level(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool LinkRule::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.LinkRule)
   for (;;) {
@@ -1469,9 +1660,8 @@ bool LinkRule::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // .spiderproto.UrlLevel in_level = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -1484,8 +1674,7 @@ bool LinkRule::MergePartialFromCodedStream(
 
       // repeated bytes rules = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->add_rules()));
         } else {
@@ -1496,9 +1685,8 @@ bool LinkRule::MergePartialFromCodedStream(
 
       // .spiderproto.UrlLevel out_level = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -1528,6 +1716,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void LinkRule::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1553,9 +1742,9 @@ void LinkRule::SerializeWithCachedSizes(
       3, this->out_level(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.LinkRule)
 }
@@ -1585,9 +1774,9 @@ void LinkRule::SerializeWithCachedSizes(
       3, this->out_level(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.LinkRule)
   return target;
@@ -1597,11 +1786,15 @@ size_t LinkRule::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.LinkRule)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated bytes rules = 2;
   total_size += 1 *
       ::google::protobuf::internal::FromIntSize(this->rules_size());
@@ -1631,7 +1824,7 @@ void LinkRule::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.LinkRule)
   GOOGLE_DCHECK_NE(&from, this);
   const LinkRule* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const LinkRule>(
+      ::google::protobuf::DynamicCastToGenerated<LinkRule>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.LinkRule)
@@ -1682,15 +1875,15 @@ void LinkRule::Swap(LinkRule* other) {
 }
 void LinkRule::InternalSwap(LinkRule* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   rules_.InternalSwap(CastToBase(&other->rules_));
   swap(in_level_, other->in_level_);
   swap(out_level_, other->out_level_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata LinkRule::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1698,6 +1891,10 @@ void LinkRule::InternalSwap(LinkRule* other) {
 
 void Storage::InitAsDefaultInstance() {
 }
+class Storage::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Storage::kStoreTypeFieldNumber;
 const int Storage::kDestFieldNumber;
@@ -1706,8 +1903,6 @@ const int Storage::kAttachmentFieldNumber;
 
 Storage::Storage()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Storage.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Storage)
 }
@@ -1728,6 +1923,8 @@ Storage::Storage(const Storage& from)
 }
 
 void Storage::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Storage_spider_2eproto.base);
   dest_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   attachment_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   store_type_ = 0;
@@ -1746,13 +1943,8 @@ void Storage::SharedDtor() {
 void Storage::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Storage::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Storage& Storage::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Storage.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Storage_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1769,9 +1961,88 @@ void Storage::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Storage::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Storage*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // .spiderproto.Storage.StorageType store_type = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::spiderproto::Storage_StorageType value = static_cast<::spiderproto::Storage_StorageType>(val);
+        msg->set_store_type(value);
+        break;
+      }
+      // bytes dest = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_dest();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes attachment = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_attachment();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Storage::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Storage)
   for (;;) {
@@ -1781,9 +2052,8 @@ bool Storage::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // .spiderproto.Storage.StorageType store_type = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -1796,8 +2066,7 @@ bool Storage::MergePartialFromCodedStream(
 
       // bytes dest = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_dest()));
         } else {
@@ -1808,8 +2077,7 @@ bool Storage::MergePartialFromCodedStream(
 
       // bytes attachment = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_attachment()));
         } else {
@@ -1837,6 +2105,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Storage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1862,9 +2131,9 @@ void Storage::SerializeWithCachedSizes(
       3, this->attachment(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Storage)
 }
@@ -1896,9 +2165,9 @@ void Storage::SerializeWithCachedSizes(
         3, this->attachment(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Storage)
   return target;
@@ -1908,11 +2177,15 @@ size_t Storage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Storage)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes dest = 2;
   if (this->dest().size() > 0) {
     total_size += 1 +
@@ -1942,7 +2215,7 @@ void Storage::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Storage)
   GOOGLE_DCHECK_NE(&from, this);
   const Storage* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Storage>(
+      ::google::protobuf::DynamicCastToGenerated<Storage>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Storage)
@@ -1997,17 +2270,17 @@ void Storage::Swap(Storage* other) {
 }
 void Storage::InternalSwap(Storage* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   dest_.Swap(&other->dest_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   attachment_.Swap(&other->attachment_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(store_type_, other->store_type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata Storage::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -2015,6 +2288,10 @@ void Storage::InternalSwap(Storage* other) {
 
 void Runtime::InitAsDefaultInstance() {
 }
+class Runtime::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Runtime::kDownloadDelayFieldNumber;
 const int Runtime::kConcurrentReqsFieldNumber;
@@ -2024,8 +2301,6 @@ const int Runtime::kDenyFetchersFieldNumber;
 
 Runtime::Runtime()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Runtime.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Runtime)
 }
@@ -2042,6 +2317,8 @@ Runtime::Runtime(const Runtime& from)
 }
 
 void Runtime::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Runtime_spider_2eproto.base);
   ::memset(&download_delay_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&concurrent_reqs_) -
       reinterpret_cast<char*>(&download_delay_)) + sizeof(concurrent_reqs_));
@@ -2058,13 +2335,8 @@ void Runtime::SharedDtor() {
 void Runtime::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Runtime::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Runtime& Runtime::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Runtime.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Runtime_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -2083,9 +2355,103 @@ void Runtime::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Runtime::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Runtime*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // float download_delay = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 13) goto handle_unusual;
+        float val;
+        std::memcpy(&val, ptr, 4);
+        ptr += 4;
+        msg->set_download_delay(val);
+        break;
+      }
+      // int32 concurrent_reqs = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_concurrent_reqs(value);
+        break;
+      }
+      // repeated bytes allow_fetchers = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::google::protobuf::internal::StringParser;
+          ::std::string* str = msg->add_allow_fetchers();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 26 && (ptr += 1));
+        break;
+      }
+      // repeated bytes deny_fetchers = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::google::protobuf::internal::StringParser;
+          ::std::string* str = msg->add_deny_fetchers();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 34 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Runtime::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Runtime)
   for (;;) {
@@ -2095,8 +2461,7 @@ bool Runtime::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // float download_delay = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(13u /* 13 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (13 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
@@ -2109,8 +2474,7 @@ bool Runtime::MergePartialFromCodedStream(
 
       // int32 concurrent_reqs = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -2123,8 +2487,7 @@ bool Runtime::MergePartialFromCodedStream(
 
       // repeated bytes allow_fetchers = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->add_allow_fetchers()));
         } else {
@@ -2135,8 +2498,7 @@ bool Runtime::MergePartialFromCodedStream(
 
       // repeated bytes deny_fetchers = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->add_deny_fetchers()));
         } else {
@@ -2164,6 +2526,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Runtime::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -2193,9 +2556,9 @@ void Runtime::SerializeWithCachedSizes(
       4, this->deny_fetchers(i), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Runtime)
 }
@@ -2229,9 +2592,9 @@ void Runtime::SerializeWithCachedSizes(
       WriteBytesToArray(4, this->deny_fetchers(i), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Runtime)
   return target;
@@ -2241,11 +2604,15 @@ size_t Runtime::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Runtime)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated bytes allow_fetchers = 3;
   total_size += 1 *
       ::google::protobuf::internal::FromIntSize(this->allow_fetchers_size());
@@ -2283,7 +2650,7 @@ void Runtime::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Runtime)
   GOOGLE_DCHECK_NE(&from, this);
   const Runtime* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Runtime>(
+      ::google::protobuf::DynamicCastToGenerated<Runtime>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Runtime)
@@ -2335,16 +2702,16 @@ void Runtime::Swap(Runtime* other) {
 }
 void Runtime::InternalSwap(Runtime* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   allow_fetchers_.InternalSwap(CastToBase(&other->allow_fetchers_));
   deny_fetchers_.InternalSwap(CastToBase(&other->deny_fetchers_));
   swap(download_delay_, other->download_delay_);
   swap(concurrent_reqs_, other->concurrent_reqs_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata Runtime::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -2362,6 +2729,35 @@ void BasicTask::InitAsDefaultInstance() {
   ::spiderproto::_BasicTask_default_instance_._instance.get_mutable()->runtime_ = const_cast< ::spiderproto::Runtime*>(
       ::spiderproto::Runtime::internal_default_instance());
 }
+class BasicTask::HasBitSetters {
+ public:
+  static const ::spiderproto::CrawlUrlList& crawl_list(const BasicTask* msg);
+  static const ::spiderproto::Feature& feature(const BasicTask* msg);
+  static const ::spiderproto::LinkRuleList& rule_list(const BasicTask* msg);
+  static const ::spiderproto::Storage& storage(const BasicTask* msg);
+  static const ::spiderproto::Runtime& runtime(const BasicTask* msg);
+};
+
+const ::spiderproto::CrawlUrlList&
+BasicTask::HasBitSetters::crawl_list(const BasicTask* msg) {
+  return *msg->crawl_list_;
+}
+const ::spiderproto::Feature&
+BasicTask::HasBitSetters::feature(const BasicTask* msg) {
+  return *msg->feature_;
+}
+const ::spiderproto::LinkRuleList&
+BasicTask::HasBitSetters::rule_list(const BasicTask* msg) {
+  return *msg->rule_list_;
+}
+const ::spiderproto::Storage&
+BasicTask::HasBitSetters::storage(const BasicTask* msg) {
+  return *msg->storage_;
+}
+const ::spiderproto::Runtime&
+BasicTask::HasBitSetters::runtime(const BasicTask* msg) {
+  return *msg->runtime_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int BasicTask::kTaskidFieldNumber;
 const int BasicTask::kNameFieldNumber;
@@ -2375,8 +2771,6 @@ const int BasicTask::kRuntimeFieldNumber;
 
 BasicTask::BasicTask()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_BasicTask.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.BasicTask)
 }
@@ -2425,6 +2819,8 @@ BasicTask::BasicTask(const BasicTask& from)
 }
 
 void BasicTask::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_BasicTask_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   user_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2452,13 +2848,8 @@ void BasicTask::SharedDtor() {
 void BasicTask::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* BasicTask::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const BasicTask& BasicTask::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_BasicTask.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_BasicTask_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -2495,9 +2886,158 @@ void BasicTask::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* BasicTask::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<BasicTask*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes name = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes user = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_user();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.CrawlUrlList crawl_list = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::CrawlUrlList::_InternalParse;
+        object = msg->mutable_crawl_list();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.Feature feature = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::Feature::_InternalParse;
+        object = msg->mutable_feature();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.LinkRuleList rule_list = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::LinkRuleList::_InternalParse;
+        object = msg->mutable_rule_list();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.Storage storage = 7;
+      case 7: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 58) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::Storage::_InternalParse;
+        object = msg->mutable_storage();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.Runtime runtime = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 66) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::Runtime::_InternalParse;
+        object = msg->mutable_runtime();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool BasicTask::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.BasicTask)
   for (;;) {
@@ -2507,8 +3047,7 @@ bool BasicTask::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -2519,8 +3058,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // bytes name = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_name()));
         } else {
@@ -2531,8 +3069,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // bytes user = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_user()));
         } else {
@@ -2543,8 +3080,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // .spiderproto.CrawlUrlList crawl_list = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_crawl_list()));
         } else {
@@ -2555,8 +3091,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // .spiderproto.Feature feature = 5;
       case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_feature()));
         } else {
@@ -2567,8 +3102,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // .spiderproto.LinkRuleList rule_list = 6;
       case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_rule_list()));
         } else {
@@ -2579,8 +3113,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // .spiderproto.Storage storage = 7;
       case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (58 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_storage()));
         } else {
@@ -2591,8 +3124,7 @@ bool BasicTask::MergePartialFromCodedStream(
 
       // .spiderproto.Runtime runtime = 8;
       case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (66 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_runtime()));
         } else {
@@ -2620,6 +3152,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void BasicTask::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -2648,36 +3181,36 @@ void BasicTask::SerializeWithCachedSizes(
   // .spiderproto.CrawlUrlList crawl_list = 4;
   if (this->has_crawl_list()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->_internal_crawl_list(), output);
+      4, HasBitSetters::crawl_list(this), output);
   }
 
   // .spiderproto.Feature feature = 5;
   if (this->has_feature()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->_internal_feature(), output);
+      5, HasBitSetters::feature(this), output);
   }
 
   // .spiderproto.LinkRuleList rule_list = 6;
   if (this->has_rule_list()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->_internal_rule_list(), output);
+      6, HasBitSetters::rule_list(this), output);
   }
 
   // .spiderproto.Storage storage = 7;
   if (this->has_storage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->_internal_storage(), output);
+      7, HasBitSetters::storage(this), output);
   }
 
   // .spiderproto.Runtime runtime = 8;
   if (this->has_runtime()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->_internal_runtime(), output);
+      8, HasBitSetters::runtime(this), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.BasicTask)
 }
@@ -2714,40 +3247,40 @@ void BasicTask::SerializeWithCachedSizes(
   if (this->has_crawl_list()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        4, this->_internal_crawl_list(), deterministic, target);
+        4, HasBitSetters::crawl_list(this), deterministic, target);
   }
 
   // .spiderproto.Feature feature = 5;
   if (this->has_feature()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, this->_internal_feature(), deterministic, target);
+        5, HasBitSetters::feature(this), deterministic, target);
   }
 
   // .spiderproto.LinkRuleList rule_list = 6;
   if (this->has_rule_list()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        6, this->_internal_rule_list(), deterministic, target);
+        6, HasBitSetters::rule_list(this), deterministic, target);
   }
 
   // .spiderproto.Storage storage = 7;
   if (this->has_storage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        7, this->_internal_storage(), deterministic, target);
+        7, HasBitSetters::storage(this), deterministic, target);
   }
 
   // .spiderproto.Runtime runtime = 8;
   if (this->has_runtime()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        8, this->_internal_runtime(), deterministic, target);
+        8, HasBitSetters::runtime(this), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.BasicTask)
   return target;
@@ -2757,11 +3290,15 @@ size_t BasicTask::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.BasicTask)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes taskid = 1;
   if (this->taskid().size() > 0) {
     total_size += 1 +
@@ -2827,7 +3364,7 @@ void BasicTask::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.BasicTask)
   GOOGLE_DCHECK_NE(&from, this);
   const BasicTask* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const BasicTask>(
+      ::google::protobuf::DynamicCastToGenerated<BasicTask>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.BasicTask)
@@ -2898,6 +3435,7 @@ void BasicTask::Swap(BasicTask* other) {
 }
 void BasicTask::InternalSwap(BasicTask* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -2909,12 +3447,11 @@ void BasicTask::InternalSwap(BasicTask* other) {
   swap(rule_list_, other->rule_list_);
   swap(storage_, other->storage_);
   swap(runtime_, other->runtime_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata BasicTask::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -2922,14 +3459,16 @@ void BasicTask::InternalSwap(BasicTask* other) {
 
 void CrawlUrlList::InitAsDefaultInstance() {
 }
+class CrawlUrlList::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlUrlList::kCrawlUrlsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CrawlUrlList::CrawlUrlList()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlUrlList.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlUrlList)
 }
@@ -2942,6 +3481,8 @@ CrawlUrlList::CrawlUrlList(const CrawlUrlList& from)
 }
 
 void CrawlUrlList::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlUrlList_spider_2eproto.base);
 }
 
 CrawlUrlList::~CrawlUrlList() {
@@ -2955,13 +3496,8 @@ void CrawlUrlList::SharedDtor() {
 void CrawlUrlList::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlUrlList::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlUrlList& CrawlUrlList::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlUrlList.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlUrlList_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -2976,9 +3512,64 @@ void CrawlUrlList::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlUrlList::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlUrlList*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // repeated .spiderproto.CrawlUrl crawl_urls = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::CrawlUrl::_InternalParse;
+          object = msg->add_crawl_urls();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlUrlList::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlUrlList)
   for (;;) {
@@ -2988,8 +3579,7 @@ bool CrawlUrlList::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // repeated .spiderproto.CrawlUrl crawl_urls = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_crawl_urls()));
         } else {
@@ -3017,6 +3607,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlUrlList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -3033,9 +3624,9 @@ void CrawlUrlList::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlUrlList)
 }
@@ -3055,9 +3646,9 @@ void CrawlUrlList::SerializeWithCachedSizes(
         1, this->crawl_urls(static_cast<int>(i)), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlUrlList)
   return target;
@@ -3067,11 +3658,15 @@ size_t CrawlUrlList::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlUrlList)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.CrawlUrl crawl_urls = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->crawl_urls_size());
@@ -3092,7 +3687,7 @@ void CrawlUrlList::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlUrlList)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlUrlList* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlUrlList>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlUrlList>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlUrlList)
@@ -3137,13 +3732,13 @@ void CrawlUrlList::Swap(CrawlUrlList* other) {
 }
 void CrawlUrlList::InternalSwap(CrawlUrlList* other) {
   using std::swap;
-  CastToBase(&crawl_urls_)->InternalSwap(CastToBase(&other->crawl_urls_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&crawl_urls_)->InternalSwap(CastToBase(&other->crawl_urls_));
 }
 
 ::google::protobuf::Metadata CrawlUrlList::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -3151,14 +3746,16 @@ void CrawlUrlList::InternalSwap(CrawlUrlList* other) {
 
 void LinkRuleList::InitAsDefaultInstance() {
 }
+class LinkRuleList::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int LinkRuleList::kRulesFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 LinkRuleList::LinkRuleList()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_LinkRuleList.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.LinkRuleList)
 }
@@ -3171,6 +3768,8 @@ LinkRuleList::LinkRuleList(const LinkRuleList& from)
 }
 
 void LinkRuleList::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_LinkRuleList_spider_2eproto.base);
 }
 
 LinkRuleList::~LinkRuleList() {
@@ -3184,13 +3783,8 @@ void LinkRuleList::SharedDtor() {
 void LinkRuleList::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* LinkRuleList::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const LinkRuleList& LinkRuleList::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_LinkRuleList.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_LinkRuleList_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -3205,9 +3799,64 @@ void LinkRuleList::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* LinkRuleList::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<LinkRuleList*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // repeated .spiderproto.LinkRule rules = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::LinkRule::_InternalParse;
+          object = msg->add_rules();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool LinkRuleList::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.LinkRuleList)
   for (;;) {
@@ -3217,8 +3866,7 @@ bool LinkRuleList::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // repeated .spiderproto.LinkRule rules = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_rules()));
         } else {
@@ -3246,6 +3894,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void LinkRuleList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -3262,9 +3911,9 @@ void LinkRuleList::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.LinkRuleList)
 }
@@ -3284,9 +3933,9 @@ void LinkRuleList::SerializeWithCachedSizes(
         1, this->rules(static_cast<int>(i)), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.LinkRuleList)
   return target;
@@ -3296,11 +3945,15 @@ size_t LinkRuleList::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.LinkRuleList)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.LinkRule rules = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->rules_size());
@@ -3321,7 +3974,7 @@ void LinkRuleList::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.LinkRuleList)
   GOOGLE_DCHECK_NE(&from, this);
   const LinkRuleList* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const LinkRuleList>(
+      ::google::protobuf::DynamicCastToGenerated<LinkRuleList>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.LinkRuleList)
@@ -3366,13 +4019,13 @@ void LinkRuleList::Swap(LinkRuleList* other) {
 }
 void LinkRuleList::InternalSwap(LinkRuleList* other) {
   using std::swap;
-  CastToBase(&rules_)->InternalSwap(CastToBase(&other->rules_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&rules_)->InternalSwap(CastToBase(&other->rules_));
 }
 
 ::google::protobuf::Metadata LinkRuleList::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -3381,6 +4034,15 @@ void LinkRuleList::InternalSwap(LinkRuleList* other) {
 void CrawlingTask::InitAsDefaultInstance() {
   ::spiderproto::_CrawlingTask_default_instance_._instance.get_mutable()->storage_ = const_cast< ::spiderproto::Storage*>(
       ::spiderproto::Storage::internal_default_instance());
+}
+class CrawlingTask::HasBitSetters {
+ public:
+  static const ::spiderproto::Storage& storage(const CrawlingTask* msg);
+};
+
+const ::spiderproto::Storage&
+CrawlingTask::HasBitSetters::storage(const CrawlingTask* msg) {
+  return *msg->storage_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlingTask::kTaskidFieldNumber;
@@ -3392,8 +4054,6 @@ const int CrawlingTask::kStorageFieldNumber;
 
 CrawlingTask::CrawlingTask()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlingTask.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlingTask)
 }
@@ -3420,6 +4080,8 @@ CrawlingTask::CrawlingTask(const CrawlingTask& from)
 }
 
 void CrawlingTask::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlingTask_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   fetcher_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   storage_ = NULL;
@@ -3439,13 +4101,8 @@ void CrawlingTask::SharedDtor() {
 void CrawlingTask::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlingTask::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlingTask& CrawlingTask::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlingTask.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlingTask_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -3467,9 +4124,123 @@ void CrawlingTask::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlingTask::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlingTask*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes fetcher = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_fetcher();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // repeated .spiderproto.CrawlUrl crawl_urls = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::CrawlUrl::_InternalParse;
+          object = msg->add_crawl_urls();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 26 && (ptr += 1));
+        break;
+      }
+      // repeated .spiderproto.LinkRule rules = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::LinkRule::_InternalParse;
+          object = msg->add_rules();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 34 && (ptr += 1));
+        break;
+      }
+      // .spiderproto.Storage storage = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::Storage::_InternalParse;
+        object = msg->mutable_storage();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlingTask::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlingTask)
   for (;;) {
@@ -3479,8 +4250,7 @@ bool CrawlingTask::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -3491,8 +4261,7 @@ bool CrawlingTask::MergePartialFromCodedStream(
 
       // bytes fetcher = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_fetcher()));
         } else {
@@ -3503,8 +4272,7 @@ bool CrawlingTask::MergePartialFromCodedStream(
 
       // repeated .spiderproto.CrawlUrl crawl_urls = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_crawl_urls()));
         } else {
@@ -3515,8 +4283,7 @@ bool CrawlingTask::MergePartialFromCodedStream(
 
       // repeated .spiderproto.LinkRule rules = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_rules()));
         } else {
@@ -3527,8 +4294,7 @@ bool CrawlingTask::MergePartialFromCodedStream(
 
       // .spiderproto.Storage storage = 5;
       case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_storage()));
         } else {
@@ -3556,6 +4322,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlingTask::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -3596,12 +4363,12 @@ void CrawlingTask::SerializeWithCachedSizes(
   // .spiderproto.Storage storage = 5;
   if (this->has_storage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->_internal_storage(), output);
+      5, HasBitSetters::storage(this), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlingTask)
 }
@@ -3647,12 +4414,12 @@ void CrawlingTask::SerializeWithCachedSizes(
   if (this->has_storage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, this->_internal_storage(), deterministic, target);
+        5, HasBitSetters::storage(this), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlingTask)
   return target;
@@ -3662,11 +4429,15 @@ size_t CrawlingTask::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlingTask)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.CrawlUrl crawl_urls = 3;
   {
     unsigned int count = static_cast<unsigned int>(this->crawl_urls_size());
@@ -3719,7 +4490,7 @@ void CrawlingTask::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlingTask)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlingTask* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlingTask>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlingTask>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlingTask)
@@ -3776,6 +4547,7 @@ void CrawlingTask::Swap(CrawlingTask* other) {
 }
 void CrawlingTask::InternalSwap(CrawlingTask* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   CastToBase(&crawl_urls_)->InternalSwap(CastToBase(&other->crawl_urls_));
   CastToBase(&rules_)->InternalSwap(CastToBase(&other->rules_));
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -3783,12 +4555,11 @@ void CrawlingTask::InternalSwap(CrawlingTask* other) {
   fetcher_.Swap(&other->fetcher_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(storage_, other->storage_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawlingTask::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -3797,6 +4568,15 @@ void CrawlingTask::InternalSwap(CrawlingTask* other) {
 void CrawledTask::InitAsDefaultInstance() {
   ::spiderproto::_CrawledTask_default_instance_._instance.get_mutable()->crawl_url_ = const_cast< ::spiderproto::CrawlUrl*>(
       ::spiderproto::CrawlUrl::internal_default_instance());
+}
+class CrawledTask::HasBitSetters {
+ public:
+  static const ::spiderproto::CrawlUrl& crawl_url(const CrawledTask* msg);
+};
+
+const ::spiderproto::CrawlUrl&
+CrawledTask::HasBitSetters::crawl_url(const CrawledTask* msg) {
+  return *msg->crawl_url_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawledTask::kTaskidFieldNumber;
@@ -3808,8 +4588,6 @@ const int CrawledTask::kLinksFieldNumber;
 
 CrawledTask::CrawledTask()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawledTask.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawledTask)
 }
@@ -3836,6 +4614,8 @@ CrawledTask::CrawledTask(const CrawledTask& from)
 }
 
 void CrawledTask::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawledTask_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   fetcher_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&crawl_url_, 0, static_cast<size_t>(
@@ -3857,13 +4637,8 @@ void CrawledTask::SharedDtor() {
 void CrawledTask::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawledTask::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawledTask& CrawledTask::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawledTask.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawledTask_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -3885,9 +4660,117 @@ void CrawledTask::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawledTask::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawledTask*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes fetcher = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_fetcher();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.CrawlUrl crawl_url = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::CrawlUrl::_InternalParse;
+        object = msg->mutable_crawl_url();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int32 status = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_status(value);
+        break;
+      }
+      // repeated .spiderproto.CrawlUrl links = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::CrawlUrl::_InternalParse;
+          object = msg->add_links();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 42 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawledTask::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawledTask)
   for (;;) {
@@ -3897,8 +4780,7 @@ bool CrawledTask::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -3909,8 +4791,7 @@ bool CrawledTask::MergePartialFromCodedStream(
 
       // bytes fetcher = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_fetcher()));
         } else {
@@ -3921,8 +4802,7 @@ bool CrawledTask::MergePartialFromCodedStream(
 
       // .spiderproto.CrawlUrl crawl_url = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_crawl_url()));
         } else {
@@ -3933,8 +4813,7 @@ bool CrawledTask::MergePartialFromCodedStream(
 
       // int32 status = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3947,8 +4826,7 @@ bool CrawledTask::MergePartialFromCodedStream(
 
       // repeated .spiderproto.CrawlUrl links = 5;
       case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_links()));
         } else {
@@ -3976,6 +4854,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawledTask::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -3998,7 +4877,7 @@ void CrawledTask::SerializeWithCachedSizes(
   // .spiderproto.CrawlUrl crawl_url = 3;
   if (this->has_crawl_url()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_crawl_url(), output);
+      3, HasBitSetters::crawl_url(this), output);
   }
 
   // int32 status = 4;
@@ -4015,9 +4894,9 @@ void CrawledTask::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawledTask)
 }
@@ -4047,7 +4926,7 @@ void CrawledTask::SerializeWithCachedSizes(
   if (this->has_crawl_url()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, this->_internal_crawl_url(), deterministic, target);
+        3, HasBitSetters::crawl_url(this), deterministic, target);
   }
 
   // int32 status = 4;
@@ -4063,9 +4942,9 @@ void CrawledTask::SerializeWithCachedSizes(
         5, this->links(static_cast<int>(i)), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawledTask)
   return target;
@@ -4075,11 +4954,15 @@ size_t CrawledTask::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawledTask)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.CrawlUrl links = 5;
   {
     unsigned int count = static_cast<unsigned int>(this->links_size());
@@ -4128,7 +5011,7 @@ void CrawledTask::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawledTask)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawledTask* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawledTask>(
+      ::google::protobuf::DynamicCastToGenerated<CrawledTask>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawledTask)
@@ -4187,6 +5070,7 @@ void CrawledTask::Swap(CrawledTask* other) {
 }
 void CrawledTask::InternalSwap(CrawledTask* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   CastToBase(&links_)->InternalSwap(CastToBase(&other->links_));
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
@@ -4194,12 +5078,11 @@ void CrawledTask::InternalSwap(CrawledTask* other) {
     GetArenaNoVirtual());
   swap(crawl_url_, other->crawl_url_);
   swap(status_, other->status_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawledTask::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -4207,6 +5090,10 @@ void CrawledTask::InternalSwap(CrawledTask* other) {
 
 void CrawlStats::InitAsDefaultInstance() {
 }
+class CrawlStats::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlStats::kTaskidFieldNumber;
 const int CrawlStats::kStartTimeFieldNumber;
@@ -4222,8 +5109,6 @@ const int CrawlStats::kLinksFieldNumber;
 
 CrawlStats::CrawlStats()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlStats.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlStats)
 }
@@ -4250,6 +5135,8 @@ CrawlStats::CrawlStats(const CrawlStats& from)
 }
 
 void CrawlStats::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlStats_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   start_time_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   last_update_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -4272,13 +5159,8 @@ void CrawlStats::SharedDtor() {
 void CrawlStats::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlStats::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlStats& CrawlStats::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlStats.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlStats_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -4298,9 +5180,163 @@ void CrawlStats::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlStats::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlStats*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes start_time = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_start_time();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes last_update = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_last_update();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int32 total_url = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_total_url(value);
+        break;
+      }
+      // int32 success = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_success(value);
+        break;
+      }
+      // int32 code40x = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code40x(value);
+        break;
+      }
+      // int32 code404 = 7;
+      case 7: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code404(value);
+        break;
+      }
+      // int32 code50x = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code50x(value);
+        break;
+      }
+      // int32 codexxx = 9;
+      case 9: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 72) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_codexxx(value);
+        break;
+      }
+      // int32 links = 10;
+      case 10: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 80) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_links(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlStats::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlStats)
   for (;;) {
@@ -4310,8 +5346,7 @@ bool CrawlStats::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -4322,8 +5357,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // bytes start_time = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_start_time()));
         } else {
@@ -4334,8 +5368,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // bytes last_update = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_last_update()));
         } else {
@@ -4346,8 +5379,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 total_url = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4360,8 +5392,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 success = 5;
       case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4374,8 +5405,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 code40x = 6;
       case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4388,8 +5418,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 code404 = 7;
       case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4402,8 +5431,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 code50x = 8;
       case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4416,8 +5444,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 codexxx = 9;
       case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (72 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4430,8 +5457,7 @@ bool CrawlStats::MergePartialFromCodedStream(
 
       // int32 links = 10;
       case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (80 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4461,6 +5487,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlStats::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -4521,9 +5548,9 @@ void CrawlStats::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->links(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlStats)
 }
@@ -4591,9 +5618,9 @@ void CrawlStats::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->links(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlStats)
   return target;
@@ -4603,11 +5630,15 @@ size_t CrawlStats::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlStats)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes taskid = 1;
   if (this->taskid().size() > 0) {
     total_size += 1 +
@@ -4687,7 +5718,7 @@ void CrawlStats::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlStats)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlStats* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlStats>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlStats>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlStats)
@@ -4764,6 +5795,7 @@ void CrawlStats::Swap(CrawlStats* other) {
 }
 void CrawlStats::InternalSwap(CrawlStats* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   start_time_.Swap(&other->start_time_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -4777,12 +5809,11 @@ void CrawlStats::InternalSwap(CrawlStats* other) {
   swap(code50x_, other->code50x_);
   swap(codexxx_, other->codexxx_);
   swap(links_, other->links_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawlStats::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -4790,6 +5821,10 @@ void CrawlStats::InternalSwap(CrawlStats* other) {
 
 void TaskResponse::InitAsDefaultInstance() {
 }
+class TaskResponse::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int TaskResponse::kTaskidFieldNumber;
 const int TaskResponse::kCodeFieldNumber;
@@ -4798,8 +5833,6 @@ const int TaskResponse::kMsgFieldNumber;
 
 TaskResponse::TaskResponse()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_TaskResponse.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.TaskResponse)
 }
@@ -4820,6 +5853,8 @@ TaskResponse::TaskResponse(const TaskResponse& from)
 }
 
 void TaskResponse::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_TaskResponse_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   code_ = 0;
@@ -4838,13 +5873,8 @@ void TaskResponse::SharedDtor() {
 void TaskResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TaskResponse::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TaskResponse& TaskResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_TaskResponse.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_TaskResponse_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -4861,9 +5891,88 @@ void TaskResponse::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* TaskResponse::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<TaskResponse*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int32 code = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code(value);
+        break;
+      }
+      // bytes msg = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_msg();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool TaskResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.TaskResponse)
   for (;;) {
@@ -4873,8 +5982,7 @@ bool TaskResponse::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -4885,8 +5993,7 @@ bool TaskResponse::MergePartialFromCodedStream(
 
       // int32 code = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4899,8 +6006,7 @@ bool TaskResponse::MergePartialFromCodedStream(
 
       // bytes msg = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_msg()));
         } else {
@@ -4928,6 +6034,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void TaskResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -4952,9 +6059,9 @@ void TaskResponse::SerializeWithCachedSizes(
       3, this->msg(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.TaskResponse)
 }
@@ -4985,9 +6092,9 @@ void TaskResponse::SerializeWithCachedSizes(
         3, this->msg(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.TaskResponse)
   return target;
@@ -4997,11 +6104,15 @@ size_t TaskResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.TaskResponse)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes taskid = 1;
   if (this->taskid().size() > 0) {
     total_size += 1 +
@@ -5032,7 +6143,7 @@ void TaskResponse::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.TaskResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const TaskResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TaskResponse>(
+      ::google::protobuf::DynamicCastToGenerated<TaskResponse>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.TaskResponse)
@@ -5087,17 +6198,17 @@ void TaskResponse::Swap(TaskResponse* other) {
 }
 void TaskResponse::InternalSwap(TaskResponse* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   msg_.Swap(&other->msg_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(code_, other->code_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata TaskResponse::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -5105,13 +6216,15 @@ void TaskResponse::InternalSwap(TaskResponse* other) {
 
 void Empty::InitAsDefaultInstance() {
 }
+class Empty::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Empty::Empty()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Empty.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Empty)
 }
@@ -5136,13 +6249,8 @@ void Empty::SharedDtor() {
 void Empty::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Empty::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Empty& Empty::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Empty.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Empty_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -5156,9 +6264,48 @@ void Empty::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Empty::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Empty*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Empty::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Empty)
   for (;;) {
@@ -5180,6 +6327,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Empty::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -5187,9 +6335,9 @@ void Empty::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Empty)
 }
@@ -5201,9 +6349,9 @@ void Empty::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Empty)
   return target;
@@ -5213,11 +6361,15 @@ size_t Empty::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Empty)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -5227,7 +6379,7 @@ void Empty::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Empty)
   GOOGLE_DCHECK_NE(&from, this);
   const Empty* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Empty>(
+      ::google::protobuf::DynamicCastToGenerated<Empty>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Empty)
@@ -5275,8 +6427,8 @@ void Empty::InternalSwap(Empty* other) {
 }
 
 ::google::protobuf::Metadata Empty::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -5284,6 +6436,10 @@ void Empty::InternalSwap(Empty* other) {
 
 void Fetcher::InitAsDefaultInstance() {
 }
+class Fetcher::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Fetcher::kNameFieldNumber;
 const int Fetcher::kAddrFieldNumber;
@@ -5291,8 +6447,6 @@ const int Fetcher::kAddrFieldNumber;
 
 Fetcher::Fetcher()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Fetcher.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Fetcher)
 }
@@ -5312,6 +6466,8 @@ Fetcher::Fetcher(const Fetcher& from)
 }
 
 void Fetcher::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Fetcher_spider_2eproto.base);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -5329,13 +6485,8 @@ void Fetcher::SharedDtor() {
 void Fetcher::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Fetcher::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Fetcher& Fetcher::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Fetcher.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Fetcher_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -5351,9 +6502,78 @@ void Fetcher::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Fetcher::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Fetcher*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes name = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes addr = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_addr();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Fetcher::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Fetcher)
   for (;;) {
@@ -5363,8 +6583,7 @@ bool Fetcher::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes name = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_name()));
         } else {
@@ -5375,8 +6594,7 @@ bool Fetcher::MergePartialFromCodedStream(
 
       // bytes addr = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_addr()));
         } else {
@@ -5404,6 +6622,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Fetcher::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -5423,9 +6642,9 @@ void Fetcher::SerializeWithCachedSizes(
       2, this->addr(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Fetcher)
 }
@@ -5451,9 +6670,9 @@ void Fetcher::SerializeWithCachedSizes(
         2, this->addr(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Fetcher)
   return target;
@@ -5463,11 +6682,15 @@ size_t Fetcher::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Fetcher)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
@@ -5491,7 +6714,7 @@ void Fetcher::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Fetcher)
   GOOGLE_DCHECK_NE(&from, this);
   const Fetcher* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Fetcher>(
+      ::google::protobuf::DynamicCastToGenerated<Fetcher>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Fetcher)
@@ -5543,16 +6766,16 @@ void Fetcher::Swap(Fetcher* other) {
 }
 void Fetcher::InternalSwap(Fetcher* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   addr_.Swap(&other->addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata Fetcher::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -5560,6 +6783,10 @@ void Fetcher::InternalSwap(Fetcher* other) {
 
 void Segment::InitAsDefaultInstance() {
 }
+class Segment::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Segment::kWordFieldNumber;
 const int Segment::kScoreFieldNumber;
@@ -5567,8 +6794,6 @@ const int Segment::kScoreFieldNumber;
 
 Segment::Segment()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_Segment.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.Segment)
 }
@@ -5585,6 +6810,8 @@ Segment::Segment(const Segment& from)
 }
 
 void Segment::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Segment_spider_2eproto.base);
   word_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   score_ = 0;
 }
@@ -5601,13 +6828,8 @@ void Segment::SharedDtor() {
 void Segment::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Segment::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Segment& Segment::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_Segment.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_Segment_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -5623,9 +6845,73 @@ void Segment::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Segment::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Segment*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes word = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_word();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int32 score = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_score(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool Segment::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.Segment)
   for (;;) {
@@ -5635,8 +6921,7 @@ bool Segment::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes word = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_word()));
         } else {
@@ -5647,8 +6932,7 @@ bool Segment::MergePartialFromCodedStream(
 
       // int32 score = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -5678,6 +6962,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void Segment::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -5696,9 +6981,9 @@ void Segment::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->score(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.Segment)
 }
@@ -5722,9 +7007,9 @@ void Segment::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->score(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.Segment)
   return target;
@@ -5734,11 +7019,15 @@ size_t Segment::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.Segment)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes word = 1;
   if (this->word().size() > 0) {
     total_size += 1 +
@@ -5762,7 +7051,7 @@ void Segment::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.Segment)
   GOOGLE_DCHECK_NE(&from, this);
   const Segment* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Segment>(
+      ::google::protobuf::DynamicCastToGenerated<Segment>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.Segment)
@@ -5813,15 +7102,15 @@ void Segment::Swap(Segment* other) {
 }
 void Segment::InternalSwap(Segment* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   word_.Swap(&other->word_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(score_, other->score_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata Segment::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -5829,14 +7118,16 @@ void Segment::InternalSwap(Segment* other) {
 
 void SegmentList::InitAsDefaultInstance() {
 }
+class SegmentList::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int SegmentList::kSegmentsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SegmentList::SegmentList()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_SegmentList.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.SegmentList)
 }
@@ -5849,6 +7140,8 @@ SegmentList::SegmentList(const SegmentList& from)
 }
 
 void SegmentList::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_SegmentList_spider_2eproto.base);
 }
 
 SegmentList::~SegmentList() {
@@ -5862,13 +7155,8 @@ void SegmentList::SharedDtor() {
 void SegmentList::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SegmentList::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SegmentList& SegmentList::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_SegmentList.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_SegmentList_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -5883,9 +7171,64 @@ void SegmentList::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* SegmentList::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<SegmentList*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // repeated .spiderproto.Segment segments = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::Segment::_InternalParse;
+          object = msg->add_segments();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool SegmentList::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.SegmentList)
   for (;;) {
@@ -5895,8 +7238,7 @@ bool SegmentList::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // repeated .spiderproto.Segment segments = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_segments()));
         } else {
@@ -5924,6 +7266,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void SegmentList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -5940,9 +7283,9 @@ void SegmentList::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.SegmentList)
 }
@@ -5962,9 +7305,9 @@ void SegmentList::SerializeWithCachedSizes(
         1, this->segments(static_cast<int>(i)), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.SegmentList)
   return target;
@@ -5974,11 +7317,15 @@ size_t SegmentList::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.SegmentList)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.Segment segments = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->segments_size());
@@ -5999,7 +7346,7 @@ void SegmentList::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.SegmentList)
   GOOGLE_DCHECK_NE(&from, this);
   const SegmentList* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SegmentList>(
+      ::google::protobuf::DynamicCastToGenerated<SegmentList>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.SegmentList)
@@ -6044,13 +7391,13 @@ void SegmentList::Swap(SegmentList* other) {
 }
 void SegmentList::InternalSwap(SegmentList* other) {
   using std::swap;
-  CastToBase(&segments_)->InternalSwap(CastToBase(&other->segments_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&segments_)->InternalSwap(CastToBase(&other->segments_));
 }
 
 ::google::protobuf::Metadata SegmentList::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -6061,6 +7408,20 @@ void CrawlDoc::InitAsDefaultInstance() {
       ::spiderproto::Storage::internal_default_instance());
   ::spiderproto::_CrawlDoc_default_instance_._instance.get_mutable()->segment_list_ = const_cast< ::spiderproto::SegmentList*>(
       ::spiderproto::SegmentList::internal_default_instance());
+}
+class CrawlDoc::HasBitSetters {
+ public:
+  static const ::spiderproto::Storage& storage(const CrawlDoc* msg);
+  static const ::spiderproto::SegmentList& segment_list(const CrawlDoc* msg);
+};
+
+const ::spiderproto::Storage&
+CrawlDoc::HasBitSetters::storage(const CrawlDoc* msg) {
+  return *msg->storage_;
+}
+const ::spiderproto::SegmentList&
+CrawlDoc::HasBitSetters::segment_list(const CrawlDoc* msg) {
+  return *msg->segment_list_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlDoc::kTaskidFieldNumber;
@@ -6073,8 +7434,6 @@ const int CrawlDoc::kSegmentListFieldNumber;
 
 CrawlDoc::CrawlDoc()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlDoc.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlDoc)
 }
@@ -6109,6 +7468,8 @@ CrawlDoc::CrawlDoc(const CrawlDoc& from)
 }
 
 void CrawlDoc::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlDoc_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   url_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -6133,13 +7494,8 @@ void CrawlDoc::SharedDtor() {
 void CrawlDoc::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlDoc::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlDoc& CrawlDoc::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlDoc.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlDoc_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -6165,9 +7521,129 @@ void CrawlDoc::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlDoc::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlDoc*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // bytes url = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_url();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int32 status = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_status(value);
+        break;
+      }
+      // bytes content = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_content();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.Storage storage = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::Storage::_InternalParse;
+        object = msg->mutable_storage();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .spiderproto.SegmentList segment_list = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::spiderproto::SegmentList::_InternalParse;
+        object = msg->mutable_segment_list();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlDoc::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlDoc)
   for (;;) {
@@ -6177,8 +7653,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -6189,8 +7664,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
 
       // bytes url = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_url()));
         } else {
@@ -6201,8 +7675,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
 
       // int32 status = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -6215,8 +7688,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
 
       // bytes content = 4;
       case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_content()));
         } else {
@@ -6227,8 +7699,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
 
       // .spiderproto.Storage storage = 5;
       case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_storage()));
         } else {
@@ -6239,8 +7710,7 @@ bool CrawlDoc::MergePartialFromCodedStream(
 
       // .spiderproto.SegmentList segment_list = 6;
       case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_segment_list()));
         } else {
@@ -6268,6 +7738,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlDoc::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -6301,18 +7772,18 @@ void CrawlDoc::SerializeWithCachedSizes(
   // .spiderproto.Storage storage = 5;
   if (this->has_storage()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->_internal_storage(), output);
+      5, HasBitSetters::storage(this), output);
   }
 
   // .spiderproto.SegmentList segment_list = 6;
   if (this->has_segment_list()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->_internal_segment_list(), output);
+      6, HasBitSetters::segment_list(this), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlDoc)
 }
@@ -6354,19 +7825,19 @@ void CrawlDoc::SerializeWithCachedSizes(
   if (this->has_storage()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, this->_internal_storage(), deterministic, target);
+        5, HasBitSetters::storage(this), deterministic, target);
   }
 
   // .spiderproto.SegmentList segment_list = 6;
   if (this->has_segment_list()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        6, this->_internal_segment_list(), deterministic, target);
+        6, HasBitSetters::segment_list(this), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlDoc)
   return target;
@@ -6376,11 +7847,15 @@ size_t CrawlDoc::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlDoc)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bytes taskid = 1;
   if (this->taskid().size() > 0) {
     total_size += 1 +
@@ -6432,7 +7907,7 @@ void CrawlDoc::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlDoc)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlDoc* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlDoc>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlDoc>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlDoc)
@@ -6497,6 +7972,7 @@ void CrawlDoc::Swap(CrawlDoc* other) {
 }
 void CrawlDoc::InternalSwap(CrawlDoc* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   url_.Swap(&other->url_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -6506,12 +7982,11 @@ void CrawlDoc::InternalSwap(CrawlDoc* other) {
   swap(storage_, other->storage_);
   swap(segment_list_, other->segment_list_);
   swap(status_, other->status_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawlDoc::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 
@@ -6519,6 +7994,10 @@ void CrawlDoc::InternalSwap(CrawlDoc* other) {
 
 void CrawlDocs::InitAsDefaultInstance() {
 }
+class CrawlDocs::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CrawlDocs::kTaskidFieldNumber;
 const int CrawlDocs::kDocsFieldNumber;
@@ -6526,8 +8005,6 @@ const int CrawlDocs::kDocsFieldNumber;
 
 CrawlDocs::CrawlDocs()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_spider_2eproto::scc_info_CrawlDocs.base);
   SharedCtor();
   // @@protoc_insertion_point(constructor:spiderproto.CrawlDocs)
 }
@@ -6544,6 +8021,8 @@ CrawlDocs::CrawlDocs(const CrawlDocs& from)
 }
 
 void CrawlDocs::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CrawlDocs_spider_2eproto.base);
   taskid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -6559,13 +8038,8 @@ void CrawlDocs::SharedDtor() {
 void CrawlDocs::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CrawlDocs::descriptor() {
-  ::protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CrawlDocs& CrawlDocs::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_spider_2eproto::scc_info_CrawlDocs.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_CrawlDocs_spider_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -6581,9 +8055,79 @@ void CrawlDocs::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CrawlDocs::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CrawlDocs*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bytes taskid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::google::protobuf::internal::StringParser;
+        ::std::string* str = msg->mutable_taskid();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // repeated .spiderproto.CrawlDoc docs = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::spiderproto::CrawlDoc::_InternalParse;
+          object = msg->add_docs();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 18 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool CrawlDocs::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:spiderproto.CrawlDocs)
   for (;;) {
@@ -6593,8 +8137,7 @@ bool CrawlDocs::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // bytes taskid = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_taskid()));
         } else {
@@ -6605,8 +8148,7 @@ bool CrawlDocs::MergePartialFromCodedStream(
 
       // repeated .spiderproto.CrawlDoc docs = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_docs()));
         } else {
@@ -6634,6 +8176,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void CrawlDocs::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -6656,9 +8199,9 @@ void CrawlDocs::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:spiderproto.CrawlDocs)
 }
@@ -6685,9 +8228,9 @@ void CrawlDocs::SerializeWithCachedSizes(
         2, this->docs(static_cast<int>(i)), deterministic, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:spiderproto.CrawlDocs)
   return target;
@@ -6697,11 +8240,15 @@ size_t CrawlDocs::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:spiderproto.CrawlDocs)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .spiderproto.CrawlDoc docs = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->docs_size());
@@ -6729,7 +8276,7 @@ void CrawlDocs::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:spiderproto.CrawlDocs)
   GOOGLE_DCHECK_NE(&from, this);
   const CrawlDocs* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CrawlDocs>(
+      ::google::protobuf::DynamicCastToGenerated<CrawlDocs>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:spiderproto.CrawlDocs)
@@ -6778,15 +8325,15 @@ void CrawlDocs::Swap(CrawlDocs* other) {
 }
 void CrawlDocs::InternalSwap(CrawlDocs* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   CastToBase(&docs_)->InternalSwap(CastToBase(&other->docs_));
   taskid_.Swap(&other->taskid_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CrawlDocs::GetMetadata() const {
-  protobuf_spider_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_spider_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_spider_2eproto);
+  return ::file_level_metadata_spider_2eproto[kIndexInFileMessages];
 }
 
 

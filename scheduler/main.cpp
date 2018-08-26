@@ -12,9 +12,9 @@ int main(int argc, char* argv[]) {
 
     Scheduler scheduler1;
     scheduler1.Load();
-    LOG(INFO) << "load is done" << std::endl;
+    LOG(INFO) << "scheduler load completed" << std::endl;
     scheduler1.Start();
-    LOG(INFO) << "start is done" << std::endl;
+    LOG(INFO) << "scheduler start up completed" << std::endl;
     scheduler1.Join();
     google::ShutdownGoogleLogging();
     return 0;

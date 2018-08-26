@@ -50,7 +50,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 0.2 #1s second waiting to download the pages from same website
+DOWNLOAD_DELAY = 0.3 #1s second waiting to download the pages from same website
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 8
 #CONCURRENT_REQUESTS_PER_IP = 8
@@ -70,23 +70,16 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-SPIDER_MIDDLEWARES = {
+#SPIDER_MIDDLEWARES = {
 #   'sspider.middlewares.SspiderSpiderMiddleware': 543,
-    'sspider.middlewares.RandomUserAgent' : 1,
-#    'sspider.middlewares.FixBindAddress' : 100,
-    'sspider.middlewares.StartTime'	: 101,
-#    'sspider.middlewares.HandleAllCode'	: 102,
-    'sspider.middlewares.CustomeSlotKey' : 103,
-    'sspider.middlewares.ExceptionProcessor' : 104,
 
-}
+#}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     #'sspider.middlewares.MyCustomDownloaderMiddleware': 543,
     'sspider.middlewares.RandomUserAgent' : 1,
-    #'sspider.middlewares.FixBindAddress' : 100,
     'sspider.middlewares.StartTime'	: 101,
     #'sspider.middlewares.HandleAllCode'	: 102,
     'sspider.middlewares.CustomeSlotKey' : 103,

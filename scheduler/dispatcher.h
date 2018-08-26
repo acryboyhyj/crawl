@@ -31,6 +31,8 @@ public:
 
     bool Distribute(const std::shared_ptr<TaskInfo>& taskinfo);
 
+    bool HaveSurviveFetcher();
+
 private:
     void DispatchInternal();
 

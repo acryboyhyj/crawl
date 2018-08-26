@@ -8,6 +8,7 @@
 #include "proto/spider.pb.h"
 #include "task_manager.h"
 #include "taskinfo.h"
+
 Dispatcher::Dispatcher(const std::shared_ptr<TaskManager>& task_manager,
                        const std::shared_ptr<FetcherManager>& fetch_manager)
     : m_task_manager(task_manager),
@@ -30,6 +31,8 @@ void Dispatcher::Stop() { m_stop.store(true, std::memory_order_relaxed); }
 void Dispatcher::DispatchInternal() {
     LOG(INFO) << "DispatchInternal start";
     while (!m_stop.load(std::memory_order_relaxed)) {
+        if (!HaveSurviveFetcher()) continue;
+        // have activate fetcher
         m_seq++;
 
         // find a  min seq task
@@ -57,20 +60,27 @@ void Dispatcher::DispatchInternal() {
 }
 
 bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
-    int client_count         = m_fetcher_manager->GetClientCount();
-    int url_count            = taskinfo->GetCrawlurlCount();
-    int urled_count          = taskinfo->GetCrawlingUrlCount();
-    int concurrent_url_count = taskinfo->GetConcurrentCount();
-    int actual_count         = 0;
-    if (concurrent_url_count != 0) {
-        actual_count = concurrent_url_count - urled_count;
-        if (actual_count > url_count) actual_count = url_count;
+    int client_count               = m_fetcher_manager->GetClientCount();
+    int url_count                  = taskinfo->GetCrawlurlCount();
+    int urled_count                = taskinfo->GetCrawlingUrlCount();
+    int allow_concurrent_url_count = taskinfo->GetAllowConcurrentCount();
+    int actual_distribure_count    = 0;
+    if (allow_concurrent_url_count != 0) {
+        actual_distribure_count = allow_concurrent_url_count - urled_count;
+        if (actual_distribure_count > url_count)
+            actual_distribure_count = url_count;
     }
+
+    LOG(INFO) << "client_count,url_count,urled_count,allow_concurrent_url_"
+                 "count,actual_distribure_count "
+              << client_count << "," << url_count << "," << urled_count << "'"
+              << allow_concurrent_url_count << "," << actual_distribure_count;
     taskinfo->SetTime();
     std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
-        SpilitTask(taskinfo, client_count, actual_count);
-    // if actual_count is zero , will return a empty task
+        SpilitTask(taskinfo, client_count, actual_distribure_count);
+    // if actual_distribure_count is zero , will return a empty task
     if (tasks.empty()) {
+        LOG(INFO) << "task empty";
         std::this_thread::sleep_for(std::chrono::seconds(1));
         return false;
     }
@@ -91,7 +101,6 @@ bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
                   << crawling_task.fetcher();
         fetch_clients[i]->add_crawlingtask(crawling_task);
     }
-
     return true;
 }
 
@@ -145,4 +154,11 @@ spiderproto::CrawlingTask Dispatcher::CombineCrawlingTask(
     spiderproto::Storage* storage = crawling_task.mutable_storage();
     storage->CopyFrom(btask.storage());
     return crawling_task;
+}
+
+bool Dispatcher::HaveSurviveFetcher() {
+    if (m_fetcher_manager->GetAllFetchers().size() == 0)
+        return false;
+    else
+        return true;
 }

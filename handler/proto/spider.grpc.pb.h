@@ -6,6 +6,7 @@
 
 #include "spider.pb.h"
 
+#include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/method_handler_impl.h>
@@ -121,7 +122,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -141,7 +142,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -161,7 +162,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -182,7 +183,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -199,7 +200,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -216,9 +217,69 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_add_task : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_add_task() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_add_task() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestadd_task(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_add_fetcher : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_add_fetcher() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_add_fetcher() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestadd_fetcher(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_add_crawledtask : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_add_crawledtask() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_add_crawledtask() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestadd_crawledtask(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -234,7 +295,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_task(::grpc::ServerContext* context, const ::spiderproto::BasicTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -254,7 +315,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_fetcher(::grpc::ServerContext* context, const ::spiderproto::Fetcher* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -274,7 +335,7 @@ class Schedule final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawledtask(::grpc::ServerContext* context, const ::spiderproto::CrawledTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -342,7 +403,7 @@ class Fetch final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -363,9 +424,29 @@ class Fetch final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_add_crawlingtask : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_add_crawlingtask() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_add_crawlingtask() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestadd_crawlingtask(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -381,7 +462,7 @@ class Fetch final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -449,7 +530,7 @@ class Handle final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -470,9 +551,29 @@ class Handle final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_add_crawldoc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_add_crawldoc() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_add_crawldoc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestadd_crawldoc(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -488,7 +589,7 @@ class Handle final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) final override {
+    ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }

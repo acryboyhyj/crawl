@@ -82,7 +82,6 @@ bool Process::HandleDocs(bool force) {
         LOG(INFO) << "delete docs with taskid:" << taskid;
     }
 
-    LOG(INFO) << "handle docs";
     return dumped_taskids.size() > 0;
 }
 

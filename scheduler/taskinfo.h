@@ -11,10 +11,10 @@ class TaskInfo {
 
 public:
     ~TaskInfo();
-    TaskInfo()                    = delete;
+    TaskInfo()			  = delete;
     TaskInfo(const TaskInfo& rhs) = delete;
     TaskInfo& operator=(const TaskInfo& rhs) = delete;
-    TaskInfo(TaskInfo&& rhs)                 = delete;
+    TaskInfo(TaskInfo&& rhs)		     = delete;
     TaskInfo& operator=(TaskInfo&& rhs) = delete;
 
     explicit TaskInfo(const spiderproto::BasicTask& btask);
@@ -36,7 +36,7 @@ public:
     void SetTime();
     double GetDelay();
     int GetCrawlingUrlCount();
-    int GetConcurrentCount();
+    int GetAllowConcurrentCount();
 
     std::vector<spiderproto::CrawlUrl> GetCrawlurl(int url_count);
 

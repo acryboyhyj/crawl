@@ -8,7 +8,6 @@ TaskInfo::TaskInfo(const spiderproto::BasicTask& btask)
     }
 }
 TaskInfo::~TaskInfo() {}
-
 bool TaskInfo::AddCrawlUrl(const spiderproto::CrawlUrl& crawlurl) {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_crawlurls.push_back(crawlurl);
@@ -124,7 +123,7 @@ int TaskInfo::GetCrawlingUrlCount() {
     return count;
 }
 
-int TaskInfo::GetConcurrentCount() {
+int TaskInfo::GetAllowConcurrentCount() {
     std::lock_guard<std::mutex> lock(m_mutex);
     return m_btask.runtime().concurrent_reqs();
 }
