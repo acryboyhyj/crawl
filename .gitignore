@@ -6,7 +6,10 @@ bin/*
 docresult/*
 *.docs
 *.[oa]
+
 scheduler
 schedue_client
 handler
-
+handler_client
+spider.log
+log.txt
