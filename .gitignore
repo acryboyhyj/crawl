@@ -4,4 +4,9 @@ log/*
 *.txt
 bin/*
 docresult/*
-.docs
+*.docs
+*.[oa]
+scheduler
+schedue_client
+handler
+
