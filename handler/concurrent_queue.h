@@ -17,7 +17,6 @@ public:
     ConcurrentQueue& operator=(const ConcurrentQueue&) = delete;
 
     void push(const Data& data) {
-        LOG(INFO) << "push a data(copy from)";
         {
             std::lock_guard<std::mutex> lock(m_mutex);
             m_queue.push(data);
@@ -26,7 +25,6 @@ public:
     }
 
     void push(Data&& data) {
-        LOG(INFO) << "push a data(move from)";
         {
             std::lock_guard<std::mutex> lock(m_mutex);
             m_queue.push(std::move(data));
@@ -39,7 +37,7 @@ public:
         m_condition_variable.wait(lock,
                                   [this] { return !this->m_queue.empty(); });
         auto data = m_queue.front();
-        LOG(INFO) << "pop a doc ";
+        m_queue.pop();
         return data;
     }
     void pop(Data& data) {  // NOLINT
@@ -47,7 +45,7 @@ public:
         m_condition_variable.wait(lock,
                                   [this] { return !this->m_queue.empty(); });
         data = std::move(m_queue.front());
-        LOG(INFO) << "pop a doc(move from): ";
+
         m_queue.pop();
     }
 

@@ -34,11 +34,9 @@ void CrawledtaskHandler::AddCrawledTask() {
             continue;
         }
 
-        task->ShowTaskInfo();
         task->DelCrawledUrl(cdtask.crawl_url());
-        task->ShowTaskInfo();
         for (int i = 0; i < cdtask.links_size(); ++i) {
-            if (!m_bf->KeyMatch(cdtask.links(i).url())) {
+            if (m_bf->KeyMatch(cdtask.links(i).url())) {
                 m_bf->Insert(cdtask.links(i).url());
                 task->AddCrawlUrl(cdtask.links(i));
             }

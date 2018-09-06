@@ -37,6 +37,7 @@ public:
         m_condition_variable.wait(lock,
                                   [this] { return !this->m_queue.empty(); });
         auto data = m_queue.front();
+        m_queue.pop();
         return data;
     }
     void pop(Data& data) {  // NOLINT

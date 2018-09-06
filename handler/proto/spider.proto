@@ -113,6 +113,9 @@ service Schedule {
 service Fetch {
     rpc add_crawlingtask(CrawlingTask) returns (TaskResponse) {
     }
+
+    rpc Ping(PingRequest) returns (PingResponse) {
+    }
 }
 
 message Segment {
@@ -138,7 +141,17 @@ message CrawlDocs {
     repeated CrawlDoc docs = 2;
 }
 
+message PingRequest {
+    string name = 1;
+}
+message PingResponse {
+    string name  = 1;
+    bool survive = 2;
+    string msg   = 3;
+}
 service Handle {
     rpc add_crawldoc(CrawlDoc) returns (TaskResponse) {
+    }
+    rpc Ping(PingRequest) returns (PingResponse) {
     }
 }

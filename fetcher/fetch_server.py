@@ -50,3 +50,6 @@ class FetchServer(FetchServicer):
 
         return response
 
+    def ping(self, request, context):
+        logger.debug("receive ping %ss" % str(request))
+        response=PingResponse(name=self.name, )

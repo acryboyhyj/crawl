@@ -95,6 +95,11 @@ class FetchStub(object):
         request_serializer=spider__pb2.CrawlingTask.SerializeToString,
         response_deserializer=spider__pb2.TaskResponse.FromString,
         )
+    self.Ping = channel.unary_unary(
+        '/spiderproto.Fetch/Ping',
+        request_serializer=spider__pb2.PingRequest.SerializeToString,
+        response_deserializer=spider__pb2.PingResponse.FromString,
+        )
 
 
 class FetchServicer(object):
@@ -108,6 +113,13 @@ class FetchServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def Ping(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_FetchServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -115,6 +127,11 @@ def add_FetchServicer_to_server(servicer, server):
           servicer.add_crawlingtask,
           request_deserializer=spider__pb2.CrawlingTask.FromString,
           response_serializer=spider__pb2.TaskResponse.SerializeToString,
+      ),
+      'Ping': grpc.unary_unary_rpc_method_handler(
+          servicer.Ping,
+          request_deserializer=spider__pb2.PingRequest.FromString,
+          response_serializer=spider__pb2.PingResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
@@ -137,6 +154,11 @@ class HandleStub(object):
         request_serializer=spider__pb2.CrawlDoc.SerializeToString,
         response_deserializer=spider__pb2.TaskResponse.FromString,
         )
+    self.Ping = channel.unary_unary(
+        '/spiderproto.Handle/Ping',
+        request_serializer=spider__pb2.PingRequest.SerializeToString,
+        response_deserializer=spider__pb2.PingResponse.FromString,
+        )
 
 
 class HandleServicer(object):
@@ -150,6 +172,13 @@ class HandleServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def Ping(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_HandleServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -157,6 +186,11 @@ def add_HandleServicer_to_server(servicer, server):
           servicer.add_crawldoc,
           request_deserializer=spider__pb2.CrawlDoc.FromString,
           response_serializer=spider__pb2.TaskResponse.SerializeToString,
+      ),
+      'Ping': grpc.unary_unary_rpc_method_handler(
+          servicer.Ping,
+          request_deserializer=spider__pb2.PingRequest.FromString,
+          response_serializer=spider__pb2.PingResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

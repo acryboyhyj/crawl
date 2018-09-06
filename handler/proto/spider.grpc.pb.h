@@ -362,9 +362,18 @@ class Fetch final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>> PrepareAsyncadd_crawlingtask(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>>(PrepareAsyncadd_crawlingtaskRaw(context, request, cq));
     }
+    virtual ::grpc::Status Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>> AsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>>(AsyncPingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>> PrepareAsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>>(PrepareAsyncPingRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>* Asyncadd_crawlingtaskRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>* PrepareAsyncadd_crawlingtaskRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>* PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -376,12 +385,22 @@ class Fetch final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>> PrepareAsyncadd_crawlingtask(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>>(PrepareAsyncadd_crawlingtaskRaw(context, request, cq));
     }
+    ::grpc::Status Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>> AsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>>(AsyncPingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>> PrepareAsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>>(PrepareAsyncPingRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>* Asyncadd_crawlingtaskRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>* PrepareAsyncadd_crawlingtaskRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_add_crawlingtask_;
+    const ::grpc::internal::RpcMethod rpcmethod_Ping_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -390,6 +409,7 @@ class Fetch final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response);
+    virtual ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_add_crawlingtask : public BaseClass {
@@ -411,7 +431,27 @@ class Fetch final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_add_crawlingtask<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_Ping() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPing(::grpc::ServerContext* context, ::spiderproto::PingRequest* request, ::grpc::ServerAsyncResponseWriter< ::spiderproto::PingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_add_crawlingtask<WithAsyncMethod_Ping<Service > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_add_crawlingtask : public BaseClass {
    private:
@@ -425,6 +465,23 @@ class Fetch final {
     }
     // disable synchronous version of this method
     ::grpc::Status add_crawlingtask(::grpc::ServerContext* context, const ::spiderproto::CrawlingTask* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_Ping() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -450,6 +507,26 @@ class Fetch final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_Ping() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPing(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_add_crawlingtask : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -469,9 +546,29 @@ class Fetch final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status Streamedadd_crawlingtask(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::spiderproto::CrawlingTask,::spiderproto::TaskResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_add_crawlingtask<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_Ping() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler< ::spiderproto::PingRequest, ::spiderproto::PingResponse>(std::bind(&WithStreamedUnaryMethod_Ping<BaseClass>::StreamedPing, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPing(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::spiderproto::PingRequest,::spiderproto::PingResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_add_crawlingtask<WithStreamedUnaryMethod_Ping<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_add_crawlingtask<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_add_crawlingtask<WithStreamedUnaryMethod_Ping<Service > > StreamedService;
 };
 
 class Handle final {
@@ -489,9 +586,18 @@ class Handle final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>> PrepareAsyncadd_crawldoc(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>>(PrepareAsyncadd_crawldocRaw(context, request, cq));
     }
+    virtual ::grpc::Status Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>> AsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>>(AsyncPingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>> PrepareAsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>>(PrepareAsyncPingRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>* Asyncadd_crawldocRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::TaskResponse>* PrepareAsyncadd_crawldocRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::spiderproto::PingResponse>* PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -503,12 +609,22 @@ class Handle final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>> PrepareAsyncadd_crawldoc(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>>(PrepareAsyncadd_crawldocRaw(context, request, cq));
     }
+    ::grpc::Status Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>> AsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>>(AsyncPingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>> PrepareAsyncPing(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>>(PrepareAsyncPingRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>* Asyncadd_crawldocRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::spiderproto::TaskResponse>* PrepareAsyncadd_crawldocRaw(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_add_crawldoc_;
+    const ::grpc::internal::RpcMethod rpcmethod_Ping_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -517,6 +633,7 @@ class Handle final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response);
+    virtual ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_add_crawldoc : public BaseClass {
@@ -538,7 +655,27 @@ class Handle final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_add_crawldoc<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_Ping() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPing(::grpc::ServerContext* context, ::spiderproto::PingRequest* request, ::grpc::ServerAsyncResponseWriter< ::spiderproto::PingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_add_crawldoc<WithAsyncMethod_Ping<Service > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_add_crawldoc : public BaseClass {
    private:
@@ -552,6 +689,23 @@ class Handle final {
     }
     // disable synchronous version of this method
     ::grpc::Status add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_Ping() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -577,6 +731,26 @@ class Handle final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_Ping() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPing(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_add_crawldoc : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -596,9 +770,29 @@ class Handle final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status Streamedadd_crawldoc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::spiderproto::CrawlDoc,::spiderproto::TaskResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_add_crawldoc<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Ping : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_Ping() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler< ::spiderproto::PingRequest, ::spiderproto::PingResponse>(std::bind(&WithStreamedUnaryMethod_Ping<BaseClass>::StreamedPing, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_Ping() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPing(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::spiderproto::PingRequest,::spiderproto::PingResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_add_crawldoc<WithStreamedUnaryMethod_Ping<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_add_crawldoc<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_add_crawldoc<WithStreamedUnaryMethod_Ping<Service > > StreamedService;
 };
 
 }  // namespace spiderproto

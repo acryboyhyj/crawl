@@ -41,7 +41,7 @@ struct TableStruct_spider_2eproto {
     GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[18]
+  static const ::google::protobuf::internal::ParseTable schema[20]
     GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -88,6 +88,12 @@ extern LinkRuleDefaultTypeInternal _LinkRule_default_instance_;
 class LinkRuleList;
 class LinkRuleListDefaultTypeInternal;
 extern LinkRuleListDefaultTypeInternal _LinkRuleList_default_instance_;
+class PingRequest;
+class PingRequestDefaultTypeInternal;
+extern PingRequestDefaultTypeInternal _PingRequest_default_instance_;
+class PingResponse;
+class PingResponseDefaultTypeInternal;
+extern PingResponseDefaultTypeInternal _PingResponse_default_instance_;
 class Runtime;
 class RuntimeDefaultTypeInternal;
 extern RuntimeDefaultTypeInternal _Runtime_default_instance_;
@@ -119,6 +125,8 @@ template<> ::spiderproto::Feature* Arena::CreateMaybeMessage<::spiderproto::Feat
 template<> ::spiderproto::Fetcher* Arena::CreateMaybeMessage<::spiderproto::Fetcher>(Arena*);
 template<> ::spiderproto::LinkRule* Arena::CreateMaybeMessage<::spiderproto::LinkRule>(Arena*);
 template<> ::spiderproto::LinkRuleList* Arena::CreateMaybeMessage<::spiderproto::LinkRuleList>(Arena*);
+template<> ::spiderproto::PingRequest* Arena::CreateMaybeMessage<::spiderproto::PingRequest>(Arena*);
+template<> ::spiderproto::PingResponse* Arena::CreateMaybeMessage<::spiderproto::PingResponse>(Arena*);
 template<> ::spiderproto::Runtime* Arena::CreateMaybeMessage<::spiderproto::Runtime>(Arena*);
 template<> ::spiderproto::Segment* Arena::CreateMaybeMessage<::spiderproto::Segment>(Arena*);
 template<> ::spiderproto::SegmentList* Arena::CreateMaybeMessage<::spiderproto::SegmentList>(Arena*);
@@ -2802,6 +2810,266 @@ class CrawlDocs : public ::google::protobuf::Message /* @@protoc_insertion_point
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_spider_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PingRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:spiderproto.PingRequest) */ {
+ public:
+  PingRequest();
+  virtual ~PingRequest();
+
+  PingRequest(const PingRequest& from);
+
+  inline PingRequest& operator=(const PingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PingRequest(PingRequest&& from) noexcept
+    : PingRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline PingRequest& operator=(PingRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const PingRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PingRequest* internal_default_instance() {
+    return reinterpret_cast<const PingRequest*>(
+               &_PingRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  void Swap(PingRequest* other);
+  friend void swap(PingRequest& a, PingRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PingRequest* New() const final {
+    return CreateMaybeMessage<PingRequest>(NULL);
+  }
+
+  PingRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PingRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PingRequest& from);
+  void MergeFrom(const PingRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PingRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:spiderproto.PingRequest)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_spider_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PingResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:spiderproto.PingResponse) */ {
+ public:
+  PingResponse();
+  virtual ~PingResponse();
+
+  PingResponse(const PingResponse& from);
+
+  inline PingResponse& operator=(const PingResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PingResponse(PingResponse&& from) noexcept
+    : PingResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline PingResponse& operator=(PingResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const PingResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PingResponse* internal_default_instance() {
+    return reinterpret_cast<const PingResponse*>(
+               &_PingResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  void Swap(PingResponse* other);
+  friend void swap(PingResponse& a, PingResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PingResponse* New() const final {
+    return CreateMaybeMessage<PingResponse>(NULL);
+  }
+
+  PingResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PingResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PingResponse& from);
+  void MergeFrom(const PingResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PingResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // string msg = 3;
+  void clear_msg();
+  static const int kMsgFieldNumber = 3;
+  const ::std::string& msg() const;
+  void set_msg(const ::std::string& value);
+  #if LANG_CXX11
+  void set_msg(::std::string&& value);
+  #endif
+  void set_msg(const char* value);
+  void set_msg(const char* value, size_t size);
+  ::std::string* mutable_msg();
+  ::std::string* release_msg();
+  void set_allocated_msg(::std::string* msg);
+
+  // bool survive = 2;
+  void clear_survive();
+  static const int kSurviveFieldNumber = 2;
+  bool survive() const;
+  void set_survive(bool value);
+
+  // @@protoc_insertion_point(class_scope:spiderproto.PingResponse)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr msg_;
+  bool survive_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_spider_2eproto;
+};
 // ===================================================================
 
 
@@ -5231,9 +5499,194 @@ CrawlDocs::docs() const {
   return docs_;
 }
 
+// -------------------------------------------------------------------
+
+// PingRequest
+
+// string name = 1;
+inline void PingRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PingRequest::name() const {
+  // @@protoc_insertion_point(field_get:spiderproto.PingRequest.name)
+  return name_.GetNoArena();
+}
+inline void PingRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:spiderproto.PingRequest.name)
+}
+#if LANG_CXX11
+inline void PingRequest::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:spiderproto.PingRequest.name)
+}
+#endif
+inline void PingRequest::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:spiderproto.PingRequest.name)
+}
+inline void PingRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:spiderproto.PingRequest.name)
+}
+inline ::std::string* PingRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:spiderproto.PingRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PingRequest::release_name() {
+  // @@protoc_insertion_point(field_release:spiderproto.PingRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PingRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:spiderproto.PingRequest.name)
+}
+
+// -------------------------------------------------------------------
+
+// PingResponse
+
+// string name = 1;
+inline void PingResponse::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PingResponse::name() const {
+  // @@protoc_insertion_point(field_get:spiderproto.PingResponse.name)
+  return name_.GetNoArena();
+}
+inline void PingResponse::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:spiderproto.PingResponse.name)
+}
+#if LANG_CXX11
+inline void PingResponse::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:spiderproto.PingResponse.name)
+}
+#endif
+inline void PingResponse::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:spiderproto.PingResponse.name)
+}
+inline void PingResponse::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:spiderproto.PingResponse.name)
+}
+inline ::std::string* PingResponse::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:spiderproto.PingResponse.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PingResponse::release_name() {
+  // @@protoc_insertion_point(field_release:spiderproto.PingResponse.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PingResponse::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:spiderproto.PingResponse.name)
+}
+
+// bool survive = 2;
+inline void PingResponse::clear_survive() {
+  survive_ = false;
+}
+inline bool PingResponse::survive() const {
+  // @@protoc_insertion_point(field_get:spiderproto.PingResponse.survive)
+  return survive_;
+}
+inline void PingResponse::set_survive(bool value) {
+  
+  survive_ = value;
+  // @@protoc_insertion_point(field_set:spiderproto.PingResponse.survive)
+}
+
+// string msg = 3;
+inline void PingResponse::clear_msg() {
+  msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PingResponse::msg() const {
+  // @@protoc_insertion_point(field_get:spiderproto.PingResponse.msg)
+  return msg_.GetNoArena();
+}
+inline void PingResponse::set_msg(const ::std::string& value) {
+  
+  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:spiderproto.PingResponse.msg)
+}
+#if LANG_CXX11
+inline void PingResponse::set_msg(::std::string&& value) {
+  
+  msg_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:spiderproto.PingResponse.msg)
+}
+#endif
+inline void PingResponse::set_msg(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:spiderproto.PingResponse.msg)
+}
+inline void PingResponse::set_msg(const char* value, size_t size) {
+  
+  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:spiderproto.PingResponse.msg)
+}
+inline ::std::string* PingResponse::mutable_msg() {
+  
+  // @@protoc_insertion_point(field_mutable:spiderproto.PingResponse.msg)
+  return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PingResponse::release_msg() {
+  // @@protoc_insertion_point(field_release:spiderproto.PingResponse.msg)
+  
+  return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PingResponse::set_allocated_msg(::std::string* msg) {
+  if (msg != NULL) {
+    
+  } else {
+    
+  }
+  msg_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msg);
+  // @@protoc_insertion_point(field_set_allocated:spiderproto.PingResponse.msg)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -114,6 +114,7 @@ Schedule::Service::~Service() {
 
 static const char* Fetch_method_names[] = {
   "/spiderproto.Fetch/add_crawlingtask",
+  "/spiderproto.Fetch/Ping",
 };
 
 std::unique_ptr< Fetch::Stub> Fetch::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -124,6 +125,7 @@ std::unique_ptr< Fetch::Stub> Fetch::NewStub(const std::shared_ptr< ::grpc::Chan
 
 Fetch::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_add_crawlingtask_(Fetch_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Ping_(Fetch_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Fetch::Stub::add_crawlingtask(::grpc::ClientContext* context, const ::spiderproto::CrawlingTask& request, ::spiderproto::TaskResponse* response) {
@@ -138,12 +140,29 @@ Fetch::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::TaskResponse>::Create(channel_.get(), cq, rpcmethod_add_crawlingtask_, context, request, false);
 }
 
+::grpc::Status Fetch::Stub::Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Ping_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* Fetch::Stub::AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::PingResponse>::Create(channel_.get(), cq, rpcmethod_Ping_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* Fetch::Stub::PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::PingResponse>::Create(channel_.get(), cq, rpcmethod_Ping_, context, request, false);
+}
+
 Fetch::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Fetch_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Fetch::Service, ::spiderproto::CrawlingTask, ::spiderproto::TaskResponse>(
           std::mem_fn(&Fetch::Service::add_crawlingtask), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Fetch_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Fetch::Service, ::spiderproto::PingRequest, ::spiderproto::PingResponse>(
+          std::mem_fn(&Fetch::Service::Ping), this)));
 }
 
 Fetch::Service::~Service() {
@@ -156,9 +175,17 @@ Fetch::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status Fetch::Service::Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 
 static const char* Handle_method_names[] = {
   "/spiderproto.Handle/add_crawldoc",
+  "/spiderproto.Handle/Ping",
 };
 
 std::unique_ptr< Handle::Stub> Handle::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -169,6 +196,7 @@ std::unique_ptr< Handle::Stub> Handle::NewStub(const std::shared_ptr< ::grpc::Ch
 
 Handle::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_add_crawldoc_(Handle_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Ping_(Handle_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Handle::Stub::add_crawldoc(::grpc::ClientContext* context, const ::spiderproto::CrawlDoc& request, ::spiderproto::TaskResponse* response) {
@@ -183,18 +211,42 @@ Handle::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::TaskResponse>::Create(channel_.get(), cq, rpcmethod_add_crawldoc_, context, request, false);
 }
 
+::grpc::Status Handle::Stub::Ping(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::spiderproto::PingResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Ping_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* Handle::Stub::AsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::PingResponse>::Create(channel_.get(), cq, rpcmethod_Ping_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::spiderproto::PingResponse>* Handle::Stub::PrepareAsyncPingRaw(::grpc::ClientContext* context, const ::spiderproto::PingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::spiderproto::PingResponse>::Create(channel_.get(), cq, rpcmethod_Ping_, context, request, false);
+}
+
 Handle::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Handle_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Handle::Service, ::spiderproto::CrawlDoc, ::spiderproto::TaskResponse>(
           std::mem_fn(&Handle::Service::add_crawldoc), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Handle_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Handle::Service, ::spiderproto::PingRequest, ::spiderproto::PingResponse>(
+          std::mem_fn(&Handle::Service::Ping), this)));
 }
 
 Handle::Service::~Service() {
 }
 
 ::grpc::Status Handle::Service::add_crawldoc(::grpc::ServerContext* context, const ::spiderproto::CrawlDoc* request, ::spiderproto::TaskResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Handle::Service::Ping(::grpc::ServerContext* context, const ::spiderproto::PingRequest* request, ::spiderproto::PingResponse* response) {
   (void) context;
   (void) request;
   (void) response;
