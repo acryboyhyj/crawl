@@ -21,7 +21,8 @@ public:
     bool QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks);
 
     bool DeleteTask(const spiderproto::BasicTask& task);
-    bool AddLink(const spiderproto::CrawledTask& task);
+    bool AddNewLink(const std::string taskid,
+                    const spiderproto::CrawlUrl crawlurl);
 
 private:
     bool Connect();

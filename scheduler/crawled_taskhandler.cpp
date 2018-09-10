@@ -40,9 +40,9 @@ void CrawledtaskHandler::AddCrawledTask() {
                 LOG(INFO) << "insert a " << cdtask.links(i).url();
                 m_bf->insert(cdtask.links(i).url());
                 task->AddCrawlUrl(cdtask.links(i));
+                m_mysqlpp->AddNewLink(cdtask.taskid(), cdtask.links(i));
             }
         }
-        m_mysqlpp->AddLink(cdtask);
     }
 }
 
