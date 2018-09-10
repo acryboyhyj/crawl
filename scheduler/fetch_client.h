@@ -17,6 +17,7 @@ public:
         const spiderproto::CrawlingTask& crawling_task);
 
     std::string GetName();
+    std::string GetAddr();
 
 private:
     const std::string m_name;

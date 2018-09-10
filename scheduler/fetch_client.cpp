@@ -28,3 +28,5 @@ std::string FetchClient::add_crawlingtask(
     }
 }
 std::string FetchClient::GetName() { return m_name; }
+
+std::string FetchClient::GetAddr() { return m_addr; }

@@ -24,7 +24,7 @@ fi
 
 addr=127.0.0.1
 crawl="sspider"
-port=$(($replica_id+30000))
+port=$(($replica_id+40000))
 scheduler="127.0.0.1:30000"
 handler="127.0.0.1:50000"
 

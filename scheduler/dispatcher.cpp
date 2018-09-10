@@ -94,6 +94,8 @@ bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
             taskinfo, fetch_clients[i]->GetName(), tasks[i]);
         LOG(INFO) << "add_crawlingtask  " << crawling_task.taskid() << " to "
                   << crawling_task.fetcher();
+        LOG(INFO) << "fetch_client port:" << fetch_clients[i]->GetName() << " ,"
+                  << fetch_clients[i]->GetAddr();
         fetch_clients[i]->add_crawlingtask(crawling_task);
     }
     return true;
@@ -116,9 +118,6 @@ std::vector<std::vector<spiderproto::CrawlUrl>> Dispatcher::SpilitTask(
         temp.push_back(urls[i]);
         count++;
         if (count == every_url_count) {
-            for (const auto& c : temp) {
-                LOG(INFO) << "temp:" << c.url();
-            }
             result.push_back(temp);
             temp.clear();
             count = 0;
