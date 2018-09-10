@@ -12,16 +12,18 @@ file_path=$(readlink -f $0)
 dir_name=$(dirname $file_path)
 
 
-
+inst=$(basename $(dirname $(readlink -f $0)))
 name=`echo $inst | cut -d "_" -f1`
 if [ "$name" == "$inst" ]; then
+    instance_id=0
     replica_id=10
 else
+    instance_id=`echo $inst | awk -F"_" '{printf("%d", $(NF-1))}'`
     replica_id=`echo $inst | awk -F"_" '{printf("%d", $NF)}'`
 fi
 
 addr=127.0.0.1
-
+crawl="sspider"
 port=$(($replica_id+30000))
 scheduler="127.0.0.1:30000"
 handler="127.0.0.1:50000"

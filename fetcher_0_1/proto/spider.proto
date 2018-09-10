@@ -1,0 +1,157 @@
+syntax = "proto3";
+package spiderproto;
+// url's type
+enum UrlLevel {
+    LEVEL_LIST    = 0;
+    LEVEL_CONTENT = 1;
+}
+
+message CrawlUrl {
+    bytes url      = 1;
+    UrlLevel level = 2;
+    bool usedable  = 3;
+}
+
+message Feature {
+    bool dup_ignore = 1;
+    bool testing    = 2;
+    bool period     = 3;
+    int32 interval  = 4;
+}
+
+message LinkRule {
+    UrlLevel in_level    = 1;
+    repeated bytes rules = 2;  // xpath:rule or re:rule
+    UrlLevel out_level   = 3;  // the extracted urls' types
+}
+
+message Storage {
+    enum StorageType {
+        STORAGE_HDFS = 0;
+        STORAGE_MQ   = 1;
+    }
+    StorageType store_type = 1;
+    bytes dest             = 2;
+    bytes attachment       = 3;
+}
+
+message Runtime {
+    float download_delay          = 1;
+    int32 concurrent_reqs         = 2;
+    repeated bytes allow_fetchers = 3;
+    repeated bytes deny_fetchers  = 4;
+}
+
+message BasicTask {
+    bytes taskid            = 1;
+    bytes name              = 2;
+    bytes user              = 3;
+    CrawlUrlList crawl_list = 4;
+    Feature feature         = 5;
+    LinkRuleList rule_list  = 6;
+    Storage storage         = 7;
+    Runtime runtime         = 8;
+}
+message CrawlUrlList {
+    repeated CrawlUrl crawl_urls = 1;
+}
+message LinkRuleList {
+    repeated LinkRule rules = 1;
+}
+message CrawlingTask {
+    bytes taskid                 = 1;
+    bytes fetcher                = 2;
+    repeated CrawlUrl crawl_urls = 3;
+    repeated LinkRule rules      = 4;
+    Storage storage              = 5;
+}
+
+message CrawledTask {
+    bytes taskid            = 1;
+    bytes fetcher           = 2;
+    CrawlUrl crawl_url      = 3;
+    int32 status            = 4;
+    repeated CrawlUrl links = 5;
+}
+
+message CrawlStats {
+    bytes taskid      = 1;
+    bytes start_time  = 2;
+    bytes last_update = 3;
+    int32 total_url   = 4;
+    int32 success     = 5;
+    int32 code40x     = 6;
+    int32 code404     = 7;
+    int32 code50x     = 8;
+    int32 codexxx     = 9;
+    int32 links       = 10;
+}
+
+message TaskResponse {
+    bytes taskid = 1;
+    int32 code   = 2;
+    bytes msg    = 3;
+}
+
+message Empty {
+}
+
+message Fetcher {
+    bytes name = 1;
+    bytes addr = 2;
+}
+
+service Schedule {
+    rpc add_task(BasicTask) returns (TaskResponse) {
+    }
+    rpc add_fetcher(Fetcher) returns (TaskResponse) {
+    }
+    rpc add_crawledtask(CrawledTask) returns (TaskResponse) {
+    }
+}
+
+service Fetch {
+    rpc add_crawlingtask(CrawlingTask) returns (TaskResponse) {
+    }
+
+    rpc Ping(PingRequest) returns (PingResponse) {
+    }
+}
+
+message Segment {
+    bytes word  = 1;
+    int32 score = 2;
+}
+
+message SegmentList {
+    repeated Segment segments = 1;
+}
+
+message CrawlDoc {
+    bytes taskid             = 1;
+    bytes url                = 2;
+    int32 status             = 3;
+    bytes content            = 4;
+    Storage storage          = 5;
+    SegmentList segment_list = 6;
+}
+
+message CrawlDocs {
+    bytes taskid           = 1;
+    repeated CrawlDoc docs = 2;
+}
+
+message PingRequest {
+    string name = 1;
+}
+message PingResponse {
+    string name  = 1;
+    bool survive = 2;
+    string msg   = 3;
+}
+service Handle {
+    rpc add_crawldoc(CrawlDoc) returns (TaskResponse) {
+    }
+    rpc Ping(PingRequest) returns (PingResponse) {
+    }
+}

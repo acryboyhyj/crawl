@@ -1,6 +1,5 @@
 #include "crawled_taskhandler.h"
 #include <mysql++/mysql++.h>
-#include "bloomfilter.h"
 #include "mysqlpp.h"
 #include "task_manager.h"
 #include "taskinfo.h"
@@ -14,7 +13,7 @@ CrawledtaskHandler::CrawledtaskHandler(
       m_concurrent_queue(concurrent_queue),
       m_thread(nullptr),
       m_stop(false),
-      m_bf(new BloomFilter(100000, 0.1)) {}
+      m_bf(new BloomFilter<std::string>(1000000)) {}
 
 CrawledtaskHandler::~CrawledtaskHandler() {}
 
@@ -36,8 +35,8 @@ void CrawledtaskHandler::AddCrawledTask() {
 
         task->DelCrawledUrl(cdtask.crawl_url());
         for (int i = 0; i < cdtask.links_size(); ++i) {
-            if (m_bf->KeyMatch(cdtask.links(i).url())) {
-                m_bf->Insert(cdtask.links(i).url());
+            if (!m_bf->contains(cdtask.links(i).url())) {
+                m_bf->insert(cdtask.links(i).url());
                 task->AddCrawlUrl(cdtask.links(i));
             }
         }

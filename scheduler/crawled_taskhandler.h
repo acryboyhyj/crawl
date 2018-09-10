@@ -1,13 +1,14 @@
 #ifndef CRAWLED_TASKHANDLER_H
 #define CRAWLED_TASKHANDLER_H
+#include <string.h>
 #include <atomic>
 #include <memory>
 #include <thread>
+#include "bloomfilter.h"
 #include "concurrent_queue.h"
 #include "proto/spider.pb.h"
 class TaskManager;
 class MySqlpp;
-class BloomFilter;
 class CrawledtaskHandler {
 public:
     CrawledtaskHandler(
@@ -30,7 +31,7 @@ private:
         m_concurrent_queue;
     std::unique_ptr<std::thread> m_thread;
     std::atomic<bool> m_stop;
-    std::unique_ptr<BloomFilter> m_bf;
+    std::unique_ptr<BloomFilter<std::string>> m_bf;
 };
 
 #endif  // _CRAWLER_TASKHANDLER_H_

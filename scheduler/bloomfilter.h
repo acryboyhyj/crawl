@@ -1,61 +1,96 @@
-#ifndef _BLOOMFILTER_H_
-#define _BLOOMFILTER_H_
-#include <glog/logging.h>
-#include <math.h>
-#include <cstdint>
+#ifndef __BLOOMFILTER__
+#define __BLOOMFILTER__
+#include <cmath>
 #include <functional>
-#include <memory>
-#include <string>
 #include <vector>
-#include "proto/spider.pb.h"
 
+template <class T>
 class BloomFilter {
-public:
-    BloomFilter(const int32_t n, const double false_positive_p);
-    void Insert(const std::string &key);
-    bool KeyMatch(const std::string &key);
-
 private:
-    std::vector<char> m_bits;
-    int32_t m_k;
-    int32_t m_m;
-    int32_t m_n;
-    double m_p;
-    std::hash<std::string> m_hasher{};
+    std::vector<bool> array;
+    unsigned int size;
+    unsigned int nElements;
+    unsigned int hashFunction1(T s);
+    unsigned int hashFunction2(T s);
+
+public:
+    BloomFilter(unsigned int size);
+    ~BloomFilter();
+    unsigned int getSize();
+    float getFalseRate();
+    bool contains(T value);
+    void insert(T value);
+    void resize(unsigned int size);
+    void clear(unsigned int size);
+
+    // It would be nice to have a function to resize the filter to obtain the
+    // falseRate that we want
+    // unsigned int getFalseRate(float rate);
 };
 
-BloomFilter::BloomFilter(const int32_t n, const double false_positive_p)
-    : m_bits(), m_k(0), m_m(0), m_n(n), m_p(false_positive_p) {
-    m_k = static_cast<int32_t>(-std::log(m_p) / std::log(2));
-    m_m = static_cast<int32_t>(m_k * n * 1.0 / std::log(2));
-    m_bits.resize((m_m + 7) / 8, 0);
+// Code
+
+template <class T>
+BloomFilter<T>::BloomFilter(unsigned int size) {
+    nElements = 0;
+    array.reserve(size);
+    array.assign(size, false);
+    this->size = size;
 }
 
-void BloomFilter::Insert(const std::string &key) {
-    uint32_t hash_val    = m_hasher(key);
-    const uint32_t delta = (hash_val >> 17) | (hash_val << 15);
-    for (int i = 0; i < m_k; ++i) {
-        const uint32_t bit_pos = hash_val % m_m;
-        m_bits[bit_pos / 8] |= 1 << (bit_pos % 8);
-        hash_val += delta;
+template <class T>
+BloomFilter<T>::~BloomFilter() {}
+
+template <class T>
+unsigned int BloomFilter<T>::getSize() {
+    return size;
+}
+
+template <class T>
+float BloomFilter<T>::getFalseRate() {
+    // k = 2; m = size; n = nElements;
+    return std::pow(1 - std::exp(-2 * ((float)nElements) / ((float)size)), 2);
+}
+
+template <class T>
+bool BloomFilter<T>::contains(T value) {
+    return array[hashFunction1(value)] && array[hashFunction2(value)];
+}
+
+template <class T>
+void BloomFilter<T>::insert(T value) {
+    array[hashFunction1(value)] = true;
+    array[hashFunction2(value)] = true;
+    nElements++;
+}
+
+// djb2
+template <class T>
+unsigned int BloomFilter<T>::hashFunction1(T value) {
+    unsigned long hash = 5381;
+    for (auto c : value) {
+        hash = (hash << 5) + hash + c; /* hash * 33 + c */
     }
+    return hash % size;
 }
 
-bool BloomFilter::KeyMatch(const std::string &key) {
-    uint32_t hash_val    = m_hasher(key);
-    const uint32_t delta = (hash_val >> 17) | (hash_val << 15);
-    for (int i = 0; i < m_k; ++i) {
-        const uint32_t bit_pos = hash_val % m_m;
-        if ((m_bits[bit_pos / 8] & (1 << (bit_pos % 8))) == 0) {
-            return false;
-        }
-        hash_val += delta;
-    }
-    return true;
+// STL Hash
+template <class T>
+unsigned int BloomFilter<T>::hashFunction2(T value) {
+    return std::hash<T>{}(value) % size;
 }
 
-// LOG(INFO) << "original hash_val:" << hash_val;
-// LOG(INFO) << "hashval:" << hash_val;
-// LOG(INFO) << "bit:" << bit_pos / 8;
-// LOG(INFO) << "key" << key << ":  hash_val" << hash_val;
-#endif  // _BLOOMFILTER_H_
+template <class T>
+void BloomFilter<T>::resize(unsigned int size) {
+    array.reserve(size);
+    array.assign(size, false);
+    this->size = size;
+}
+
+template <class T>
+void BloomFilter<T>::clear(unsigned int size) {
+    array.clear();
+    nElements = 0;
+}
+
+#endif

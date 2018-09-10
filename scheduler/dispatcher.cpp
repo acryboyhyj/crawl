@@ -71,16 +71,11 @@ bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
             actual_distribure_count = url_count;
     }
 
-    LOG(INFO) << "client_count,url_count,urled_count,allow_concurrent_url_"
-                 "count,actual_distribure_count "
-              << client_count << "," << url_count << "," << urled_count << "'"
-              << allow_concurrent_url_count << "," << actual_distribure_count;
     taskinfo->SetTime();
     std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
         SpilitTask(taskinfo, client_count, actual_distribure_count);
     // if actual_distribure_count is zero , will return a empty task
     if (tasks.empty()) {
-        LOG(INFO) << "task empty";
         std::this_thread::sleep_for(std::chrono::seconds(1));
         return false;
     }
