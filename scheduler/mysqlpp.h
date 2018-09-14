@@ -1,5 +1,6 @@
 #ifndef _CRAWL_MYSQLPP_H_
 #define _CRAWL_MYSQLPP_H_
+#include <mysql++/connection.h>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -11,7 +12,7 @@ class Connection;
 class TaskInfo;
 class MySqlpp {
 public:
-    MySqlpp() : m_connected(false) {}
+    MySqlpp();
     virtual ~MySqlpp() {}
 
     bool UpdateTask(const spiderproto::BasicTask& task);
@@ -22,7 +23,9 @@ public:
 
     bool DeleteTask(const spiderproto::BasicTask& task);
     bool AddNewLink(const std::string taskid,
-                    const spiderproto::CrawlUrl crawlurl);
+                    const spiderproto::CrawlUrl& crawlurl);
+    void UpdateLink(const std::string taskid,
+                    const spiderproto::CrawlUrl& crawlurl, int status);
 
 private:
     bool Connect();
@@ -32,7 +35,7 @@ private:
     mutable std::stringstream m_string_stream;
     mutable std::string m_err_msg;
     bool m_connected;
-    std::unique_ptr<mysqlpp::Connection> m_mysql_conn;
+    std::unique_ptr<mysqlpp::TCPConnection> m_mysql_conn;
 };
 
 #endif  // _CRAWL_MYSQLPP_H_

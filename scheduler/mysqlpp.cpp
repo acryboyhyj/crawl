@@ -2,18 +2,26 @@
 #include <glog/logging.h>
 #include <mysql++/dbdriver.h>
 #include <mysql++/mysql++.h>
-#include <mysql++/transaction.h>
 #include <algorithm>
 #include <map>
 #include "taskinfo.h"
 #include "util.h"
+MySqlpp::MySqlpp()
+    : m_connected(false), m_mysql_conn(new mysqlpp::TCPConnection()) {}
+
 bool MySqlpp::Connect() {
-    m_mysql_conn.reset(new mysqlpp::Connection());
     m_connected =
-        m_mysql_conn->connect("crawl", "localhost", "root", "hyj147258");
+        m_mysql_conn->connect("localhost", "crawl", "root", "hyj147258");
+    m_connected = m_mysql_conn->connected();
     if (!m_connected) {
         LOG(ERROR) << "connect erro" << std::endl;
-        return m_connected;
+        return false;
+    }
+
+    // set options
+    mysqlpp::ReconnectOption option(true);
+    if (!m_mysql_conn->set_option(&option)) {
+        LOG(ERROR) << "can't set reconnect";
     }
     return m_connected;
 }
@@ -37,42 +45,35 @@ bool MySqlpp::InsertTask(const spiderproto::BasicTask& task,
     task.runtime().SerializeToString(&run_time);
 
     m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-        m_string_stream
-            << "insert into "
-               "tbl_task(taskid, name, user, feature, storage, runtime, rule_"
-               "list) values("
-            << StrToSql(taskid) << "," << StrToSql(task.name()) << ","
-            << StrToSql(task.user()) << "," << StrToSql(StringToHex(feature))
-            << "," << StrToSql(StringToHex(storage)) << ","
-            << StrToSql(StringToHex(run_time)) << ","
-            << StrToSql(StringToHex(rule_list)) << ");";
+    m_string_stream
+        << "insert into "
+           "tbl_task(taskid, name, user, feature, storage, runtime, rule_"
+           "list) values("
+        << StrToSql(taskid) << "," << StrToSql(task.name()) << ","
+        << StrToSql(task.user()) << "," << StrToSql(StringToHex(feature)) << ","
+        << StrToSql(StringToHex(storage)) << ","
+        << StrToSql(StringToHex(run_time)) << ","
+        << StrToSql(StringToHex(rule_list)) << ");";
 
+    LOG(INFO) << m_string_stream.str() << std::endl;
+    mysqlpp::Query query = m_mysql_conn->query();
+    query << m_string_stream.str();
+    query.execute();
+
+    int crawlurl_count = task.crawl_list().crawl_urls_size();
+    for (int i = 0; i < crawlurl_count; ++i) {
+        const spiderproto::CrawlUrl crawlurl = task.crawl_list().crawl_urls(i);
+
+        m_string_stream.str("");
+        std::string level = std::to_string(static_cast<int>(crawlurl.level()));
+        m_string_stream << "insert into "
+                           "tbl_link(taskid, url, level) values("
+                        << StrToSql(taskid) << "," << StrToSql(crawlurl.url())
+                        << "," << StrToSql(level) << ");";
         LOG(INFO) << m_string_stream.str() << std::endl;
-        mysqlpp::Query query = m_mysql_conn->query();
+        query.reset();
         query << m_string_stream.str();
         query.execute();
-
-        int crawlurl_count = task.crawl_list().crawl_urls_size();
-        for (int i = 0; i < crawlurl_count; ++i) {
-            const spiderproto::CrawlUrl crawlurl =
-                task.crawl_list().crawl_urls(i);
-
-            m_string_stream.str("");
-            std::string level =
-                std::to_string(static_cast<int>(crawlurl.level()));
-            m_string_stream << "insert into "
-                               "tbl_link(taskid, url, level) values("
-                            << StrToSql(taskid) << ","
-                            << StrToSql(crawlurl.url()) << ","
-                            << StrToSql(level) << ");";
-            LOG(INFO) << m_string_stream.str() << std::endl;
-            query.reset();
-            query << m_string_stream.str();
-            query.execute();
-        }
-        trans.commit();
     }
     return true;
 }
@@ -90,48 +91,48 @@ bool MySqlpp::UpdateTask(const spiderproto::BasicTask& task) {
     task.runtime().SerializeToString(&run_time);
 
     m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-        m_string_stream << "update tbl_task "
-                           "set name="
-                        << StrToSql(task.name())
-                        << ", user=" << StrToSql(task.user())
-                        << ", feature=" << StrToSql(StringToHex(feature))
-                        << ", storage=" << StrToSql(StringToHex(storage))
-                        << ", runtime=" << StrToSql(StringToHex(run_time))
-                        << ", rule_list=" << StrToSql(StringToHex(rule_list))
-                        << "where taskid=" << StrToSql(task.taskid()) << ";";
-        LOG(INFO) << m_string_stream.str() << std::endl;
-        mysqlpp::Query query = m_mysql_conn->query();
-        query << m_string_stream.str();
-        query.execute();
-        trans.commit();
-    }
+    m_string_stream << "update tbl_task "
+                       "set name="
+                    << StrToSql(task.name())
+                    << ", user=" << StrToSql(task.user())
+                    << ", feature=" << StrToSql(StringToHex(feature))
+                    << ", storage=" << StrToSql(StringToHex(storage))
+                    << ", runtime=" << StrToSql(StringToHex(run_time))
+                    << ", rule_list=" << StrToSql(StringToHex(rule_list))
+                    << "where taskid=" << StrToSql(task.taskid()) << ";";
+    LOG(INFO) << m_string_stream.str() << std::endl;
+    mysqlpp::Query query = m_mysql_conn->query();
+    query << m_string_stream.str();
+    query.execute();
 
     return true;
 }
-
-bool MySqlpp::AddNewLink(const std::string taskid,
-                         const spiderproto::CrawlUrl crawlurl) {
-    if (!Connect()) return false;
+void MySqlpp::UpdateLink(const std::string taskid,
+                         const spiderproto::CrawlUrl& crawlurl, int status) {
+    if (!Connect()) return;
     m_string_stream.str("");
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
+    std::string url = crawlurl.url();
+    m_string_stream << "update tbl_link set code=" << status
+                    << " where url=" << StrToSql(url) << ";";
+    mysqlpp::Query query = m_mysql_conn->query();
+    query << m_string_stream.str();
+    query.execute();
+}
+bool MySqlpp::AddNewLink(const std::string taskid,
+                         const spiderproto::CrawlUrl& crawlurl) {
+    if (!Connect()) return false;
+    std::string url   = crawlurl.url();
+    std::string level = std::to_string(static_cast<int>(crawlurl.level()));
 
-        std::string url   = crawlurl.url();
-        std::string level = std::to_string(static_cast<int>(crawlurl.level()));
-        m_string_stream << "insert into "
-                           "tbl_link(taskid, url, level) values("
-                        << StrToSql(taskid) << "," << StrToSql(url) << ","
-                        << StrToSql(level) << ");";
-        LOG(INFO) << m_string_stream.str() << std::endl;
-
-        mysqlpp::Query query = m_mysql_conn->query();
-        query << m_string_stream.str();
-        query.execute();
-
-        trans.commit();
-    }
+    m_string_stream.str("");
+    m_string_stream << "insert into "
+                       "tbl_link(taskid, url, level) values("
+                    << StrToSql(taskid) << "," << StrToSql(url) << ","
+                    << StrToSql(level) << ");";
+    // LOG(INFO) << m_string_stream.str() << std::endl;
+    mysqlpp::Query query = m_mysql_conn->query();
+    query << m_string_stream.str();
+    query.execute();
 
     return true;
 }
@@ -215,21 +216,17 @@ bool MySqlpp::QueryAllTblLink(std::vector<spiderproto::BasicTask>* btasks) {
 bool MySqlpp::DeleteTask(const spiderproto::BasicTask& task) {
     if (!Connect()) return false;
     mysqlpp::Query query = m_mysql_conn->query();
-    {
-        mysqlpp::Transaction trans(*m_mysql_conn);
-        m_string_stream.str("");
-        m_string_stream << "delete from tbl_task "
-                        << "where taskid=" << StrToSql(task.taskid()) << ";";
-        query << m_string_stream.str();
-        query.execute();
-        m_string_stream.str("");
-        m_string_stream << "delete from tbl_link "
-                        << "where taskid=" << StrToSql(task.taskid()) << ";";
-        query.reset();
-        query << m_string_stream.str();
-        query.execute();
-        trans.commit();
-        LOG(INFO) << "delete task" << std::endl;
-    }
+    m_string_stream.str("");
+    m_string_stream << "delete from tbl_task "
+                    << "where taskid=" << StrToSql(task.taskid()) << ";";
+    query << m_string_stream.str();
+    query.execute();
+    m_string_stream.str("");
+    m_string_stream << "delete from tbl_link "
+                    << "where taskid=" << StrToSql(task.taskid()) << ";";
+    query.reset();
+    query << m_string_stream.str();
+    query.execute();
+    LOG(INFO) << "delete task" << std::endl;
     return true;
 }

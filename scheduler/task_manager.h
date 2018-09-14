@@ -27,6 +27,7 @@ public:
 
     std::shared_ptr<TaskInfo> GetOptTask();
     void ShowTasks() const;
+    bool Empty();
 
 private:
     std::string GenerateTaskid();

@@ -1,5 +1,6 @@
 #include "taskinfo.h"
 #include <glog/logging.h>
+#include <math.h>
 TaskInfo::TaskInfo(const spiderproto::BasicTask& btask)
     : m_btask(btask), m_seq(0), m_last_calltime() {
     int crawlurl_count = btask.crawl_list().crawl_urls_size();
@@ -126,4 +127,9 @@ int TaskInfo::GetCrawlingUrlCount() {
 int TaskInfo::GetAllowConcurrentCount() {
     std::lock_guard<std::mutex> lock(m_mutex);
     return m_btask.runtime().concurrent_reqs();
+}
+int TaskInfo::Getspeed() {
+    double delay        = 1.0 / m_btask.runtime().download_delay();
+    int concurrent_reqs = m_btask.runtime().concurrent_reqs();
+    return std::ceil(delay * concurrent_reqs);
 }

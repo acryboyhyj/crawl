@@ -7,6 +7,7 @@ TaskManager::TaskManager() {}
 
 TaskManager::~TaskManager() {}
 
+bool TaskManager::Empty() { return m_taskinfos.empty(); }
 bool TaskManager::AddTask(const std::vector<spiderproto::BasicTask>& btasks) {
     {
         std::lock_guard<std::mutex> lock(m_mutex);

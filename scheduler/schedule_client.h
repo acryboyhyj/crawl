@@ -1,5 +1,5 @@
-#ifndef SCHEDULER_CLIENT_H_
-#define SCHEDULER_CLIENT_H_
+#ifndef SCHEDULE_CLIENT_H_
+#define SCHEDULE_CLIENT_H_
 
 #include <grpcpp/grpcpp.h>
 #include <iostream>
@@ -32,6 +32,8 @@ public:
             return "RPC failed";
         }
     }
+    spiderproto::BasicTask GetTask(std::string name, std::string url,
+                                   double delay, int reqs);
 
 private:
     std::unique_ptr<spiderproto::Schedule::Stub> m_stub;

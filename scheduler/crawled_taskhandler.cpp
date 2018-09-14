@@ -7,13 +7,14 @@ CrawledtaskHandler::CrawledtaskHandler(
     const std::shared_ptr<TaskManager>& task_manager,
     const std::shared_ptr<MySqlpp> mysqlpp,
     const std::shared_ptr<ConcurrentQueue<spiderproto::CrawledTask>>
-        concurrent_queue)
+        concurrent_queue,
+    const std::shared_ptr<BloomFilter<std::string>> bf)
     : m_task_manager(task_manager),
       m_mysqlpp(mysqlpp),
       m_concurrent_queue(concurrent_queue),
+      m_bf(bf),
       m_thread(nullptr),
-      m_stop(false),
-      m_bf(new BloomFilter<std::string>(1000000)) {}
+      m_stop(false) {}
 
 CrawledtaskHandler::~CrawledtaskHandler() {}
 
@@ -34,11 +35,13 @@ void CrawledtaskHandler::AddCrawledTask() {
         }
 
         task->DelCrawledUrl(cdtask.crawl_url());
+        m_mysqlpp->UpdateLink(cdtask.taskid(), cdtask.crawl_url(),
+                              cdtask.status());
         for (int i = 0; i < cdtask.links_size(); ++i) {
-            LOG(INFO) << cdtask.links(i).url();
-            if (!m_bf->contains(cdtask.links(i).url())) {
-                LOG(INFO) << "insert a " << cdtask.links(i).url();
-                m_bf->insert(cdtask.links(i).url());
+            std::string url = cdtask.links(i).url();
+            if (sizeof(url) > 200) continue;
+            if (!m_bf->contains(url)) {
+                m_bf->insert(url);
                 task->AddCrawlUrl(cdtask.links(i));
                 m_mysqlpp->AddNewLink(cdtask.taskid(), cdtask.links(i));
             }

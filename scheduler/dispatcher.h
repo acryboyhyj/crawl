@@ -32,6 +32,11 @@ public:
     bool Distribute(const std::shared_ptr<TaskInfo>& taskinfo);
 
     bool HaveSurviveFetcher();
+    void ControlSpeed(int* send_url_count,
+                      const std::shared_ptr<TaskInfo>& taskinfo);
+    bool ShouldDispatch();
+
+    void MaxSpeed(int* send_url_count, int);
 
 private:
     void DispatchInternal();

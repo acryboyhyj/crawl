@@ -28,61 +28,73 @@ void Dispatcher::Join() { m_dispatch_thd->join(); }
 
 void Dispatcher::Stop() { m_stop.store(true, std::memory_order_relaxed); }
 
+bool Dispatcher::ShouldDispatch() {
+    if (!HaveSurviveFetcher()) {
+        return false;
+    }
+
+    if (m_task_manager->Empty()) return false;
+
+    return true;
+}
 void Dispatcher::DispatchInternal() {
     LOG(INFO) << "DispatchInternal start";
     while (!m_stop.load(std::memory_order_relaxed)) {
-        if (!HaveSurviveFetcher()) continue;
-        // have activate fetcher
+        if (!ShouldDispatch()) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
         m_seq++;
-
         // find a  min seq task
         std::shared_ptr<TaskInfo> taskinfo = m_task_manager->GetOptTask();
+
         if (taskinfo == nullptr) {
             std::this_thread::sleep_for(std::chrono::seconds(2));
             continue;
         }
 
-        // judge delay
-        std::chrono::steady_clock::time_point current_time =
-            std::chrono::steady_clock::now();
-        std::chrono::steady_clock::time_point last_call_time =
-            taskinfo->GetTime();
-
-        if (!taskinfo->NotCalled()) {
-            std::chrono::duration<double> time_span =
-                std::chrono::duration_cast<std::chrono::duration<double>>(
-                    current_time - last_call_time);
-            if (time_span.count() < taskinfo->GetDelay()) continue;
-        }
         Distribute(taskinfo);
         taskinfo->SetSeq(m_seq);
     }
 }
-
-bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
-    int client_count               = m_fetcher_manager->GetClientCount();
-    int url_count                  = taskinfo->GetCrawlurlCount();
-    int urled_count                = taskinfo->GetCrawlingUrlCount();
-    int allow_concurrent_url_count = taskinfo->GetAllowConcurrentCount();
-    int actual_distribure_count    = 0;
-    if (allow_concurrent_url_count != 0) {
-        actual_distribure_count = allow_concurrent_url_count - urled_count;
-        if (actual_distribure_count > url_count)
-            actual_distribure_count = url_count;
+void Dispatcher::ControlSpeed(int* send_url_count,
+                              const std::shared_ptr<TaskInfo>& taskinfo) {
+    int speed       = taskinfo->Getspeed();
+    int url_count   = taskinfo->GetCrawlurlCount();
+    int urled_count = taskinfo->GetCrawlingUrlCount();
+    if (speed != 0) {
+        *send_url_count = speed - urled_count;
+        if (*send_url_count > url_count) {
+            *send_url_count = url_count;
+        }
     }
+}
 
-    taskinfo->SetTime();
-    std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
-        SpilitTask(taskinfo, client_count, actual_distribure_count);
+void Dispatcher::MaxSpeed(int* send_url_count, int url_count) {
+    if (*send_url_count <= url_count) {
+        *send_url_count = 1000;
+    } else {
+        *send_url_count = url_count;
+    }
+    LOG(INFO) << "this task diapathch url " << *send_url_count;
+}
+bool Dispatcher::Distribute(const std::shared_ptr<TaskInfo>& taskinfo) {
+    int client_count   = m_fetcher_manager->GetClientCount();
+    int send_url_count = 0;
+    ControlSpeed(&send_url_count, taskinfo);
+
     // if actual_distribure_count is zero , will return a empty task
-    if (tasks.empty()) {
+    if (send_url_count == 0) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
         return false;
     }
+
+    std::vector<std::vector<spiderproto::CrawlUrl>> tasks =
+        SpilitTask(taskinfo, client_count, send_url_count);
+
     // shuffle
     std::vector<std::shared_ptr<FetchClient>> fetch_clients =
         m_fetcher_manager->GetAllFetchers();
-    LOG(INFO) << "fetcher's size():" << fetch_clients.size();
+
     if (fetch_clients.size() == 0) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
         return false;
@@ -114,7 +126,6 @@ std::vector<std::vector<spiderproto::CrawlUrl>> Dispatcher::SpilitTask(
 
     int count = 0;
     for (int i = 0; i < url_count; i++) {
-        LOG(INFO) << urls[i].url();
         temp.push_back(urls[i]);
         count++;
         if (count == every_url_count) {
