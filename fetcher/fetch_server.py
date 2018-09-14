@@ -22,14 +22,13 @@ class FetchServer(FetchServicer):
         self.queue = queue
 
     def _one_task(self, request):
-        logger.debug("receive crawling task %s" % request.taskid)
+        #logger.debug("receive crawling task %s" % request.taskid)
         task = CrawlingTask()
         task.CopyFrom(request)
         for crawl_url in request.crawl_urls:
             task.ClearField("crawl_urls")
             task_url = task.crawl_urls.add()
             task_url.CopyFrom(crawl_url)
-            logger.debug("generate one task %s" % str(task))
             yield task
 
     def add_crawlingtask(self, request, context):

@@ -43,7 +43,7 @@ function_start() {
     ulimit -c unlimited
     rm log.txt
     rm spider.log
-    $cmd > log.txt 2>&1 &
+    $cmd > log.txt 2>&1 & 
     time_left=1
     while [ $time_left -gt 0 ]; do
         sleep 1

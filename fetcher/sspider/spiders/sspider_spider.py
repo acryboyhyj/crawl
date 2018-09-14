@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 class SspiderSpider(scrapy.Spider):
     name = "sspider"
     queue = Queue.Queue()
+
     
     def __init__(self, *args, **kwargs):
         super(SspiderSpider, self).__init__(*args, **kwargs)
@@ -28,7 +29,6 @@ class SspiderSpider(scrapy.Spider):
         self.stopping = True
     
     def start_requests(self):
-        print"start_requests\n"
         
         while not self.stopping:
             if self.queue.empty():
@@ -42,7 +42,6 @@ class SspiderSpider(scrapy.Spider):
                     url = urllib.unquote(task.crawl_urls[0].url)
                     item = SspiderItem(taskid=taskid, url=url,\
                             crawling_task=task)
-                    
                     yield scrapy.Request(url=url, meta={'item':item}, \
                             dont_filter=True, callback=self.parse)
 
@@ -66,14 +65,10 @@ class SspiderSpider(scrapy.Spider):
     def _extract_links(self, response, item):
         crawling_task = item["crawling_task"]
         crawl_url = crawling_task.crawl_urls[0]
-
         extracted_urls = []
         for link_rule in crawling_task.rules:
-            logger.debug("start to check rule %s" % link_rule.in_level)
             if not self._should_rule(link_rule, crawl_url):
                 continue
-            logger.debug("apply rule %s to url %s" \
-                    % (link_rule.in_level, response.url))
             urls = self._extract_crawlurls(link_rule, crawling_task, response)
             extracted_urls.extend(urls)
         
@@ -101,11 +96,9 @@ class SspiderSpider(scrapy.Spider):
                 logger.error("unsupported rule %s for url %s from task %s" \
                         % (rule, response.url, crawling_task.taskid))
 
-        logger.debug("xpaths:  %s" %xpaths)
         link_extractor = LinkExtractor(allow=re_patterns,restrict_xpaths=xpaths,
                 canonicalize=True)
         links = link_extractor.extract_links(response)
-        logger.debug("links : %s" %str(links))
         extracted_urls = []
         for link in links:
             crawl_url = CrawlUrl()
@@ -113,6 +106,6 @@ class SspiderSpider(scrapy.Spider):
             crawl_url.url = link.url
             extracted_urls.append(crawl_url)
             logger.debug("extract link %s" % str(crawl_url))        
-
+    
         return extracted_urls
 

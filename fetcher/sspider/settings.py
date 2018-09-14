@@ -43,15 +43,15 @@ COOKIES_ENABLED = False
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 36
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 0.3 #1s second waiting to download the pages from same website
+DOWNLOAD_DELAY = 0.5 #1s second waiting to download the pages from same website
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN = 8
-#CONCURRENT_REQUESTS_PER_IP = 8
+CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -82,6 +82,7 @@ DOWNLOADER_MIDDLEWARES = {
     #'sspider.middlewares.HandleAllCode'	: 102,
     'sspider.middlewares.CustomeSlotKey' : 103,
     'sspider.middlewares.ExceptionProcessor' : 104,
+
 }
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
